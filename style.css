@@ -1,0 +1,73 @@
+/* Cài đặt cho body */
+body {
+    font-family: Arial, sans-serif; /* Font chữ sử dụng */
+    margin: 0; /* Loại bỏ margin mặc định */
+    padding: 0; /* Loại bỏ padding mặc định */
+}
+
+/* Cài đặt cho logo */
+.logo {
+    margin: 0; /* Loại bỏ margin nếu có */
+    padding: 0; /* Loại bỏ padding nếu có */
+    font-size: 24px; /* Điều chỉnh kích thước chữ logo */
+    font-weight: bold; /* Đặt độ đậm cho chữ logo */
+}
+
+/* Cài đặt cho sidebar */
+.sidebar {
+    width: 250px; /* Chiều rộng của sidebar */
+    height: 100%; /* Đặt chiều cao bằng 100% của viewport */
+    background-color: #f4f4f4; /* Màu nền của sidebar */
+    padding: 10px; /* Khoảng cách bên trong */
+    position: fixed; /* Cố định sidebar để nó không di chuyển khi cuộn */
+    overflow-y: auto; /* Cho phép cuộn nếu nội dung quá dài */
+}
+
+/* Cài đặt cho danh sách trong sidebar */
+.sidebar ul {
+    list-style-type: none; /* Loại bỏ dấu đầu dòng */
+    padding: 0; /* Loại bỏ padding mặc định */
+}
+
+/* Cài đặt cho liên kết trong danh sách sidebar */
+.sidebar ul li a {
+    text-decoration: none; /* Loại bỏ gạch chân */
+    padding: 30px; /* Khoảng cách bên trong cho liên kết */
+    display: block; /* Đảm bảo mỗi liên kết chiếm toàn bộ chiều rộng */
+    color: #333; /* Màu chữ mặc định */
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển tiếp cho màu nền và màu chữ */
+    border-radius: 5px; /* Bo góc cho liên kết */
+}
+
+/* Cài đặt cho liên kết khi di chuột */
+.sidebar ul li a:hover {
+    background-color: #ddd; /* Màu nền khi di chuột */
+    color: #000; /* Thay đổi màu chữ khi di chuột */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Đổ bóng khi di chuột */
+}
+
+/* Cài đặt cho nội dung chính */
+.main-content {
+    margin-left: 220px; /* Để nội dung không bị chồng lên sidebar */
+    padding: 10px; /* Khoảng cách bên trong cho nội dung chính */
+    overflow-y: auto; /* Cho phép cuộn cho nội dung chính */
+    height: calc(100vh - 60px); /* Tính chiều cao còn lại sau navbar */
+}
+
+/* Cài đặt cho footer */
+.footer {
+    clear: both; /* Đảm bảo footer không bị chồng lên nội dung khác */
+    text-align: center; /* Căn giữa nội dung */
+    padding: 10px; /* Khoảng cách bên trong */
+    background-color: #333; /* Màu nền của footer */
+    color: white; /* Màu chữ trong footer */
+}
+
+/* Cài đặt cho phần đăng xuất */
+.logout {
+    margin-top: 50px; /* Thêm khoảng cách trên (20px, có thể điều chỉnh) */
+    padding: 10px; /* Khoảng cách bên trong */
+    border-radius: 5px; /* Bo góc */
+    text-align: center; /* Căn giữa nội dung */
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển tiếp cho màu nền và màu chữ */
+}
