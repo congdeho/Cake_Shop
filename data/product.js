@@ -1,4 +1,4 @@
-var list = [{
+var list_products = [{
     id: 1,
     name: "Corn Mousse Cake",
     price: "320000",
@@ -15,20 +15,28 @@ var list = [{
     id: 2,
     name: "Fresh Mango Cream Cake",
     price: "350000" ,
-    image: "image/product/PRESH-MANGO.png",
+    image: "image/product/FRESH-MANGO.png",
     type:"Cake",
     description: "Bánh kem bông lan vani kem tươi và mứt trái cây",
     taste: "Ngọt",
-    size: "16cm",   
+    size: "16cm",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }  
 },{
     id: 3,
     name: "Fresh Strawberry Yogurt Cream Cake",
     price: "400000",
-    image: "image/product/YOURT-CREAM.png",
+    image: "image/product/YOGURT-CREAM.png",
     type:"Cake",
     description: "Bông lan vani cùng kem sữa chua, mứt dâu và trái cây tươi",
     taste: "Ngọt",
     size: "16cm",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 4,
     name: "Strawberry Brownie Mousse Cake",
@@ -38,6 +46,10 @@ var list = [{
     description: "Bông lan sô cô la, kem mousse sô cô la và caramel",
     taste: "Ngọt",
     size: "16cm",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 5,
     name: "Brioche Bread",
@@ -48,16 +60,24 @@ var list = [{
     taste: "Ngọt",
     texture: "Mềm, xốp",
     size: "Phù hợp cho một bữa ăn",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 6,
     name: "Fresh Cream Loaf Bread",
     price: "75000",
-    image: "image/product/frash-cream-loaf.png",
+    image: "image/product/fresh-cream-loaf.png",
     type:"Bread",
     description: "Bánh gối nhân kem sữa đặc ngọt dịu",
     taste: "Ngọt",
     texture: "Mềm, xốp",
     size: "Phù hợp cho một bữa ăn",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 7,
     name: "Best Ever Garlic Bread",
@@ -68,6 +88,10 @@ var list = [{
     taste: "Ngọt",
     texture: "Giòn, xốp",
     size: "Phù hợp ăn vặt",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 8,
     name: "Butter Croissant",
@@ -78,6 +102,10 @@ var list = [{
     taste: "Ngọt",
     texture: "Giòn, xốp",
     size: "Phù hợp ăn vặt",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 9,
     name: "Walnut Chocolate Cookie",
@@ -88,6 +116,10 @@ var list = [{
     taste: "Ngọt",
     texture: "Giòn, xốp",
     size: "Phù hợp ăn vặt",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 10,
     name: "Cranberry Walnut Cookie",
@@ -98,6 +130,10 @@ var list = [{
     taste: "Ngọt",
     texture: "Giòn, xốp",
     size: "Phù hợp ăn vặt",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 11,
     name: "English Toffee Cookie",
@@ -108,6 +144,10 @@ var list = [{
     taste: "Ngọt",
     texture: "Giòn, xốp",
     size: "phù hợp ăn vặt",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 12,
     name: "Double Chocochip Cookie",
@@ -118,6 +158,10 @@ var list = [{
     taste: "Ngọt",
     texture: "Giòn, xốp",
     size: "phù hợp ăn vặt",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 13,
     name: "Chicken Mango Tropical Salad",
@@ -127,6 +171,10 @@ var list = [{
     description: "Salad gà nướng, xoài, bắp, cà cùng sốt dầu giấm",
     taste: "Chua, Ngọt",
     size: "Phù hợp cho một bữa ăn",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 14,
     name: "B.E.L.T. Sandwich",
@@ -137,6 +185,10 @@ var list = [{
     taste: " Mặn",
     texture: "Mềm, xốp",
     size: "Phù hợp cho một bữa ăn",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 15,
     name: "Cranbery Chicken Pastry Wrap Sandwich",
@@ -147,6 +199,10 @@ var list = [{
     taste: "Mặn",
     texture: "Mềm, xốp",
     size: "Phù hợp cho một bữa ăn",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }, {
     id: 16,
     name: "Spicy Chicken & Avocado Salad",
@@ -156,4 +212,8 @@ var list = [{
     description: "Salad gà chiên giòn sốt cay cùng bơ tươi và sốt hành mayo",
     taste: "Mặn",
     size: "Phù hợp cho một bữa ăn",
+    promo: {
+        name: "Giảm 10%",
+        discount: 10,
+    }
 }]
