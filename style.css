@@ -29,23 +29,47 @@ body {
     color: white;
     padding: 10px;
     display: flex;
-    align-items: center;
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+.topbar-a {
+    margin-left: 225px;
+}
+.topbar-icons {
+    display: flex; /* Sử dụng flexbox cho các biểu tượng */
+    margin-left: auto; /* Đẩy các biểu tượng sang bên phải */
+    gap: 30px;
+}
+.topbar-icons a {
+    color: #000; /* Màu của biểu tượng */
+    text-decoration: none; /* Loại bỏ gạch chân */
+   
 }
 
+/* Điều chỉnh thêm cho các biểu tượng khi hover */
+.topbar-icons a:hover {
+    color: #007bff; /* Thay đổi màu khi di chuột qua */
+}
 /* Thanh bên trái */
 .sidebar {
     grid-area: sidebar;
     background-color: #333;
     color: white;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+  
 }
 
 .sidebar nav ul {
     list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Giúp các mục khác tràn ra, đẩy đăng xuất xuống dưới */
 }
 
 .sidebar nav ul li {
     margin: 10px 0;
+        /* Tạo khoảng cách giữa các icon voi nhau  */
 }
 
 .sidebar nav ul li a {
@@ -53,7 +77,18 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
+    gap: 8px; /* Tạo khoảng cách giữa các icon và text */
 }
+
+/* Dành riêng cho nút Đăng xuất */
+.sidebar nav ul li.logout {
+    margin-top: auto; /* Đẩy xuống dưới cùng */
+}
+
+.sidebar nav ul li.logout a {
+    color: #ff4d4d; /* Màu khác để nổi bật nút Đăng xuất */
+}
+
 /* Nội dung chính */
 .content {
     grid-area: content;
@@ -116,4 +151,11 @@ body {
     color: white;
     text-align: center;
     padding: 10px;
+}
+.charts {
+    margin-top: 20px;
+}
+
+.chart-container {
+    margin-bottom: 20px;
 }
