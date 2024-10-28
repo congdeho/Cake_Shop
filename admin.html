@@ -11,7 +11,12 @@
     <div class="container">
         <!-- Thanh trên cùng -->
         <header class="topbar">
-            <a href="#"><i class="fa-solid fa-bars"></i></a>
+            <a href="#" class="topbar-a"><i class="fa-solid fa-bars"></i></a>
+            <div class="topbar-icons">
+                <a href="#"><i class="fa-solid fa-search"></i></a>
+                <a href="#"><i class="fa-solid fa-bell"></i></a>
+                <a href="#"><i class="fa-solid fa-user"></i></a>
+            </div>
         </header>
 
         <!-- Thanh bên trái -->
@@ -21,45 +26,65 @@
                     <li><a href="#"><i class="fas fa-tachometer-alt"></i> Tổng quan</a></li>
                     <li><a href="#"><i class="fas fa-box"></i> Quản lý sản phẩm</a></li>
                     <li><a href="#"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i> Thống kê</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Quản lý người dùng</a></li>
+                    <li><a href="#" onclick="showCharts()"><i class="fas fa-chart-line"></i> Thống kê</a></li>
+                    <li><a href="#" onclick="showUserList()"><i class="fas fa-users"></i> Quản lý người dùng</a></li>
                     <li><a href="#"><i class="fas fa-cog"></i> Cài đặt</a></li>
                     <li><a href="#" class="logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
                 </ul>
             </nav>
         </aside>
 
-        <!-- Phần nội dung chính -->
         <main class="content">
             <!-- Các thẻ tóm tắt -->
             <section class="dashboard-cards">
-                <div class="card truycap">Truy cập</div>
-                <div class="card doanhthu">Doanh thu</div>
-                <div class="card orders">Đơn hàng</div>
-                <div class="card users">Người dùng</div>
+                <div class="card truycap">Truy cập: 150</div>
+                <div class="card doanhthu">Doanh thu: 20.000.000 VNĐ</div>
+                <div class="card orders">Đơn hàng: 75</div>
+                <div class="card users">Người dùng: 250</div>
             </section>
-
+        
             <!-- Phần phân tích và biểu đồ -->
             <section class="analytics">
-                <div class="chart bieudo">Biểu đồ</div>
-                <div class="summary tong-hop">Tổng hợp</div>
+                <div class="chart bieudo">
+                    <section class="charts">
+                        <h2>Biểu Đồ Thống Kê</h2>
+                        <div class="chart-container">
+                            <canvas id="usersChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </section>
+                </div>
+                <div class="summary tong-hop">Tổng hợp sản phẩm bán chạy</div>
             </section>
-
-            <!-- Các tiện ích bổ sung -->
-            <section class="extra-widgets">
-                <div class="widget e">Widget E</div>
-                <div class="widget f">Widget F</div>
-                <div class="widget g">Widget G</div>
-                <div class="widget h">Widget H</div>
-            </section>
+            <div id="userListContainer" style="display: none;"> <!-- Ẩn mặc định -->
+                <h2>Danh sách người dùng</h2>
+                <table id="userTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên</th>
+                            <th>Email</th>
+                            <th>Trạng thái</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Mật Khẩu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dữ liệu người dùng sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+            </div>
         </main>
-
         <!-- Phần chân trang -->
         <footer class="footer chantrang">
             © 2023 Trang Quản Trị
         </footer>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="script.js"></script>
+    <script src="bieudo.js"></script>
+    <script src="user.js"></script>
 </body>
 </html>
