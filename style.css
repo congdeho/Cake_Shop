@@ -1,73 +1,119 @@
-/* Cài đặt cho body */
+/* Reset một số thuộc tính mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif; /* Font chữ sử dụng */
-    margin: 0; /* Loại bỏ margin mặc định */
-    padding: 0; /* Loại bỏ padding mặc định */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
 
-/* Cài đặt cho logo */
-.logo {
-    margin: 0; /* Loại bỏ margin nếu có */
-    padding: 0; /* Loại bỏ padding nếu có */
-    font-size: 24px; /* Điều chỉnh kích thước chữ logo */
-    font-weight: bold; /* Đặt độ đậm cho chữ logo */
+/* Container tổng thể */
+.container {
+    display: grid;
+    grid-template-areas:
+        "topbar topbar"
+        "sidebar content"
+        "footer footer";
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
 }
 
-/* Cài đặt cho sidebar */
+/* Thanh trên cùng */
+.topbar {
+    grid-area: topbar;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* Thanh bên trái */
 .sidebar {
-    width: 250px; /* Chiều rộng của sidebar */
-    height: 100%; /* Đặt chiều cao bằng 100% của viewport */
-    background-color: #f4f4f4; /* Màu nền của sidebar */
-    padding: 10px; /* Khoảng cách bên trong */
-    position: fixed; /* Cố định sidebar để nó không di chuyển khi cuộn */
-    overflow-y: auto; /* Cho phép cuộn nếu nội dung quá dài */
+    grid-area: sidebar;
+    background-color: #333;
+    color: white;
+    padding: 15px;
 }
 
-/* Cài đặt cho danh sách trong sidebar */
-.sidebar ul {
-    list-style-type: none; /* Loại bỏ dấu đầu dòng */
-    padding: 0; /* Loại bỏ padding mặc định */
+.sidebar nav ul {
+    list-style-type: none;
 }
 
-/* Cài đặt cho liên kết trong danh sách sidebar */
-.sidebar ul li a {
-    text-decoration: none; /* Loại bỏ gạch chân */
-    padding: 30px; /* Khoảng cách bên trong cho liên kết */
-    display: block; /* Đảm bảo mỗi liên kết chiếm toàn bộ chiều rộng */
-    color: #333; /* Màu chữ mặc định */
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Hiệu ứng chuyển tiếp cho màu nền và màu chữ */
-    border-radius: 5px; /* Bo góc cho liên kết */
+.sidebar nav ul li {
+    margin: 10px 0;
 }
 
-/* Cài đặt cho liên kết khi di chuột */
-.sidebar ul li a:hover {
-    background-color: #ddd; /* Màu nền khi di chuột */
-    color: #000; /* Thay đổi màu chữ khi di chuột */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Đổ bóng khi di chuột */
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+/* Nội dung chính */
+.content {
+    grid-area: content;
+    padding: 20px;
+    background-color: white;
+    overflow-y: auto; /* Cho phép cuộn nếu nội dung vượt quá chiều cao */
 }
 
-/* Cài đặt cho nội dung chính */
-.main-content {
-    margin-left: 220px; /* Để nội dung không bị chồng lên sidebar */
-    padding: 10px; /* Khoảng cách bên trong cho nội dung chính */
-    overflow-y: auto; /* Cho phép cuộn cho nội dung chính */
-    height: calc(100vh - 60px); /* Tính chiều cao còn lại sau navbar */
+/* Thẻ tóm tắt */
+.dashboard-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
-/* Cài đặt cho footer */
+.card {
+    flex: 1; /* Các thẻ có chiều rộng bằng nhau */
+    background-color: #e7e7e7;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Phần phân tích */
+.analytics {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Biểu đồ và tổng hợp */
+.chart, .summary {
+    flex: 1; /* Các thẻ có chiều rộng bằng nhau */
+    background-color: #e7e7e7;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Các tiện ích bổ sung */
+.extra-widgets {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Cho phép các tiện ích gói lại khi không đủ không gian */
+}
+
+/* Tiện ích */
+.widget {
+    flex: 1 1 200px; /* Cho phép gói lại với kích thước tối thiểu là 200px */
+    background-color: #e7e7e7;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Chân trang */
 .footer {
-    clear: both; /* Đảm bảo footer không bị chồng lên nội dung khác */
-    text-align: center; /* Căn giữa nội dung */
-    padding: 10px; /* Khoảng cách bên trong */
-    background-color: #333; /* Màu nền của footer */
-    color: white; /* Màu chữ trong footer */
-}
-
-/* Cài đặt cho phần đăng xuất */
-.logout {
-    margin-top: 50px; /* Thêm khoảng cách trên (20px, có thể điều chỉnh) */
-    padding: 10px; /* Khoảng cách bên trong */
-    border-radius: 5px; /* Bo góc */
-    text-align: center; /* Căn giữa nội dung */
-    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển tiếp cho màu nền và màu chữ */
+    grid-area: footer;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
 }
