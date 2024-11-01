@@ -286,3 +286,74 @@ main table {
     padding: .75rem;
     vertical-align: top;
 }
+.active-tab {
+    display: block;
+}
+
+.table-outline {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-outline th, .table-outline td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.order-filters {
+    margin-bottom: 1em;
+    display: flex;
+    gap: 1em;
+}
+.status-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.status-buttons button {
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+}
+
+.status-buttons button:hover {
+    background-color: #0056b3;
+}
+.modal {
+    display: none; /* Ẩn modal mặc định */
+    position: fixed; /* Giữ modal ở vị trí cố định */
+    z-index: 1; /* Đưa modal lên trên cùng */
+    left: 0;
+    top: 0;
+    width: 100%; /* Toàn bộ chiều rộng */
+    height: 100%; /* Toàn bộ chiều cao */
+    overflow: auto; /* Thêm thanh cuộn nếu cần */
+    background-color: rgb(0,0,0); /* Màu nền */
+    background-color: rgba(0,0,0,0.4); /* Màu nền với độ trong suốt */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Căn giữa modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Chiều rộng của modal */
+}
+
+.close-button {
+    color: #000000;
+    float: right; /* Nằm ở góc phải */
+    font-size: 28px;
+    font-weight: bold;
+}
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
