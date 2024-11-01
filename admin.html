@@ -163,49 +163,79 @@
                     </div>
                 </div>
 
-                <!-- Đơn Hàng -->
-                <div class="donhang">
-                    <table class="table-header">
-                        <tr>
-                            <!-- Theo độ rộng của table content -->
-                            <th title="Sắp xếp" style="width: 5%" onclick="sortDonHangTable('stt')">Stt <i
-                                    class="fa fa-sort"></i></th>
-                            <th title="Sắp xếp" style="width: 13%" onclick="sortDonHangTable('madon')">Mã đơn <i
-                                    class="fa fa-sort"></i></th>
-                            <th title="Sắp xếp" style="width: 7%" onclick="sortDonHangTable('khach')">Khách <i
-                                    class="fa fa-sort"></i></th>
-                            <th title="Sắp xếp" style="width: 20%" onclick="sortDonHangTable('sanpham')">Sản phẩm <i
-                                    class="fa fa-sort"></i></th>
-                            <th title="Sắp xếp" style="width: 15%" onclick="sortDonHangTable('tongtien')">Tổng tiền <i
-                                    class="fa fa-sort"></i></th>
-                            <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('ngaygio')">Ngày giờ <i
-                                    class="fa fa-sort"></i></th>
-                            <th title="Sắp xếp" style="width: 10%" onclick="sortDonHangTable('trangthai')">Trạng thái <i
-                                    class="fa fa-sort"></i></th>
-                            <th style="width: 10%">Hành động</th>
-                        </tr>
-                    </table>
+               <!-- Đơn hàng -->
+<div class="donhang">
+    <h2>Quản lý Đơn hàng</h2>
+    <!-- Bộ lọc đơn hàng -->
+    <div class="order-filters">
+        <label>
+            Tình trạng đơn hàng:
+            <select id="filter-status" onchange="filterOrders()">
+                <option value="all">Tất cả</option>
+                <option value="pending">Chưa xử lý</option>
+                <option value="confirmed">Đã xác nhận</option>
+                <option value="delivered">Đã giao</option>
+                <option value="canceled">Đã huỷ</option>
+            </select>
+        </label>
+        
+        <label>
+            Thời gian:
+            <input type="date" id="filter-start-date" onchange="filterOrders()"> -
+            <input type="date" id="filter-end-date" onchange="filterOrders()">
+        </label>
+        
+        <label>
+            Quận:
+            <select id="filter-district" onchange="filterOrders()">
+                <option value="all">Tất cả</option>
+                <option value="quan1">Quận 1</option>
+                <option value="quan3">Quận 3</option>
+                <option value="quan4">Quận 4</option>
+                <option value="quan5">Quận 5</option>
+                <option value="quan6">Quận 6</option>
+                <option value="quan7">Quận 7</option>
+                <option value="quan8">Quận 8</option>
+                <option value="quan10">Quận 10</option>
+                <option value="quan11">Quận 11</option>
+                <option value="quan12">Quận 12</option>
+                <option value="quantanbinh">Quận Tân Bình</option>
+                <option value="quantanphu">Quận Tân Phú</option>
+                <option value="quanbinhtan">Quận Bình Tân</option>
+                <option value="quanbinhthanh">Quận Bình Thạnh</option>
+                <option value="quangovap">Quận Gò Vấp</option>
+                <option value="quanphunhuan">Quận Phú Nhuận</option>
+            </select>
+        </label>
+    </div>
 
-                    <div class="table-content">
-                    </div>
-
-                    <div class="table-footer">
-                        <div class="timTheoNgay">
-                            Từ ngày: <input type="date" id="fromDate">
-                            Đến ngày: <input type="date" id="toDate">
-
-                            <button onclick="locDonHangTheoKhoangNgay()"><i class="fa fa-search"></i> Tìm</button>
-                        </div>
-
-                        <select name="kieuTimDonHang">
-                            <option value="ma">Tìm theo mã đơn</option>
-                            <option value="khachhang">Tìm theo tên khách hàng</option>
-                            <option value="trangThai">Tìm theo trạng thái</option>
-                        </select>
-                        <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemDonHang(this)">
-                    </div>
-
-                </div>
+    <!-- Bảng danh sách đơn hàng -->
+    <div class="table-content">
+        <table id="order-table" class="table-outline">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã Đơn hàng</th>
+                    <th>Khách hàng</th>
+                    <th>Địa chỉ</th>
+                    <th>Ngày đặt</th>
+                    <th>Tình trạng</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Nội dung các đơn hàng sẽ được chèn vào đây qua JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    <div id="order-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <h2>Chi tiết đơn hàng</h2>
+        <div id="order-details"></div>
+    </div>
+    </div>
+    </div>
                 <!-- Khách hàng -->
                 <div class="khachhang">
                     <table class="table-header">
@@ -247,6 +277,8 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/admin.js"></script>
+    <script src="js/quanly.js"></script>
+    <script src="data/dataquanly.js"></script>
 </body>
 
 </html>
