@@ -244,7 +244,7 @@ main table {
     border-collapse: collapse;
 }
 /* Hiển thị tab */
-.sanpham, .donhang, .khachhang , .dashboard {
+.sanpham, .donhang, .khachhang , .dashboard , .thongke {
     display: none; /* Ẩn tất cả các tab */
 }
 
