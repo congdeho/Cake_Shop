@@ -1,0 +1,118 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.background{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(https://images.unsplash.com/photo-1691862329594-4eb279f01bc1?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal_form{
+    width: 500px;
+    background-color: rgba(146, 162, 162, 0.7);
+    border-radius: 10px;   
+}
+
+.input_form{
+    margin: 0px 20px;
+}
+
+.title_input{
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.title_input h1{
+    margin: 0;
+}
+
+.title_input p{
+    margin: 5px 0 0 0;
+}
+
+.box_input input{
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;      
+    box-sizing: border-box;
+    margin-top: 5px;
+    padding: 10px;
+} 
+
+.login{
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.btn_submit{
+    border: 2px solid aliceblue;
+    background-color:rgba(40, 34, 34, 0.7);
+    border-radius: 5px;
+    color: aliceblue;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    height: 35px;
+    transition: background-color 0.3s ease;
+}
+
+.outside{
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.policy{
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    bottom: 0;
+}
+
+.btn{
+    text-decoration: none;
+    color: white;
+}
+
+.btn:hover{
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn_submit:hover{
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgb(68, 71, 71);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}

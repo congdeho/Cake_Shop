@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="background">
+            <div class="modal" id="form-login">
+                <div class="modal_form">
+                    <div class="input_form">
+                        <div class="title_input">
+                            <h1>Welcome to myBakery</h1>
+                            <p>Sign up to order now</p>
+                        </div>
+    
+                        <div class="title_input">
+                            Full name
+                        </div>
+                        <div class="box_input">
+                            <input type="text" placeholder="Full name">
+                        </div>
+                        <div class="title_input">
+                            Email
+                        </div>
+                        <div class="box_input">
+                            <input type="text" placeholder="example@gmail.com">
+                        </div>
+                        <div class="title_input">
+                            Password
+                        </div>
+                        <div class="box_input">
+                            <input type="password" placeholder="********">
+                        </div>
+                        <div class="login">
+                            <button class="btn_submit"><b>Sign Up</b></button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="outside">
+                    Already have an account?
+                    <a href="#" class="btn" onclick="showSignUp()">Log In</a>
+                </div>
+    
+                <div class="policy">
+                    This site is protected by the Google <a href="https://policies.google.com/privacy" class="btn" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" class="btn" target="_blank">Terms of Service</a> apply.
+                </div>
+            </div>
+
+            <div class="modal" id="form-signup">
+                <div class="modal_form">
+                    <div class="input_form">
+                        <div class="title_input">
+                            <h1>Welcome back</h1>
+                            <p>We're happy to see you</p>
+                        </div>
+                        <div class="title_input">
+                            Email
+                        </div>
+                        <div class="box_input">
+                            <input type="text" placeholder="example@gmail.com">
+                        </div>
+                        <div class="title_input">
+                            Password
+                        </div>
+                        <div class="box_input">
+                            <input type="password" placeholder="********">
+                        </div>
+                        <div class="login">
+                            <button class="btn_submit"><b>Log In</b></button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="outside">
+                    Don't have an account?
+                    <a class="btn" onclick="showLogin()">Sign up</a>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
