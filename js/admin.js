@@ -54,7 +54,7 @@ function activateSidebarLink(activeLink) {
     activeLink.classList.add("active");
 
     // Ẩn tất cả các tab nội dung
-    const mainSections = document.querySelectorAll(".sanpham, .donhang, .khachhang, .dashboard");
+    const mainSections = document.querySelectorAll(".sanpham, .donhang, .khachhang, .dashboard , .thongke");
     mainSections.forEach(section => {
         section.classList.remove("active-tab");
     });
@@ -73,6 +73,9 @@ function activateSidebarLink(activeLink) {
             break;
         case "User":
             document.querySelector(".khachhang").classList.add("active-tab");
+            break;
+        case "Statistical":
+            document.querySelector(".thongke").classList.add("active-tab");
             break;
         default:
             document.querySelector(".dashboard").classList.add("active-tab");
