@@ -199,6 +199,46 @@ html[data-bs-theme="light"] .theme-toggle .fa-sun {
     display: none;
 }
 /* ==================== main ==================== */
+.table-header th {
+    color: #e4e7ea;
+    background-color: #3e464d;
+    border-color: #23282c;
+}
+
+.table-header th {
+    cursor: pointer;
+}
+
+.table-header th i {
+    /* Ẩn icon sort */
+    transform: scale(0);
+    transition-duration: .2s;
+}
+
+.table-header th:hover i {
+    transform: scale(1)
+}
+
+.table-header th,
+.table-content td {
+    padding: .75rem;
+    text-align: center;
+    vertical-align: top;
+    border-top: 1px solid #23282c;
+}
+
+.table-top {
+    margin: 20px 30px 20px 0;
+    float: right;
+}
+.table-top button {
+    cursor: pointer;
+    transition-duration: .2s;
+}
+.table-top input, .table-top button, .table-top select {
+    padding: 5px 10px;
+    border: 3px solid transparent;
+}
 main table {
     width: 100%;
     border-collapse: collapse;
@@ -282,7 +322,131 @@ main table {
     visibility: visible;
     opacity: 1;
 }
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 15px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 0px;
+    bottom: 0px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
 .table-content td {
     padding: .75rem;
     vertical-align: top;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Sử dụng Flexbox */
+    align-items: center; /* Căn giữa dọc */
+    justify-content: center; /* Căn giữa ngang */
+    overflow-y: auto;
+    z-index: 14;
+    transition: .2s ease;
+    transform: scale(0);
+    background-color: #020202d8;
+}
+
+
+.overlayTable {
+    width: auto;
+    background-color: #23282c;
+    margin: 0; /* Bỏ căn chỉnh tự động */
+}
+
+
+.overlayTable td:first-child {
+    text-align: right;
+}
+
+.overlayTable input {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e7e7e7;
+    color: black;
+    width: 80%;
+}
+
+.overlayTable input[type="file"] {
+    background-color: transparent;
+    color: var(--bs-body-color);
+}
+
+.close {
+    /* nút tắt form */
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    font-size: 3rem;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    text-align: center;
+    color: #aaa;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.close:hover {
+    color: #fff;
+    background-color: #f33;
+    border-radius: 50%;
 }
