@@ -18,29 +18,46 @@
                             Full name
                         </div>
                         <div class="box_input">
-                            <input type="text" placeholder="Full name">
+                            <input type="text" id="name">
                         </div>
+
                         <div class="title_input">
-                            Email
+                            Username
                         </div>
                         <div class="box_input">
-                            <input type="text" placeholder="example@gmail.com">
+                            <input type="text" id="username">
                         </div>
+
                         <div class="title_input">
                             Password
                         </div>
                         <div class="box_input">
-                            <input type="password" placeholder="********">
+                            <input type="password" id="password">
                         </div>
+
+                        <div class="title_input">
+                            Email
+                        </div>
+                        <div class="box_input">
+                            <input type="text" id="email">
+                        </div>
+
+                        <div class="title_input">
+                            Phone
+                        </div>
+                        <div class="box_input">
+                            <input type="text" id="phone">
+                        </div>
+                        
                         <div class="login">
-                            <button class="btn_submit"><b>Sign Up</b></button>
+                            <button class="btn_submit" onclick="addData()">Sign Up</button>
                         </div>
                     </div>
                 </div>
     
                 <div class="outside">
                     Already have an account?
-                    <a href="#" class="btn" onclick="showSignUp()">Log In</a>
+                    <a class="btn" onclick="showSignUp()">Log In</a>
                 </div>
     
                 <div class="policy">
@@ -56,19 +73,19 @@
                             <p>We're happy to see you</p>
                         </div>
                         <div class="title_input">
-                            Email
+                            Username
                         </div>
                         <div class="box_input">
-                            <input type="text" placeholder="example@gmail.com">
+                            <input type="text" id="usernamelg">
                         </div>
                         <div class="title_input">
                             Password
                         </div>
                         <div class="box_input">
-                            <input type="password" placeholder="********">
+                            <input type="password" id="passwordlg">
                         </div>
                         <div class="login">
-                            <button class="btn_submit"><b>Log In</b></button>
+                            <button class="btn_submit" onclick="checkLogin()">Log In</button>
                         </div>
                     </div>
                 </div>
