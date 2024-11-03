@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giỏ hàng</title>
+    <style>
+      
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .cart-container {
+        width: 80%;
+        margin: auto;
+      }
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0;
+      }
+      .cart-item img {
+        width: 80px;
+        height: auto;
+      }
+      .summary {
+        text-align: right;
+        margin-top: 20px;
+      }
+      .summary p {
+        margin: 5px 0;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cart-container">
+      <h1>Giỏ hàng của bạn</h1>
+      <div class="cart-item">
+        <img src="link-hinh-anh-san-pham.jpg" alt="Sản phẩm 1" />
+        <p>Tên sản phẩm 1</p>
+        <input type="number" value="1" min="1" />
+        <p>0 VND</p>
+        <p>Tổng: 0 VND</p>
+      </div>
+      
+      <div class="summary">
+        <p>Tổng phụ: 0 VND</p>
+        <p>Thuế: 0 VND</p>
+        <p><strong>Tổng cộng: 0 VND</strong></p>
+        <button>Cập nhật giỏ hàng</button>
+        <button>Tiến hành thanh toán</button>
+      </div>
+    </div>
+  </body>
+</html>
