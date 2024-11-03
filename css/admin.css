@@ -450,3 +450,13 @@ input:checked+.slider:before {
     background-color: #f33;
     border-radius: 50%;
 }
+#itemDetails {
+  width: 100%; /* Điều chỉnh độ rộng của bảng */
+  margin: auto; /* Căn giữa bảng trong thẻ chứa */
+  text-align: center; /* Căn giữa văn bản bên trong bảng */
+}
+#invoiceDetails {
+  width: 100%; /* Điều chỉnh độ rộng của bảng */
+  margin: auto; /* Căn giữa bảng trong thẻ chứa */
+  text-align: center; /* Căn giữa văn bản bên trong bảng */
+}
