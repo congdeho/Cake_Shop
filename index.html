@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Store</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="product.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
@@ -31,23 +31,25 @@
                     <div class="enter"></div>
             </ul>
         </nav>
-        <nav>
-            <ul class="menu">
-                <li><a href="#">TRANG CHỦ</a></li>
-                <li class="dropdown">
-                    <a href="#">SẢN PHẨM</a>
-                    <ul class="dropdown-content">
-                        <li><a href="#" onclick="product();">Whole Cake</a></li>
-                        <li><a href="#" onclick="shortcake();">Short Cake</a></li>
-                        <li><a href="#" onclick="bread();">Bread</a></li>
-                        <li><a href="#" onclick="dessert();">Dessert</a></li>
-                        <li><a href="#" onclick="sandwich();">Sandwich and Salad</a></li>
-                        <li><a href="#" onclick="coffee();">Coffee and Beverages</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">TIN TỨC</a></li>
-                <li><a href="#">KHUYẾN MÃI</a></li>
-        </nav>
+       <nav>
+    <ul class="menu">
+        <li><a href="#" onclick="showHome();">TRANG CHỦ</a></li>
+        <li><a href="#" onclick="showNews();">TIN TỨC</a></li>
+        <li><a href="#" onclick="showPromotions();">KHUYẾN MÃI</a></li>
+        <li class="dropdown">
+            <a href="#">SẢN PHẨM</a>
+            <ul class="dropdown-content">
+                <li><a href="#" onclick="wholecake()();">Whole Cake</a></li>
+                <li><a href="#" onclick="shortcake();">Short Cake</a></li>
+                <li><a href="#" onclick="bread();">Bread And Pastry</a></li>
+                <li><a href="#" onclick="dessert();">Dessert</a></li>
+                <li><a href="#" onclick="gifts();">Gifts</a></li>
+                <li><a href="#" onclick="cookies();">Cookies</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
     </header>
 
 
@@ -68,151 +70,54 @@
             <button class="prev" onclick="prevSlide()">❮</button>
             <button class="next" onclick="nextSlide()">❯</button>
         </div>
-        
-           
-    <section id="products">
-        <h2>WHOLE CAKE</h2>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/09/corn-mousse.png" alt="Product 1" class="zoom-image">
-            <h3>CORN MOUSSE CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/FRESH-MANGO.png" alt="Product 1" class="zoom-image">
-            <h3>FRESH MANGO CREAM CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/CHOCO-CHEESE.png" alt="Product 1" class="zoom-image">
-            <h3>CHOCO CHESSE MOUSSE CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/STRAWBERRY-MOUSSE.png" alt="Product 1" class="zoom-image">
-            <h3>STRAWBERRY BROWNIE MOUSSE CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/FRUITY.png" alt="Product 1" class="zoom-image">
-            <h3>FRUITY BUTTER CREAM CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/MANGO-3.png" alt="Product 1" class="zoom-image">
-            <h3>FRUITY FRESH CREAM CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/TIRA.png" alt="Product 1" class="zoom-image">
-            <h3>TIRAMISU CHESSE CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/05/Mango-Coconut-Mousse-Cake.png" alt="Product 1" class="zoom-image">
-            <h3>MANGO COCO MOUSSE CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/06/blueberry-yogurt.png" alt="Product 1" class="zoom-image">
-            <h3>BLUEBERRY YOGURT CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/05/Banh-kem-Pinky-Marshmallow-Cake.png" alt="Product 1" class="zoom-image">
-            <h3>PINKY MARSMALLOW CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/06/bear.png" alt="Product 1" class="zoom-image">
-            <h3>CUTIE BEAR CHOCO CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/05/Banh-kem-Fresh-Choco-Cream-Cake.png" alt="Product 1" class="zoom-image">
-            <h3>FRESH CHOCO CREAM CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/05/Banh-kem-Lovely-Strawberry-1.png" alt="Product 1" class="zoom-image">
-            <h3>LOVELY STRAWBERRY CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-        <div class="product">
-            <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/BLACK-FOREST.png" alt="Product 1" class="zoom-image">
-            <h3>BLACK FOREST CAKE</h3>
-            <div class="it">
-                <div class="it1">200.000</div>
-                <div class="it2">
-                    <i class="material-icons ">shopping_cart</i>
-                </div>
-            </div>
-        </div>
-    </section>
+   <section id="product-section">
+    <div id="home" class="product-tab" style="display:none;"> <!-- Nội dung cho TRANG CHỦ -->
+        <h1>Chào mừng đến với cửa hàng trực tuyến!</h1>
+        <p>Khám phá các sản phẩm tuyệt vời của chúng tôi.</p>
+    </div>
+
+    <div id="news" class="product-tab" style="display:none;"> <!-- Nội dung cho TIN TỨC -->
+        <h1>Tin Tức Mới Nhất</h1>
+        <p>Cập nhật tin tức và sự kiện mới nhất từ cửa hàng của chúng tôi.</p>
+    </div>
+
+    <div id="promotions" class="product-tab" style="display:none;"> <!-- Nội dung cho KHUYẾN MÃI -->
+        <h1>Các Khuyến Mãi Hiện Có</h1>
+        <p>Khám phá các chương trình khuyến mãi hấp dẫn mà chúng tôi đang cung cấp.</p>
+    </div>
+
+    <div class="product1" id="product1" style="display:none;">
+    <div class="product1-box1"> MENU </div>
+    <div class="product1-box2">
+        <div class="list" onclick="wholecake();">Whole Cake</div>
+        <div class="list" onclick="shortcake();">Short Cake</div>
+        <div class="list" onclick="bread();">Bread And Pastry</div>
+        <div class="list" onclick="dessert();">Dessert</div>
+        <div class="list" onclick="gifts();">Gifts</div>
+        <div class="list" onclick="cookies();">Cookies</div>
+    </div>
+</div>
+
+<div id="whole-cake" class="product-tab" style="display:none;">
+    <!-- Các sản phẩm Whole Cake sẽ được hiển thị ở đây -->
+</div>
+<div id="short-cake" class="product-tab" style="display:none;">
+    <!-- Các sản phẩm Short Cake sẽ được hiển thị ở đây -->
+</div>
+<div id="bread-pastry" class="product-tab" style="display:none;">
+    <!-- Các sản phẩm Bread And Pastry sẽ được hiển thị ở đây -->
+</div>
+<div id="dessert" class="product-tab" style="display:none;">
+    <!-- Các sản phẩm Dessert sẽ được hiển thị ở đây -->
+</div>
+<div id="gifts" class="product-tab" style="display:none;">
+    <!-- Các sản phẩm Gifts sẽ được hiển thị ở đây -->
+</div>
+<div id="cookies" class="product-tab" style="display:none;">
+    <!-- Các sản phẩm Cookies sẽ được hiển thị ở đây -->
+</div>
+
+</section>
 
     <footer>
         <div class="overlay"></div>
@@ -258,4 +163,8 @@
             </div>
     </footer>
 </body>
-</html>
+<script src="product.js"></script>
+<script src="scrip.js"></script>
+<script src="tabproduct.js"></script>
+<script src="data/dataproduct.js"></script>
+</html> 
