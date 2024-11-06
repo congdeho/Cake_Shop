@@ -35,32 +35,3 @@ function resetInterval() {
     clearInterval(slideInterval);
     slideInterval = setInterval(showSlides, 3000); 
 }
-
-function product()
-{
-    window.location.href = 'product.html';
-}
- function shortcake()
-{
-    window.location.href = 'shortcake.html';
-}
-function bread()
-{
-    window.location.href = 'bread.html';
-}
-function home()
-{
-    window.location.href = 'index.html';
-}
-function dessert()
-{
-    window.location.href = 'dessert.html';
-}
-function sandwich()
-{
-    window.location.href = 'sandwich.html';
-}
-function coffee()
-{
-    window.location.href = 'coffee.html';
-}
