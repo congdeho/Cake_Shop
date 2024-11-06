@@ -1,0 +1,44 @@
+
+.product-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.product-description {
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.product-price {
+    font-size: 1.1em;
+    color: green;
+    margin-top: 5px;
+}
+
+.product-size, .product-taste {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.product-promo {
+    font-size: 1em;
+    color: red;
+    margin-top: 10px;
+}
+
