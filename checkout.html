@@ -1,88 +1,156 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible=IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thanh toán</title>
-    <link rel="stylesheet" href="checkout.css" />
-    <!-- Liên kết đến file CSS -->
-  </head>
-  <body>
-    <!-- Phần đầu trang với logo và điều hướng -->
-    <header class="header">
-      <div class="logo">
-        <h1>cake</h1>
-      </div>
-      <nav class="navbar">
-        <a href="#">home</a>
-        <a href="#">Sản phẩm</a>
-        <a href="#">Giỏ hàng</a>
-        <a href="#">Liên hệ</a>
-      </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="checkout.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <i class="material-icons">mood</i>
+                </li>
+                <li class="item">
+                    <div class="item1"><p>Search...</p></div>
+                    <div class="item2">
+                        <i class="material-icons icons ">search</i>
+                    </div>
+                </li>
+                    <i class="material-icons icon red">phone</i>
+                    <div class="enter"><p>0347 348 024</p></div>
+                    <i class="material-icons icon red">apartment</i>
+                    <div class="enter"><p>Location </p></div>
+                    <i class="material-icons icon red">person</i>
+                    <div class="enter"><p>Account</p> </div>
+                    <i class="material-icons icon red">local_mall</i>
+                    <div class="enter"></div>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" onclick = "home();">HOME</a></li>
+                <li class="dropdown">
+                    <a href="#">PRODUCTS</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#" onclick="product();">Whole Cake</a></li>
+                        <li><a href="#" onclick="shortcake();">Short Cake </a></li>
+                        <li><a href="#">Bread</a></li>
+                        <li><a href="#">Dessert</a></li>
+                        <li><a href="#">Sandwich and Salad</a></li>
+                        <li><a href="#">Coffee and Beverages</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">DEALS</a></li>
+        </nav>
     </header>
+    
 
-    <!-- Phần danh sách sản phẩm -->
-    <div class="container">
-      <h2>Danh sách sản phẩm</h2>
-      <div class="product-item">
-        <img src="product1.jpg" alt="Sản phẩm 1" />
-        <div class="product-details">
-          <p><strong>Tên sản phẩm 1</strong></p>
-          <p>Số lượng: <input type="number" value="1" min="1" /></p>
-          <p>Giá: 100,000 VND</p>
+    <section>
+        <div class="checkout-container">
+            <div class="cart-section">
+                <h2>Giỏ hàng</h2>
+                <div class="product-item">
+                    <img src="product1.jpg" alt="Sản phẩm 1" />
+                    <div class="product-details">
+                        <p><strong>Tên sản phẩm 1</strong></p>
+                        <p>Số lượng: <input type="number" value="1" min="1" /></p>
+                        <p>Giá: 100,000 VND</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <img src="product2.jpg" alt="Sản phẩm 2" />
+                    <div class="product-details">
+                        <p><strong>Tên sản phẩm 2</strong></p>
+                        <p>Số lượng: <input type="number" value="2" min="1" /></p>
+                        <p>Giá: 200,000 VND</p>
+                    </div>
+                </div>
+                <div class="summary">
+                    <p><strong>Tổng cộng:</strong> 500,000 VND</p>
+                </div>
+                <button class="btn-update">Cập nhật giỏ hàng</button>
+            </div>
+            <div class="info-section">
+                <h2>Thông tin giao hàng</h2>
+                <form action="/submit-checkout" method="post">
+                    <label for="street">Số nhà, đường:</label>
+                    <input type="text" id="street" name="street" required />
+                    <label for="city">Thành phố:</label>
+                    <select id="city" name="city" required>
+                        <option value="">Chọn thành phố</option>
+                        <!-- Add options for cities -->
+                    </select>
+                    <label for="district">Quận, huyện:</label>
+                    <select id="district" name="district" required>
+                        <option value="">Chọn quận, huyện</option>
+                        <!-- Add options for districts -->
+                    </select>
+
+                    <label for="ward">Phường, xã:</label>
+                    <select id="ward" name="ward" required>
+                        <option value="">Chọn phường, xã</option>
+                        <!-- Add options for wards -->
+                    </select>
+
+                    <label for="notes">Ghi chú (tùy chọn):</label>
+                    <textarea id="notes" name="notes" rows="2"></textarea>
+
+                    <div class="summary">
+                        <p><strong>Tổng tiền:</strong> 500,000 VND</p>
+                    </div>
+                    <button type="submit" class="btn-submit">Thanh toán</button>
+                </form>
+            </div>
         </div>
-      </div>
-      <div class="product-item">
-        <img src="product2.jpg" alt="Sản phẩm 2" />
-        <div class="product-details">
-          <p><strong>Tên sản phẩm 2</strong></p>
-          <p>Số lượng: <input type="number" value="2" min="1" /></p>
-          <p>Giá: 200,000 VND</p>
-        </div>
-      </div>
-      <div class="summary">
-        <p><strong>Tổng cộng:</strong> 500,000 VND</p>
-      </div>
-      <button class="btn-update">Cập nhật giỏ hàng</button>
-    </div>
+        <footer>
+            <div class="overlay"></div>
+            <div id="content">
+                <div class="cont">
+                    <div class="info-item">
+                        <i class="material-icons icon-small">location_on</i>
+                        561 Điện Biên Phủ, phường 25, quận Bình Thạnh
+                    </div>
+                    <div class="info-item">
+                        <i class="material-icons icon-small">mail</i>
+                        phamn5265@gmail.com
+                    </div>
+                    <div class="info-item">
+                        <i class="material-icons icon-small">phone_iphone</i>
+                        0347348024
+                    </div>
+                </div>
+                <div class="cont">
+                    <div class="inline-container">
+                        THONG TIN CONG TY
+                    </div>
+                    <div class="inline-container">
+                        <img src="https://dangkywebvoibocongthuong.com/wp-content/uploads/2021/11/logo-da-thong-bao-bo-cong-thuong.png" class="logo">
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="inline-container">
+                    <div>© 2024 Online Store. All rights reserved.</div>
+                </div>
+                <div class="inline-container">
+                    <p>Return and Refund Policy</p>
+                    <p>Terms & Conditions of Payment</p>
+                    <p>Payment Methods</p>
+                    <p>Privacy Policy</p>
+                    <p>Delivery Policy</p>
+                </div>
+                <div class="inline-container">
+                    <p>Contact Information</p>
+                </div>
 
-    <div class="container">
-      <h2>Thông tin giao hàng</h2>
-      <form action="/submit-checkout" method="post">
-        <label for="street">Số nhà, đường:</label>
-        <input type="text" id="street" name="street" required />
-        <label for="city">Thành phố:</label>
-        <select id="city" name="city" required>
-          <option value="">Chọn thành phố</option>
-          <!-- Add options for cities -->
-        </select>
-        <label for="district">Quận, huyện:</label>
-        <select id="district" name="district" required>
-          <option value="">Chọn quận, huyện</option>
-          <!-- Add options for districts -->
-        </select>
-
-        <label for="ward">Phường, xã:</label>
-        <select id="ward" name="ward" required>
-          <option value="">Chọn phường, xã</option>
-          <!-- Add options for wards -->
-        </select>
-
-        <label for="notes">Ghi chú (tùy chọn):</label>
-        <textarea id="notes" name="notes" rows="2"></textarea>
-
-        <div class="summary">
-          <p><strong>Tổng tiền:</strong> 500,000 VND</p>
-        </div>
-        <button type="submit" class="btn-submit">Thanh toán</button>
-      </form>
-    </div>
-    <!-- Footer -->
-    <footer class="footer">
-      <p>&copy; 2024 cake. Tất cả quyền được bảo lưu.</p>
-    </footer>
-    <script src="checkout.js"></script>
-    <!-- Link to the JavaScript file -->
-  </body>
+            </div>
+        </footer>
+    </section>
+</body>
 </html>
