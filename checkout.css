@@ -1,32 +1,293 @@
 /* Tổng quan */
 body {
-  font-family: Arial, sans-serif;
-  background-color: rgb(255, 255, 255);
+  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
+  position: relative;
+  overflow: auto;
 }
 
-/* Header */
-.header {
+header {
   background-color: rgb(146, 162, 162);
-  color: rgb(255, 255, 255);
-  padding: 20px;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 15px;
+  z-index: 1;
+  position: relative;
+}
+
+nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: 10px;
+}
+
+.fixed-image {
+  position: fixed;
+  z-index: -1;
+  top: 0px;
+  transform: translateX(-50%);
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-image: url(https://hartfordbaking.com/wp-content/uploads/2017/04/wholesalebreadsuppliers.jpg);
+  background-size: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 110px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(19, 19, 19, 0.4);
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  text-align: center;
+  color: white;
+  font-family: fantasy;
+}
+.content p {
+  font-size: 35px !important;
+}
+
+.item {
+  display: inline-flex;
   align-items: center;
 }
-.header .logo h1 {
+
+.item1 {
+  width: 250px;
+  background-color: white;
+  height: 30px;
+  color: black;
+  text-align: left;
+  margin-left: 70px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.item2 {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(0, 132, 142);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 50%;
+  margin-left: 70px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.item2.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon.red {
+  color: rgb(0, 132, 142);
+  display: flex;
+  font-size: 17px;
+  justify-content: center;
+  align-items: center;
+}
+p {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.enter {
+  margin-left: 10px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0px;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+li {
+  display: inline-flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.menu {
+  list-style-type: none;
   margin: 0;
-  font-size: 24px;
+  display: flex;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-.navbar a {
+
+.menu li {
+  position: relative;
+  margin-right: 70px;
+  border-bottom: solid 3px transparent;
+}
+
+.menu a {
   color: white;
-  margin-left: 20px;
+  padding: 2px;
+  display: inline-block;
   text-decoration: none;
-  font-size: 18px;
+  margin-right: 50px;
+  position: relative;
 }
-.navbar a:hover {
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: rgb(0, 132, 142);
+  transition: width 0.4s ease-in;
+}
+.menu a:hover::after {
+  width: 100%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(25, 67, 64, 0.5);
+  list-style-type: none;
+  padding: 0px;
+  margin: 0;
+  min-width: 100px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  border-radius: 7px;
+}
+
+.dropdown-content li {
+  white-space: nowrap;
+}
+
+.dropdown-content li a {
+  display: block;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-content li a:hover {
+  transition: black width 0, 3s ease-in;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+section {
+  background-color: rgb(202, 226, 226);
+  z-index: 1;
+}
+
+.name-product {
+  text-align: center;
+  font-size: 35px;
+  padding: 50px;
+}
+
+footer {
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  background-size: cover;
+  background-image: url("https://www.metro.co.in/img/dairy/Bakery-Hero-img-1392x464.jpg");
+  flex-direction: column;
+  display: flex;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(19, 19, 19, 0.7);
+  z-index: -1;
+}
+
+footer div {
+  margin-bottom: 10px;
+  color: white;
+  z-index: 2;
+  font-size: 18px;
+  position: relative;
+}
+
+#content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin-top: 100px;
+}
+
+.cont {
+  flex: 1;
+  justify-content: flex-start;
+  margin-left: 200px;
+}
+
+.info-item {
+  display: flex;
+}
+
+.bottom {
+  flex: 1;
+  display: inline;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.inline-container {
+  display: flex;
+  justify-content: center;
+}
+
+.inline-container p {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.inline-container p:hover {
   text-decoration: underline;
+  color: rgb(247, 240, 107);
+}
+.logo {
+  width: 20%;
+  height: auto;
+}
+.icon-small {
+  margin-right: 7px;
 }
 
 /* Container */
@@ -101,4 +362,25 @@ textarea {
   text-align: center;
   padding: 10px 0;
   margin-top: 30px;
+}
+.checkout-container {
+  display: flex;
+  gap: 20px; /* Khoảng cách giữa 2 phần */
+  margin: 20px auto;
+  max-width: 1000px;
+}
+.cart-section {
+  flex: 5; /* Chiếm 1/2 chiều rộng container */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-section {
+  flex: 2; /* Chiếm 1/2 chiều rộng container */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
