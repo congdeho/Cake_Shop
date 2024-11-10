@@ -1,28 +1,32 @@
-// Function to calculate the total price based on quantities and product prices
+// Hàm tính tổng giá dựa trên số lượng và giá của các sản phẩm
 function calculateTotal() {
-  // Get all product items
+  // Lấy tất cả các sản phẩm
   const products = document.querySelectorAll(".product-item");
   let total = 0;
 
-  // Iterate over each product item to calculate total
+  // Duyệt qua từng sản phẩm để tính tổng giá
   products.forEach((product) => {
-    const priceText = product.querySelector(
-      ".product-details p:nth-child(3)"
-    ).textContent; // Get price text
-    const price = parseFloat(priceText.replace(/[^0-9.-]+/g, "")); // Convert price to a number
-    const quantityInput = product.querySelector('input[type="number"]'); // Get quantity input
-    const quantity = parseInt(quantityInput.value); // Get quantity value
+    // Lấy giá sản phẩm (dạng text)
+    const price = parseFloat(
+      product.querySelector(".product-details p:nth-child(3)").textContent.replace(/[^\d]/g, "")
+    ); // Chuyển giá thành số (loại bỏ ký tự không phải số)
+    const quantity = parseInt(product.querySelector('input[type="number"]').value, 10); // Lấy số lượng sản phẩm
 
-    total += price * quantity; // Update total
+    total += price * quantity; // Cộng giá vào tổng
   });
 
-  // Update the total price displayed in the summary section
-  const totalSummary = document.querySelector(".summary p strong");
-  totalSummary.textContent = `Tổng cộng: ${total.toLocaleString("vi-VN")} VND`; // Format total
+  // Cập nhật tổng giá hiển thị ở phần tóm tắt
+  document.querySelector(".summary p strong").textContent = `Tổng cộng: ${total.toLocaleString("vi-VN")} VND`;
 }
 
-// Call calculateTotal on page load to initialize total
+// Gọi hàm tính tổng khi thay đổi số lượng sản phẩm
+document.querySelectorAll('input[type="number"]').forEach(input => {
+  input.addEventListener('input', calculateTotal);
+});
+
+// Gọi hàm tính tổng ngay khi tải trang
 window.onload = calculateTotal;
+
 // Dữ liệu đầy đủ về các quận, huyện và phường/xã tại TP. Hồ Chí Minh
 const cities = [
   {
@@ -54,236 +58,11 @@ const cities = [
   },
 ];
 
+// Danh sách các phường/xã theo từng quận
 const wards = {
-  "Quận 1": [
-    "Bến Nghé",
-    "Bến Thành",
-    "Cô Giang",
-    "Đa Kao",
-    "Nguyễn Cư Trinh",
-    "Phạm Ngũ Lão",
-    "Tân Định",
-  ],
-  "Quận 3": [
-    "Phường 1",
-    "Phường 2",
-    "Phường 3",
-    "Phường 4",
-    "Phường 5",
-    "Phường 6",
-    "Phường 7",
-    "Phường 8",
-    "Phường 9",
-    "Phường 10",
-  ],
-  "Quận 4": [
-    "Phường 1",
-    "Phường 2",
-    "Phường 3",
-    "Phường 4",
-    "Phường 6",
-    "Phường 8",
-    "Phường 9",
-    "Phường 10",
-    "Phường 13",
-  ],
-  "Quận 5": [
-    "Phường 1",
-    "Phường 2",
-    "Phường 3",
-    "Phường 4",
-    "Phường 5",
-    "Phường 6",
-    "Phường 7",
-    "Phường 8",
-    "Phường 9",
-    "Phường 10",
-  ],
-  "Quận 6": [
-    "Phường 1",
-    "Phường 2",
-    "Phường 3",
-    "Phường 4",
-    "Phường 5",
-    "Phường 6",
-    "Phường 7",
-    "Phường 8",
-    "Phường 9",
-    "Phường 10",
-  ],
-  "Quận 7": [
-    "Tân Hưng",
-    "Tân Kiểng",
-    "Tân Phong",
-    "Tân Quy",
-    "Tân Thuận Đông",
-    "Tân Thuận Tây",
-    "Bình Thuận",
-  ],
-  "Quận 8": [
-    "Phường 1",
-    "Phường 2",
-    "Phường 3",
-    "Phường 4",
-    "Phường 5",
-    "Phường 6",
-    "Phường 7",
-    "Phường 8",
-    "Phường 9",
-    "Phường 10",
-  ],
-  "Quận 10": [
-    "Phường 1",
-    "Phường 2",
-    "Phường 3",
-    "Phường 4",
-    "Phường 5",
-    "Phường 6",
-    "Phường 7",
-    "Phường 8",
-    "Phường 9",
-    "Phường 10",
-  ],
-  "Quận 11": [
-    "Phường 1",
-    "Phường 2",
-    "Phường 3",
-    "Phường 4",
-    "Phường 5",
-    "Phường 6",
-    "Phường 7",
-    "Phường 8",
-    "Phường 9",
-    "Phường 10",
-  ],
-  "Quận 12": [
-    "An Phú Đông",
-    "Đông Hưng Thuận",
-    "Hiệp Thành",
-    "Tân Chánh Hiệp",
-    "Thạnh Lộc",
-    "Thạnh Xuân",
-    "Trung Mỹ Tây",
-  ],
-  "Bình Thạnh": [
-    "Phường 1",
-    "Phường 2",
-    "Phường 3",
-    "Phường 5",
-    "Phường 6",
-    "Phường 7",
-    "Phường 11",
-    "Phường 12",
-    "Phường 13",
-  ],
-  "Gò Vấp": [
-    "Phường 1",
-    "Phường 3",
-    "Phường 5",
-    "Phường 7",
-    "Phường 8",
-    "Phường 9",
-    "Phường 10",
-    "Phường 11",
-    "Phường 12",
-    "Phường 13",
-  ],
-  "Phú Nhuận": [
-    "Phường 1",
-    "Phường 2",
-    "Phường 3",
-    "Phường 4",
-    "Phường 5",
-    "Phường 7",
-    "Phường 8",
-    "Phường 9",
-    "Phường 10",
-    "Phường 11",
-  ],
-  "Tân Bình": [
-    "Phường 1",
-    "Phường 2",
-    "Phường 3",
-    "Phường 4",
-    "Phường 5",
-    "Phường 6",
-    "Phường 7",
-    "Phường 8",
-    "Phường 9",
-  ],
-  "Tân Phú": [
-    "Hiệp Tân",
-    "Hòa Thạnh",
-    "Phú Thạnh",
-    "Phú Thọ Hòa",
-    "Phú Trung",
-    "Sơn Kỳ",
-    "Tân Quý",
-    "Tân Sơn Nhì",
-    "Tây Thạnh",
-  ],
-  "Bình Tân": [
-    "An Lạc",
-    "An Lạc A",
-    "Bình Hưng Hòa",
-    "Bình Hưng Hòa A",
-    "Bình Hưng Hòa B",
-    "Bình Trị Đông",
-    "Bình Trị Đông A",
-    "Bình Trị Đông B",
-  ],
-  "Thủ Đức": [
-    "Bình Chiểu",
-    "Hiệp Bình Chánh",
-    "Hiệp Bình Phước",
-    "Linh Chiểu",
-    "Linh Đông",
-    "Linh Tây",
-    "Linh Trung",
-    "Linh Xuân",
-  ],
-  "Củ Chi": [
-    "An Nhơn Tây",
-    "Hòa Phú",
-    "Nhuận Đức",
-    "Phú Hòa Đông",
-    "Phước Hiệp",
-    "Phước Thạnh",
-    "Tân An Hội",
-  ],
-  "Hóc Môn": [
-    "Bà Điểm",
-    "Đông Thạnh",
-    "Nhị Bình",
-    "Tân Hiệp",
-    "Tân Thới Nhì",
-    "Tân Xuân",
-    "Thới Tam Thôn",
-  ],
-  "Bình Chánh": [
-    "Bình Hưng",
-    "Bình Chánh",
-    "An Phú Tây",
-    "Phạm Văn Hai",
-    "Phong Phú",
-    "Tân Quý Tây",
-  ],
-  "Nhà Bè": [
-    "Hiệp Phước",
-    "Nhơn Đức",
-    "Phú Xuân",
-    "Long Thới",
-    "Phước Kiển",
-    "Phước Lộc",
-  ],
-  "Cần Giờ": [
-    "Bình Khánh",
-    "An Thới Đông",
-    "Tam Thôn Hiệp",
-    "Lý Nhơn",
-    "Thạnh An",
-    "Cần Thạnh",
-  ],
+  "Quận 1": ["Bến Nghé", "Bến Thành", "Cô Giang", "Đa Kao", "Nguyễn Cư Trinh", "Phạm Ngũ Lão", "Tân Định"],
+  "Quận 3": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường 6", "Phường 7", "Phường 8", "Phường 9", "Phường 10"],
+  "Quận 4": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 6", "Phường 8", "Phường 9", "Phường 10", "Phường 13"],
 };
 
 // Lấy phần tử từ DOM
@@ -299,13 +78,16 @@ cities.forEach((city) => {
   citySelect.appendChild(option);
 });
 
-// Xử lý khi chọn thành phố
+// Xử lý khi người dùng chọn thành phố
 citySelect.addEventListener("change", () => {
+  // Xóa các tùy chọn hiện tại trong dropdown của quận, huyện và phường, xã
   districtSelect.innerHTML = '<option value="">Chọn quận, huyện</option>';
   wardSelect.innerHTML = '<option value="">Chọn phường, xã</option>';
 
+  // Tìm thành phố được chọn
   const selectedCity = cities.find((city) => city.name === citySelect.value);
   if (selectedCity) {
+    // Điền các quận, huyện vào dropdown
     selectedCity.districts.forEach((district) => {
       const option = document.createElement("option");
       option.value = district;
@@ -315,10 +97,12 @@ citySelect.addEventListener("change", () => {
   }
 });
 
-// Xử lý khi chọn quận, huyện
+// Xử lý khi người dùng chọn quận, huyện
 districtSelect.addEventListener("change", () => {
+  // Xóa các tùy chọn hiện tại trong dropdown của phường, xã
   wardSelect.innerHTML = '<option value="">Chọn phường, xã</option>';
 
+  // Điền các phường, xã dựa trên quận, huyện được chọn
   const selectedDistrict = districtSelect.value;
   if (wards[selectedDistrict]) {
     wards[selectedDistrict].forEach((ward) => {
@@ -330,10 +114,10 @@ districtSelect.addEventListener("change", () => {
   }
 });
 
-// Kiểm tra hợp lệ khi submit form
+// Kiểm tra hợp lệ khi người dùng nhấn nút submit
 document.querySelector("form").addEventListener("submit", (e) => {
   if (!citySelect.value || !districtSelect.value || !wardSelect.value) {
-    alert("Vui lòng điền đầy đủ thông tin địa chỉ.");
+    alert("Vui lòng điền đầy đủ thông tin địa chỉ."); // Hiển thị cảnh báo nếu thông tin chưa đầy đủ
     e.preventDefault(); // Ngăn việc submit nếu thông tin chưa đầy đủ
   }
 });
