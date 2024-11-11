@@ -1,101 +1,306 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <div class="background">
-            <div class="modal" id="form-login">
-                <div class="modal_form">
-                    <div class="input_form">
-                        <div class="title_input">
-                            <h1>Welcome to myBakery</h1>
-                            <p>Sign up to order now</p>
-                        </div>
-    
-                        <div class="title_input">
-                            Full name
-                        </div>
-                        <div class="box_input">
-                            <input type="text" id="name">
-                        </div>
+<html lang="en">
 
-                        <div class="title_input">
-                            Username
-                        </div>
-                        <div class="box_input">
-                            <input type="text" id="username">
-                        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="css/trangchu.css">
+    <link rel="stylesheet" href="css/taikhoan.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/trangchu.js" defer></script>
+    <script src="js/dungchung.js"></script>
+    <script src="js/classes.js"></script>
+</head>
 
-                        <div class="title_input">
-                            Password
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <i class="material-icons">mood</i>
+                </li>
+                <li class="item">
+                    <div class="item1">
+                        <p>Search...</p>
+                    </div>
+                    <div class="item2">
+                        <i class="material-icons icons ">search</i>
+                    </div>
+                </li>
+                <i class="material-icons icon red">phone</i>
+                <div class="enter">
+                    <p>0347 348 024</p>
+                </div>
+                <i class="material-icons icon red">apartment</i>
+                <div class="enter">
+                    <p>Location </p>
+                </div>
+                <div class="enter">
+                    <div class="member">
+                        <a onclick="checkTaiKhoan()">
+                            <i class="material-icons icon red">person</i>
+                        </a>
+                        <div class="menuMember hide">
+                            <a href="nguoidung.html">Trang người dùng</a>
+                            <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
                         </div>
-                        <div class="box_input">
-                            <input type="password" id="password">
-                        </div>
+                    </div>
+                </div> 
+                <div class="enter">
+                    <p>Tài khoản</p>
+                </div>
+                <i class="material-icons icon red">local_mall</i>
+                <div class="enter">
+                    <p>Giỏ hàng</p>
+                </div>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" onclick="home();">HOME</a></li>
+                <li class="dropdown">
+                    <a href="#">PRODUCTS</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#" onclick="product();">Whole Cake</a></li>
+                        <li><a href="#" onclick="shortcake();">Short Cake </a></li>
+                        <li><a href="#">Bread</a></li>
+                        <li><a href="#">Dessert</a></li>
+                        <li><a href="#">Sandwich and Salad</a></li>
+                        <li><a href="#">Coffee and Beverages</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">DEALS</a></li>
+        </nav>
+    </header>
+    <div class="fixed-image"></div>
+    <div class="overlay"></div>
+    <div class="content">
+        <p>WHOLE CAKE</p>
+    </div>
 
-                        <div class="title_input">
-                            Email
-                        </div>
-                        <div class="box_input">
-                            <input type="text" id="email">
-                        </div>
+    <section>
+        <div class="name-product">WHOLE CAKE</div>
+        <div class="product-container" id="productContainer">
+            <div class="product1">
+                <div class="product1-box1"> MENU </div>
+                <div class="product1-box2">
+                    <div class="list" onclick="product();">WHOLE CAKE</div>
+                    <div class="list" onclick="shortcake();">SHORT CAKE</div>
+                    <p>BREAD</p>
+                    <p>DESSERT</p>
+                    <p>SANDWICH AND SALAD</p>
+                    <p>COFFEE AND BEREVAGES</p>
+                </div>
 
-                        <div class="title_input">
-                            Phone
-                        </div>
-                        <div class="box_input">
-                            <input type="text" id="phone">
-                        </div>
-                        
-                        <div class="login">
-                            <button class="btn_submit" onclick="addData()">Sign Up</button>
+            </div>
+            <div class="product2">
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/09/corn-mousse.png" alt="Product 1"
+                        class="zoom-image">
+                    <h3>CORN MOUSSE CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
                         </div>
                     </div>
                 </div>
-    
-                <div class="outside">
-                    Already have an account?
-                    <a class="btn" onclick="showSignUp()">Log In</a>
-                </div>
-    
-                <div class="policy">
-                    This site is protected by the Google <a href="https://policies.google.com/privacy" class="btn" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" class="btn" target="_blank">Terms of Service</a> apply.
-                </div>
-            </div>
-
-            <div class="modal" id="form-signup">
-                <div class="modal_form">
-                    <div class="input_form">
-                        <div class="title_input">
-                            <h1>Welcome back</h1>
-                            <p>We're happy to see you</p>
-                        </div>
-                        <div class="title_input">
-                            Username
-                        </div>
-                        <div class="box_input">
-                            <input type="text" id="usernamelg">
-                        </div>
-                        <div class="title_input">
-                            Password
-                        </div>
-                        <div class="box_input">
-                            <input type="password" id="passwordlg">
-                        </div>
-                        <div class="login">
-                            <button class="btn_submit" onclick="checkLogin()">Log In</button>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/FRESH-MANGO.png" alt="Product 1"
+                        class="zoom-image">
+                    <h3>FRESH MANGO CREAM CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
                         </div>
                     </div>
                 </div>
-    
-                <div class="outside">
-                    Don't have an account?
-                    <a class="btn" onclick="showLogin()">Sign up</a>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/CHOCO-CHEESE.png" alt="Product 1"
+                        class="zoom-image">
+                    <h3>CHOCO CHESSE MOUSSE CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
                 </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/STRAWBERRY-MOUSSE.png"
+                        alt="Product 1" class="zoom-image">
+                    <h3>STRAWBERRY BROWNIE MOUSSE CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/FRUITY.png" alt="Product 1"
+                        class="zoom-image">
+                    <h3>FRUITY BUTTER CREAM CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/MANGO-3.png" alt="Product 1"
+                        class="zoom-image">
+                    <h3>FRUITY FRESH CREAM CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/TIRA.png" alt="Product 1"
+                        class="zoom-image">
+                    <h3>TIRAMISU CHESSE CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/05/Mango-Coconut-Mousse-Cake.png"
+                        alt="Product 1" class="zoom-image">
+                    <h3>MANGO COCO MOUSSE CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/06/blueberry-yogurt.png"
+                        alt="Product 1" class="zoom-image">
+                    <h3>BLUEBERRY YOGURT CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/05/Banh-kem-Pinky-Marshmallow-Cake.png"
+                        alt="Product 1" class="zoom-image">
+                    <h3>PINKY MARSMALLOW CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/06/bear.png" alt="Product 1"
+                        class="zoom-image">
+                    <h3>CUTIE BEAR CHOCO CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/05/Banh-kem-Fresh-Choco-Cream-Cake.png"
+                        alt="Product 1" class="zoom-image">
+                    <h3>FRESH CHOCO CREAM CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/05/Banh-kem-Lovely-Strawberry-1.png"
+                        alt="Product 1" class="zoom-image">
+                    <h3>LOVELY STRAWBERRY CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://parisbaguette.com.vn/wp-content/uploads/2024/01/BLACK-FOREST.png" alt="Product 1"
+                        class="zoom-image">
+                    <h3>BLACK FOREST CAKE</h3>
+                    <div class="it">
+                        <div class="it1">200.000</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination" id="pagination"></div>
             </div>
+
         </div>
-        <script src="script.js"></script>
-    </body>
-</html>
+
+        <footer>
+            <div class="overlay"></div>
+            <div id="content">
+                <div class="cont">
+                    <div class="info-item">
+                        <i class="material-icons icon-small">location_on</i>
+                        561 Điện Biên Phủ, phường 25, quận Bình Thạnh
+                    </div>
+                    <div class="info-item">
+                        <i class="material-icons icon-small">mail</i>
+                        phamn5265@gmail.com
+                    </div>
+                    <div class="info-item">
+                        <i class="material-icons icon-small">phone_iphone</i>
+                        0347348024
+                    </div>
+                </div>
+                <div class="cont">
+                    <div class="inline-container">
+                        THONG TIN CONG TY
+                    </div>
+                    <div class="inline-container">
+                        <img src="https://dangkywebvoibocongthuong.com/wp-content/uploads/2021/11/logo-da-thong-bao-bo-cong-thuong.png"
+                            class="logo">
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="inline-container">
+                    <div>&copy; 2024 Online Store. All rights reserved.</div>
+                </div>
+                <div class="inline-container">
+                    <p>Return and Refund Policy</p>
+                    <p>Terms & Conditions of Payment</p>
+                    <p>Payment Methods</p>
+                    <p>Privacy Policy</p>
+                    <p>Delivery Policy</p>
+                </div>
+                <div class="inline-container">
+                    <p>Contact Information</p>
+                </div>
+
+            </div>
+        </footer>
+
+    </section>
+    <script>addContainTaiKhoan()</script>
+    <script src="data/product.js"></script>
+</body>

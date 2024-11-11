@@ -439,8 +439,9 @@ function addTableKhachHang() {
         s += `<tr>
             <td style="width: 5%">` + u.id + `</td>
             <td style="width: 15%">` + u.name + `</td>
-            <td style="width: 20%">` + u.email + `</td>
-            <td style="width: 20%">` + u.username + `</td>
+            <td style="width: 15%">` + u.email + `</td>
+            <td style="width: 15%">` + 21030 + `</td>
+            <td style="width: 10%">` + u.username + `</td>
             <td style="width: 10%">` + u.password + `</td>
             <td style="width: 10%">
                 <div class="tooltip-icon">
