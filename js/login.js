@@ -1,4 +1,14 @@
-let users = [ 
+function showSignUp() {
+    document.getElementById('form-login').classList.add('hidden');
+    document.getElementById('form-signup').classList.remove('hidden');
+}
+
+function showLogin() {
+    document.getElementById('form-signup').classList.add('hidden');
+    document.getElementById('form-login').classList.remove('hidden');
+}
+
+var users = [
     { id: 1, name: "Trần Văn H", email: "user1@example.com", status: "active", username: "user1", password: "A1b2C3d4", phone: "0901234567", address: "Quận 1" },
     { id: 2, name: "Nguyễn Văn A", email: "user2@example.com", status: "active", username: "user2", password: "E5f6G7h8", phone: "0902345678", address: "Quận 3" },
     { id: 3, name: "Lê Văn C", email: "user3@example.com", status: "locked", username: "user3", password: "I9j0K1l2", phone: "0903456789", address: "Quận 4" },
@@ -20,3 +30,44 @@ let users = [
     { id: 19, name: "Vũ Văn J", email: "user19@example.com", status: "active", username: "user19", password: "T3u4V5w6", phone: "0919012345", address: "Quận 4" },
     { id: 20, name: "Lê Văn F", email: "user20@example.com", status: "active", username: "user20", password: "X1y2Z3a4", phone: "0920123456", address: "Quận 5" },
 ];
+
+var data = [];
+function addData(){
+    var id = data.length + 1;
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var status = "active";
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var phone = document.getElementById("phone").value;
+    var address = document.getElementById("pulldown_menu").value;
+
+    var item = {
+        id : id,
+        name : name,
+        email : email,
+        status : status,
+        username : username,
+        password : password,
+        phone : phone,
+        address : address
+    };
+    this.data.push(item);
+    console.log(this.data);
+}
+
+function checkLogin(){
+    var usernamelg = document.getElementById("usernamelg").value;
+    var passwordlg = document.getElementById("passwordlg").value;
+
+    for (let i = 0; i<users.length; i++){
+        if (usernamelg === users[i].username && passwordlg === users[i].password){
+            alert("Đăng nhập thành công!!!");
+            return true;            
+        }
+        else{
+            alert("Chưa đăng ký người dùng.");
+            return false;
+        }
+    }
+}
