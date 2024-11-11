@@ -399,3 +399,47 @@ footer div {
 {
     margin-right: 7px;
 }
+
+.product1
+{
+    width: 20%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.4);
+    position: sticky;
+    top: 20px;
+    height: 400px;
+}
+
+
+
+.product1-box1
+{
+    background-color: rgb(146, 162, 162);
+    font-size: 18px;
+    border-start-start-radius: 10px;
+    border-start-end-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.product1-box2
+{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.list
+{
+    text-align: center;
+    cursor: pointer;
+    color:rgb(0, 132, 142);
+    margin-top: 15px;
+}
+
+.list:hover
+{
+    color: rgb(0, 0, 0); 
+    font-size: 17px;
+}
