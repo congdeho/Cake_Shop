@@ -1,6 +1,6 @@
+
 let slideIndex = 0;
 let slideInterval = setInterval(showSlides, 3000); 
-
 function showSlides() {
     let slides = document.querySelectorAll(".slide");
     slides.forEach(slide => slide.style.display = "none");

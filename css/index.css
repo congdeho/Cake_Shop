@@ -94,7 +94,7 @@ nav ul {
 }
 
 
-li {
+nav ul li {
     display: inline-flex; 
     align-items: center;
     z-index: 10;
@@ -399,3 +399,106 @@ footer div {
 {
     margin-right: 7px;
 }
+
+.product1
+{
+    width: 20%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.4);
+    position: sticky;
+    top: 20px;
+    height: 400px;
+}
+
+
+
+.product1-box1
+{
+    background-color: rgb(146, 162, 162);
+    font-size: 18px;
+    border-start-start-radius: 10px;
+    border-start-end-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+.product1-box2
+{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.list
+{
+    text-align: center;
+    cursor: pointer;
+    color:rgb(0, 132, 142);
+    margin-top: 15px;
+}
+
+.list:hover
+{
+    color: rgb(0, 0, 0); 
+    font-size: 17px;
+}
+.enter_member {
+    margin-left: 10px;
+}
+.member {
+    position: relative;
+    float: left;
+    display: table-cell;
+}
+.member:hover > .menuMember{
+    z-index: 20;
+    transform: translateX(-40%) scale(1);
+}
+.member .menuMember {
+    position: absolute;
+    left: 100%;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #eee;
+    min-width: 170px;
+    transition-duration: .15s;
+    transform: translateX(-40%) scale(0);
+}
+.member .menuMember a {
+    display: block;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(0, 132, 142);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+.member .menuMember a:hover {
+    background-color: #888;
+    color: #eee;
+}
+.tools-member i {
+    /* icon styling */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: rgb(0, 132, 142);
+    margin-right: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 17px;
+}
+
+.tools-member a:hover>i {
+    background-color: rgb(0, 132, 142);
+    color: #fff;
+}
+.member .hide {
+    display: none;
+}
+/* ======= End Member ======= */
