@@ -233,8 +233,8 @@ function capNhat_ThongTin_CurrentUser() {
         // // Cập nhật số lượng hàng vào header
         // document.getElementsByClassName('cart-number')[0].innerHTML = getTongSoLuongSanPhamTrongGioHang(u);
         // // Cập nhật tên người dùng
-        // document.getElementsByClassName('member')[0]
-        //     .getElementsByTagName('a')[0].childNodes[2].nodeValue = ' ' + u.username;
+        document.getElementsByClassName('enter_member')[0]
+            .getElementsByTagName('p')[0].textContent = ' ' + u.username;
         // bỏ class hide của menu người dùng
         document.getElementsByClassName('menuMember')[0]
             .classList.remove('hide');

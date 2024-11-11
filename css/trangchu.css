@@ -492,6 +492,9 @@ footer div {
     padding: 10px 11px;
 } */
 /* Member */
+    .enter_member {
+        margin-left: 10px;
+    }
     .member {
         position: relative;
         float: left;
