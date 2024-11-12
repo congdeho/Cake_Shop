@@ -2,85 +2,83 @@
     width: 100%;
     height: 500px;
     display: flex;
+    background-color: #ddd;
 }
 
-.left{
-    width: 60%;
-    height: 50%;
-    margin: 50px 35px 20px 150px;
+.sidebar{
+    width: 20%;
+    margin: 15px;
+    border-radius: 5px;
+    background-color: #fff;
 }
 
-.right{
-    width: 30%;
-    height: 50%;
-    margin: 50px 0px 20px 0px;
+.content_user{
+    width: calc(80% - 15px);
+    margin: 15px 15px 15px 0px;
+    border-radius: 5px;
+    background-color: #fff;
 }
 
-.header{
+.user{
     font-size: 1.5rem;
     font-weight: bold;
-    margin: 10px 0px;
+    margin: 10px 10px;
 }
 
-.header1{
-    margin-bottom: 30px;
+.user-icon {
+    font-size: 40px; /* Kích thước biểu tượng */
+    padding: 10px; /* Khoảng cách giữa biểu tượng và vòng tròn */
+    border-radius: 50%; /* Làm cho biểu tượng có hình tròn */
+    background-color: darkgrey; /* Màu nền vòng tròn */
+    color: white; /* Màu sắc của biểu tượng */
+    display: inline-block;
+    text-align: center; /* Căn giữa biểu tượng */
+    margin-right: 5px;
 }
 
-
-.list_header{
-    border: 2px solid black;
+.user_select i {
+    margin: 10px; /* Khoảng cách giữa biểu tượng và văn bản */
 }
 
-.list {
-    list-style-type: none;
-    padding: 0;
-    border: 1px solid #ddd;
-    width: 100%;
+.user_select:hover {
+    color: red;
+    cursor: pointer;
 }
 
-.list_header, .order-item {
-    display: flex;
-    justify-content: space-between;
+.title_user{
     padding: 10px;
-    border-bottom: 1px solid #ddd;
 }
 
-.list_header {
-    font-weight: bold;
-    background-color: #f0f0f0;
+.title_user{
+    font-size: 1.2rem;
+    padding: 20px;
 }
 
-.order-item span {
-    width: 20%;
-    text-align: center;
-}
-
-.col {
-    flex-basis: 20%; /* Đảm bảo mỗi cột có độ rộng bằng nhau */
-    text-align: center; /* Căn giữa nội dung trong cột */
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; /* Cắt bớt văn bản dài quá chiều rộng */
-}
-
-.header_in4{
-    margin: 10px 0px;
+.input_form{
+    display: flex;
+    padding: 5px;
 }
 
 .in4{
-    margin: 5px 0px;
+    width: 15%;
+    text-align: right;
 }
 
-.btn_logout{
-    border: 2px solid black;
+.input{
+    padding-left: 20px;
+}
+
+.btn_save{
+    border-radius: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 25px;
-    margin-top: 20px;
+    width: 150px;
+    height: 35px;
+    background-color: red;
+    color: #fff;
 }
 
-.btn_logout a:hover{
+.btn_save a:hover{
     cursor: pointer;
 }
