@@ -11,13 +11,17 @@ function displayWholeCakes() {
         
         // Nội dung sản phẩm
         productDiv.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <h3 class="product-name">${product.name}</h3>
-            <p class="product-description">${product.description}</p>
-            <p class="product-price">${product.price} VND</p>
-            <p class="product-size">Size: ${product.size}</p>
-            <p class="product-taste">Taste: ${product.taste}</p>
-            <p class="product-promo">${product.promo.name}: ${product.promo.discount}% OFF</p>
+            <div class="product2">
+                <div class="product">
+                    <img src="${product.image}" alt="${product.name}" class="zoom-image">
+                    <h3>${product.name}</h3>
+                    <div class="it">
+                        <div class="it1">${product.price}</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
         `;
         
         // Thêm sản phẩm vào tab
@@ -39,13 +43,17 @@ function displayshortcake() {
         
         // Nội dung sản phẩm
         productDiv.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <h3 class="product-name">${product.name}</h3>
-            <p class="product-description">${product.description}</p>
-            <p class="product-price">${product.price} VND</p>
-            <p class="product-size">Size: ${product.size}</p>
-            <p class="product-taste">Taste: ${product.taste}</p>
-            <p class="product-promo">${product.promo.name}: ${product.promo.discount}% OFF</p>
+            <div class="product2">
+                <div class="product">
+                    <img src="${product.image}" alt="${product.name}" class="zoom-image">
+                    <h3>${product.name}</h3>
+                    <div class="it">
+                        <div class="it1">${product.price}</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
         `;
         
         // Thêm sản phẩm vào tab
@@ -67,13 +75,17 @@ function displaybread() {
         
         // Nội dung sản phẩm
         productDiv.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <h3 class="product-name">${product.name}</h3>
-            <p class="product-description">${product.description}</p>
-            <p class="product-price">${product.price} VND</p>
-            <p class="product-size">Size: ${product.size}</p>
-            <p class="product-taste">Taste: ${product.taste}</p>
-            <p class="product-promo">${product.promo.name}: ${product.promo.discount}% OFF</p>
+            <div class="product2">
+                <div class="product">
+                    <img src="${product.image}" alt="${product.name}" class="zoom-image">
+                    <h3>${product.name}</h3>
+                    <div class="it">
+                        <div class="it1">${product.price}</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
         `;
         
         // Thêm sản phẩm vào tab
@@ -95,13 +107,17 @@ function displaydessert() {
         
         // Nội dung sản phẩm
         productDiv.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <h3 class="product-name">${product.name}</h3>
-            <p class="product-description">${product.description}</p>
-            <p class="product-price">${product.price} VND</p>
-            <p class="product-size">Size: ${product.size}</p>
-            <p class="product-taste">Taste: ${product.taste}</p>
-            <p class="product-promo">${product.promo.name}: ${product.promo.discount}% OFF</p>
+            <div class="product2">
+                <div class="product">
+                    <img src="${product.image}" alt="${product.name}" class="zoom-image">
+                    <h3>${product.name}</h3>
+                    <div class="it">
+                        <div class="it1">${product.price}</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
         `;
         
         // Thêm sản phẩm vào tab
@@ -123,13 +139,17 @@ function displaygifts() {
         
         // Nội dung sản phẩm
         productDiv.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <h3 class="product-name">${product.name}</h3>
-            <p class="product-description">${product.description}</p>
-            <p class="product-price">${product.price} VND</p>
-            <p class="product-size">Size: ${product.size}</p>
-            <p class="product-taste">Taste: ${product.taste}</p>
-            <p class="product-promo">${product.promo.name}: ${product.promo.discount}% OFF</p>
+            <div class="product2">
+                <div class="product">
+                    <img src="${product.image}" alt="${product.name}" class="zoom-image">
+                    <h3>${product.name}</h3>
+                    <div class="it">
+                        <div class="it1">${product.price}</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
         `;
         
         // Thêm sản phẩm vào tab
@@ -151,13 +171,17 @@ function displaycookies() {
         
         // Nội dung sản phẩm
         productDiv.innerHTML = `
-            <img src="${product.image}" alt="${product.name}" class="product-image">
-            <h3 class="product-name">${product.name}</h3>
-            <p class="product-description">${product.description}</p>
-            <p class="product-price">${product.price} VND</p>
-            <p class="product-size">Size: ${product.size}</p>
-            <p class="product-taste">Taste: ${product.taste}</p>
-            <p class="product-promo">${product.promo.name}: ${product.promo.discount}% OFF</p>
+            <div class="product2">
+                <div class="product">
+                    <img src="${product.image}" alt="${product.name}" class="zoom-image">
+                    <h3>${product.name}</h3>
+                    <div class="it">
+                        <div class="it1">${product.price}</div>
+                        <div class="it2">
+                            <i class="material-icons ">shopping_cart</i>
+                        </div>
+                    </div>
+                </div>
         `;
         
         // Thêm sản phẩm vào tab
