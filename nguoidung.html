@@ -77,39 +77,72 @@
         </nav>
     </header>
     <div class="background_form">
-        <div class="left">
-            <div class="header">THÔNG TIN TÀI KHOẢN</div>
-            <div class="header1">Xin chào bạn</div>
-            <div class="order_form">
-                <ul class="list">
-                    <li class="list_header">
-                        <span class="col">Đơn hàng#</span>
-                        <span class="col">Ngày</span>
-                        <span class="col">Chuyển đến</span>
-                        <span class="col">Giá trị đơn hàng</span>
-                        <span class="col">Tình trạng thanh toán</span>
-                    </li>
-                    <li class="order-item">
-                        
-                    </li>
-                    <li class="order-item">
-                        
-                    </li>
-                </ul>
-
+        <div class="sidebar">
+            <div class="user">
+                <i class="material-icons user-icon">person</i> User
+                <hr>
             </div>
-
+            <div class="sidebar_menu">
+                <div class="user_select">
+                    <i class="material-icons">person</i>Thông tin tài khoản
+                </div>
+                <div class="user_select">
+                    <i class="material-icons">location_on</i>Sổ địa chỉ
+                </div>
+                <div class="user_select">
+                    <i class="material-icons">shopping_bag</i>Quản lý đơn hàng
+                </div>
+                <div class="user_select">
+                    <i class="material-icons">visibility</i>Sản phẩm đã xem
+                </div>
+                <div class="user_select">
+                    <i class="material-icons">exit_to_app</i>Đăng xuất
+                </div>
+            </div>
         </div>
-        <div class="right">
-            <div class="header_in4">Tài khoản của tôi</div>
-            <div class="in4">Tên tài khoản: </div>
-            <div class="in4">Địa chỉ:</div>
-            <div class="in4">Thành phố: </div>
-            <div class="in4">Quốc gia: </div>
-            <div class="in4">Số điện thoại: </div>
-            <div class="btn_logout">
-                <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
-            </div>
+        <div class="content_user">
+            <form action="">
+                <div class="title_user"><b>Thông tin tài khoản</b></div>
+                <div class="form">
+                    <div class="input_form">
+                        <div class="in4">Họ tên</div>
+                        <div class="input"><input type="text"></div>
+                    </div>
+
+                    <div class="input_form">
+                        <div class="in4">Giới tính</div>
+                        <div class="input">
+                            <label><input type="radio" value="male" name="gender">Nam</label>
+                            <label><input type="radio" value="female" name="gender">Nữ</label>
+                        </div>
+                    </div>
+
+                    <div class="input_form">
+                        <div class="in4">Số điện thoại</div>
+                        <div class="input"><input type="password"></div>
+                    </div>
+
+                    <div class="input_form">
+                        <div class="in4">Email</div>
+                        <div class="input"><input type="password"></div>
+                    </div>
+
+                    <div class="input_form">
+                        <div class="in4">Ngày sinh</div>
+                        <div class="input"><input type="date"></div>
+                    </div>
+
+                    <div class="input_form">
+                        <div class="in4"></div>
+                        <div class="input">
+                            <div class="btn_save">
+                                <a onclick="if(window.confirm('Xác nhận lưu thay đổi?')) logOut();">LƯU THAY ĐỔI</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
         </div>
     </div>
     <section>
