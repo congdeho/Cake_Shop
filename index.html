@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Store</title>
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/taikhoan.css">
     <link rel="stylesheet" href="css/product.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="js/dungchung.js"></script>
-    <script src="js/classes.js"></script>
 </head>
+
 <body>
     <header>
-        <script>window.onload = function () {
-            khoiTao();
-        }</script>
         <nav>
             <ul>
                 <li>
                     <i class="material-icons">mood</i>
                 </li>
                 <li class="item">
-                    <div class="item1"><p>Tìm kiếm...</p></div>
+                    <div class="item1">
+                        <p>Tìm kiếm...</p>
+                    </div>
                     <div class="item2">
                         <i class="material-icons icons ">search</i>
                     </div>
@@ -33,161 +31,153 @@
                 </div>
                 <i class="material-icons icon red">apartment</i>
                 <div class="enter">
-                    <p>Location </p>
+                    <p>Hệ thống</p>
                 </div>
+                <i class="material-icons icon red">person</i>
                 <div class="enter">
-                    <div class="member">
-                        <a onclick="checkTaiKhoan()">
-                            <i class="material-icons icon red">person</i>
-                        </a>
-                        <div class="menuMember hide">
-                            <a href="nguoidung.html">Trang người dùng</a>
-                            <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
-                        </div>
-                    </div>
-                </div> 
-                <div class="enter_member">
                     <p>Tài khoản</p>
                 </div>
                 <i class="material-icons icon red">local_mall</i>
-                <div class="enter">
-                    <p>Giỏ hàng</p>
-                </div>
+                <div class="enter"></div>
             </ul>
         </nav>
-       <nav>
-    <ul class="menu">
-        <li><a href="#" onclick="showHome();">TRANG CHỦ</a></li>
-        <li class="dropdown">
-            <a href="product.html">SẢN PHẨM</a>
-            <ul class="dropdown-content">
-                <li><a href="#" onclick="wholecake()();">Whole Cake</a></li>
-                <li><a href="#" onclick="shortcake();">Short Cake</a></li>
-                <li><a href="#" onclick="bread();">Bread And Pastry</a></li>
-                <li><a href="#" onclick="dessert();">Dessert</a></li>
-                <li><a href="#" onclick="gifts();">Gifts</a></li>
-                <li><a href="#" onclick="cookies();">Cookies</a></li>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" onclick="showHome();">TRANG CHỦ</a></li>
+                <li><a href="#" onclick="showNews();">TIN TỨC</a></li>
+                <li><a href="#" onclick="showPromotions();">KHUYẾN MÃI</a></li>
+                <li class="dropdown">
+                    <a href="#">SẢN PHẨM</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#" onclick="wholecake()();">Whole Cake</a></li>
+                        <li><a href="#" onclick="shortcake();">Short Cake</a></li>
+                        <li><a href="#" onclick="bread();">Bread And Pastry</a></li>
+                        <li><a href="#" onclick="dessert();">Dessert</a></li>
+                        <li><a href="#" onclick="gifts();">Gifts</a></li>
+                        <li><a href="#" onclick="cookies();">Cookies</a></li>
+                    </ul>
+                </li>
             </ul>
-        </li>
-        <li><a href="#" onclick="showNews();">TIN TỨC</a></li>
-        <li><a href="#" onclick="showPromotions();">KHUYẾN MÃI</a></li>
-    </ul>
-</nav>
+        </nav>
 
     </header>
-        <div class="slider">
-            <div class="slide active">
-                <img src="https://www.busbysbakery.com/wp-content/uploads/2022/08/croissant-history.jpg" alt="Slide 1">
-            </div>
-            <div class="slide active">
-                <img src="https://cdn-rdb.arla.com/lurpak-uk/club-sandwich/3093255143.jpg?w=1920&h=1080&mode=max&ak=64bfe437&hm=a2061b7d" alt="Slide 2">
-            </div>
-            <div class="slide active">
-                <img src="https://www.chowhound.com/img/gallery/delicate-decadent-chocolate-macarons-recipe/intro-1701092563.jpg" alt="Slide 3">
-            </div>
-            <div class="slide active">
-                <img src="https://www.beanilla.com/wp/wp-content/uploads/2022/05/Ice-Cream-and-brownie-with-hot-fudge-sauce.jpg" alt="Slide 4">
-            </div>
-
-            <button class="prev" onclick="prevSlide()">❮</button>
-            <button class="next" onclick="nextSlide()">❯</button>
+    <div class="slider">
+        <div class="slide active">
+            <img src="https://www.busbysbakery.com/wp-content/uploads/2022/08/croissant-history.jpg" alt="Slide 1">
         </div>
-   <section id="product-section">
-    <div id="home" class="product-tab" style="display:none;"> <!-- Nội dung cho TRANG CHỦ -->
-        <h1>Chào mừng đến với cửa hàng trực tuyến!</h1>
-        <p>Khám phá các sản phẩm tuyệt vời của chúng tôi.</p>
+        <div class="slide active">
+            <img src="https://cdn-rdb.arla.com/lurpak-uk/club-sandwich/3093255143.jpg?w=1920&h=1080&mode=max&ak=64bfe437&hm=a2061b7d"
+                alt="Slide 2">
+        </div>
+        <div class="slide active">
+            <img src="https://www.chowhound.com/img/gallery/delicate-decadent-chocolate-macarons-recipe/intro-1701092563.jpg"
+                alt="Slide 3">
+        </div>
+        <div class="slide active">
+            <img src="https://www.beanilla.com/wp/wp-content/uploads/2022/05/Ice-Cream-and-brownie-with-hot-fudge-sauce.jpg"
+                alt="Slide 4">
+        </div>
+
+        <button class="prev" onclick="prevSlide()">❮</button>
+        <button class="next" onclick="nextSlide()">❯</button>
     </div>
+    <section id="product-section">
+        <div id="home" class="product-tab" style="display:none;"> <!-- Nội dung cho TRANG CHỦ -->
+            <h1>Chào mừng đến với cửa hàng trực tuyến!</h1>
+            <p>Khám phá các sản phẩm tuyệt vời của chúng tôi.</p>
+        </div>
 
-    <div id="news" class="product-tab" style="display:none;"> <!-- Nội dung cho TIN TỨC -->
-        <h1>Tin Tức Mới Nhất</h1>
-        <p>Cập nhật tin tức và sự kiện mới nhất từ cửa hàng của chúng tôi.</p>
-    </div>
+        <div id="news" class="product-tab" style="display:none;"> <!-- Nội dung cho TIN TỨC -->
+            <h1>Tin Tức Mới Nhất</h1>
+            <p>Cập nhật tin tức và sự kiện mới nhất từ cửa hàng của chúng tôi.</p>
+        </div>
 
-    <div id="promotions" class="product-tab" style="display:none;"> <!-- Nội dung cho KHUYẾN MÃI -->
-        <h1>Các Khuyến Mãi Hiện Có</h1>
-        <p>Khám phá các chương trình khuyến mãi hấp dẫn mà chúng tôi đang cung cấp.</p>
-    </div>
+        <div id="promotions" class="product-tab" style="display:none;"> <!-- Nội dung cho KHUYẾN MÃI -->
+            <h1>Các Khuyến Mãi Hiện Có</h1>
+            <p>Khám phá các chương trình khuyến mãi hấp dẫn mà chúng tôi đang cung cấp.</p>
+        </div>
 
-    <div class="product1" id="product1" style="display:none;">
-    <div class="product1-box1"> MENU </div>
-    <div class="product1-box2">
-        <div class="list" onclick="wholecake();">Whole Cake</div>
-        <div class="list" onclick="shortcake();">Short Cake</div>
-        <div class="list" onclick="bread();">Bread And Pastry</div>
-        <div class="list" onclick="dessert();">Dessert</div>
-        <div class="list" onclick="gifts();">Gifts</div>
-        <div class="list" onclick="cookies();">Cookies</div>
-    </div>
-</div>
+        <div class="product1" id="product1" style="display:none;">
+            <div class="product1-box1"> MENU </div>
+            <div class="product1-box2">
+                <div class="list" onclick="wholecake();">Whole Cake</div>
+                <div class="list" onclick="shortcake();">Short Cake</div>
+                <div class="list" onclick="bread();">Bread And Pastry</div>
+                <div class="list" onclick="dessert();">Dessert</div>
+                <div class="list" onclick="gifts();">Gifts</div>
+                <div class="list" onclick="cookies();">Cookies</div>
+            </div>
+        </div>
 
-<div id="whole-cake" class="product-tab" style="display:none;">
-    <!-- Các sản phẩm Whole Cake sẽ được hiển thị ở đây -->
-</div>
-<div id="short-cake" class="product-tab" style="display:none;">
-    <!-- Các sản phẩm Short Cake sẽ được hiển thị ở đây -->
-</div>
-<div id="bread-pastry" class="product-tab" style="display:none;">
-    <!-- Các sản phẩm Bread And Pastry sẽ được hiển thị ở đây -->
-</div>
-<div id="dessert" class="product-tab" style="display:none;">
-    <!-- Các sản phẩm Dessert sẽ được hiển thị ở đây -->
-</div>
-<div id="gifts" class="product-tab" style="display:none;">
-    <!-- Các sản phẩm Gifts sẽ được hiển thị ở đây -->
-</div>
-<div id="cookies" class="product-tab" style="display:none;">
-    <!-- Các sản phẩm Cookies sẽ được hiển thị ở đây -->
-</div>
+        <div id="whole-cake" class="product-tab" style="display:none;">
+            <!-- Các sản phẩm Whole Cake sẽ được hiển thị ở đây -->
+        </div>
+        <div id="short-cake" class="product-tab" style="display:none;">
+            <!-- Các sản phẩm Short Cake sẽ được hiển thị ở đây -->
+        </div>
+        <div id="bread-pastry" class="product-tab" style="display:none;">
+            <!-- Các sản phẩm Bread And Pastry sẽ được hiển thị ở đây -->
+        </div>
+        <div id="dessert" class="product-tab" style="display:none;">
+            <!-- Các sản phẩm Dessert sẽ được hiển thị ở đây -->
+        </div>
+        <div id="gifts" class="product-tab" style="display:none;">
+            <!-- Các sản phẩm Gifts sẽ được hiển thị ở đây -->
+        </div>
+        <div id="cookies" class="product-tab" style="display:none;">
+            <!-- Các sản phẩm Cookies sẽ được hiển thị ở đây -->
+        </div>
 
-</section>
+    </section>
 
     <footer>
         <div class="overlay"></div>
-            <div id="content">
-                <div class="cont">
-                    <div class="info-item">
-                        <i class="material-icons icon-small">location_on</i>
-                        561 Điện Biên Phủ, phường 25, quận Bình Thạnh
-                    </div>
-                    <div class="info-item">
-                        <i class="material-icons icon-small">mail</i>
-                        phamn5265@gmail.com
-                    </div>
-                    <div class="info-item">
-                        <i class="material-icons icon-small">phone_iphone</i>
-                        0347348024
-                    </div>
+        <div id="content">
+            <div class="cont">
+                <div class="info-item">
+                    <i class="material-icons icon-small">location_on</i>
+                    561 Điện Biên Phủ, phường 25, quận Bình Thạnh
                 </div>
-                <div class="cont">
-                    <div class="inline-container">
-                        THONG TIN CONG TY
-                    </div>
-                    <div class="inline-container">
-                        <img src="https://dangkywebvoibocongthuong.com/wp-content/uploads/2021/11/logo-da-thong-bao-bo-cong-thuong.png" class="logo">
-                    </div>
+                <div class="info-item">
+                    <i class="material-icons icon-small">mail</i>
+                    phamn5265@gmail.com
+                </div>
+                <div class="info-item">
+                    <i class="material-icons icon-small">phone_iphone</i>
+                    0347348024
                 </div>
             </div>
-            <div class="bottom">
+            <div class="cont">
                 <div class="inline-container">
-                    <div>&copy; 2024 Online Store. All rights reserved.</div>
+                    THONG TIN CONG TY
                 </div>
                 <div class="inline-container">
-                    <p>Return and Refund Policy</p>
-                    <p>Terms & Conditions of Payment</p>
-                    <p>Payment Methods</p>
-                    <p>Privacy Policy</p>
-                    <p>Delivery Policy</p>
+                    <img src="https://dangkywebvoibocongthuong.com/wp-content/uploads/2021/11/logo-da-thong-bao-bo-cong-thuong.png"
+                        class="logo">
                 </div>
-                <div class="inline-container">
-                    <p>Contact Information</p>
-                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="inline-container">
+                <div>&copy; 2024 Online Store. All rights reserved.</div>
+            </div>
+            <div class="inline-container">
+                <p>Return and Refund Policy</p>
+                <p>Terms & Conditions of Payment</p>
+                <p>Payment Methods</p>
+                <p>Privacy Policy</p>
+                <p>Delivery Policy</p>
+            </div>
+            <div class="inline-container">
+                <p>Contact Information</p>
+            </div>
 
-            </div>
+        </div>
     </footer>
 </body>
-<script>addContainTaiKhoan()</script>
 <script src="js/product.js"></script>
 <script src="js/index.js"></script>
 <script src="js/tabproduct.js"></script>
-<script src="data/product.js"></script>
-</html> 
+<script src="data/dataproduct.js"></script>
+
+</html>
