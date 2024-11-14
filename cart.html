@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/product.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><i class="material-icons">mood</i></li>
+                <li class="item">
+                    <div class="item1">
+                        <p>Tìm kiếm...</p>
+                    </div>
+                    <div class="item2"><i class="material-icons icons">search</i></div>
+                </li>
+                <i class="material-icons icon red">phone</i>
+                <div class="enter">
+                    <p>0347 348 024</p>
+                </div>
+                <i class="material-icons icon red">apartment</i>
+                <div class="enter">
+                    <p>Hệ thống</p>
+                </div>
+                <i class="material-icons icon red">person</i>
+                <div class="enter">
+                    <p>Tài khoản</p>
+                </div>
+                <a href="cart.html"><i class="material-icons icon red">local_mall</i></a>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html" onclick="navigateToContent('home');">TRANG CHỦ</a></li>
+                <li><a href="index.html" onclick="navigateToContent('news');">TIN TỨC</a></li>
+                <li><a href="index.html" onclick="navigateToContent('promotions');">KHUYẾN MÃI</a></li>
+                <li class="dropdown">
+                    <a href="index.html" onclick="navigateToContent('products');">SẢN PHẨM</a>
+                    <ul class="dropdown-content">
+                        <li><a href="index.html" onclick="navigateToContent('wholecake');">Whole Cake</a></li>
+                        <li><a href="index.html" onclick="navigateToContent('shortcake');">Short Cake</a></li>
+                        <li><a href="index.html" onclick="navigateToContent('bread');">Bread And Pastry</a></li>
+                        <li><a href="index.html" onclick="navigateToContent('dessert');">Dessert</a></li>
+                        <li><a href="index.html" onclick="navigateToContent('gifts');">Gifts</a></li>
+                        <li><a href="index.html" onclick="navigateToContent('cookies');">Cookies</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="cart-section">
+        <h1>Giỏ Hàng</h1>
+        <div id="cart-items">
+            <!-- Danh sách sản phẩm trong giỏ hàng sẽ hiển thị ở đây -->
+        </div>
+        <div id="cart-summary">
+            <h2>Tổng cộng: <span id="total-price">0 VND</span></h2>
+            <button id="checkout-btn">Thanh toán</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="overlay"></div>
+        <div id="content">
+            <div class="cont">
+                <div class="info-item">
+                    <i class="material-icons icon-small">location_on</i>
+                    561 Điện Biên Phủ, phường 25, quận Bình Thạnh
+                </div>
+                <div class="info-item">
+                    <i class="material-icons icon-small">mail</i>
+                    phamn5265@gmail.com
+                </div>
+                <div class="info-item">
+                    <i class="material-icons icon-small">phone_iphone</i>
+                    0347348024
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div>&copy; 2024 Online Store. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+</body>
+
+</html>
