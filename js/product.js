@@ -7,11 +7,10 @@ function displayWholeCakes() {
 
     wholeCakes.forEach(product => {
         const productDiv = document.createElement('div');
-        productDiv.classList.add('product-item');
+        productDiv.classList.add('product2');
         
         // Nội dung sản phẩm
         productDiv.innerHTML = `
-            <div class="product2">
                 <div class="product">
                     <img src="${product.image}" alt="${product.name}" class="zoom-image">
                     <h3>${product.name}</h3>
@@ -21,7 +20,7 @@ function displayWholeCakes() {
                             <i class="material-icons ">shopping_cart</i>
                         </div>
                     </div>
-                </div>
+
         `;
         
         // Thêm sản phẩm vào tab
