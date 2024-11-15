@@ -371,10 +371,6 @@ footer div {
     margin-right: 7px;
 }
 
-
-
-
-
 .list
 {
     text-align: center;
@@ -445,5 +441,154 @@ footer div {
 }
 .member .hide {
     display: none;
+}
+
+.background2 {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    display: none; /* Ẩn mặc định cả hai modal */
+}
+
+.modal.active {
+    display: flex; /* Chỉ hiển thị modal khi có class 'active' */
+}
+
+.modal_form{
+    width: 450px;
+    background-color: rgba(202, 226, 226, 0.8);
+    border-radius: 10px;   
+}
+
+.input_form{
+    margin: 0px 20px;
+}
+
+.title_input{
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.title_input h1{
+    margin: 0;
+}
+
+.title_input p{
+    margin: 5px 0 0 0;
+}
+
+.box_input input{
+    width: 100%;
+    height: 35px;
+    border-radius: 15px;      
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.box_input select{
+    width: 100%;
+    height: 35px;
+    border-radius: 15px;      
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.login{
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.btn_submit{
+    border: 2px solid aliceblue;
+    background-color:rgba(40, 34, 34, 0.7);
+    border-radius: 5px;
+    color: aliceblue;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    height: 35px;
+    transition: background-color 0.3s ease;
+}
+
+.outside{
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.policy{
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    bottom: 0;
+}
+
+.btn{
+    text-decoration: none;
+    color: white;
+}
+
+.btn:hover{
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn_submit:hover{
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgb(68, 71, 71);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.btn_close {
+    position: absolute; /* Để nút đóng có thể đặt ở bất kỳ vị trí nào trên màn hình */
+    top: 10px; /* Khoảng cách từ trên cùng */
+    right: 10px; /* Khoảng cách từ bên phải */
+    z-index: 999;
+}
+
+/* Định dạng icon */
+.btn_close i.material-icons {
+    color: white; /* Màu sắc của icon */
+    font-size: 30px; /* Kích thước icon */
+}
+
+/* Hiệu ứng hover cho nút đóng */
+.btn_close:hover {
+    cursor: pointer; /* Đổi con trỏ chuột khi di chuyển qua nút */
 }
 /* ======= End Member ======= */
