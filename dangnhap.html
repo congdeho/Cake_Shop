@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+        <link rel="stylesheet" href="css/login.css">
+    </head>
+    <body>
+        <div class="background">
+            <div class="modal" id="form-login">
+                <div class="modal_form">
+                    <div class="input_form">
+                        <div class="title_input">
+                            <h1>Welcome to myBakery</h1>
+                            <p>Sign up to order now</p>
+                        </div>
+
+                        <div class="box_input">
+                            <input type="text" id="name" placeholder="Full name">
+                        </div>
+
+                        <div class="box_input">
+                            <input type="text" id="username" placeholder="Username">
+                        </div>
+
+                        <div class="box_input">
+                            <input type="password" id="password" placeholder="Password">
+                        </div>
+
+                        <div class="box_input">
+                            <input type="text" id="email" placeholder="Email">
+                        </div>
+
+                        <div class="box_input">
+                            <input type="text" id="phone" placeholder="Phone Number">
+                        </div>
+
+                        <div class="box_input">
+                            <select id="pulldown_menu">
+                                <option value="none" selected>Select a District</option>
+                                <option value="quan1">Quận 1</option>
+                                <option value="quan2">Quận 3</option>
+                                <option value="quan4">Quận 4</option>
+                                <option value="quan5">Quận 5</option>
+                                <option value="quan6">Quận 6</option>
+                                <option value="quan7">Quận 7</option>
+                                <option value="quan8">Quận 8</option>
+                                <option value="quan10">Quận 10</option>
+                                <option value="quan11">Quận 11</option>
+                                <option value="quan12">Quận 12</option>
+                                <option value="quantanbinh">Quận Tân Bình</option>
+                                <option value="quantanphu">Quận Tân Phú</option>
+                                <option value="quanbinhtan">Quận Bình Tân</option>
+                                <option value="quanbinhthanh">Quận Bình Thạnh</option>
+                                <option value="quangovap">Quận Gò Vấp</option>
+                                <option value="quanphunhuan">Quận Phú Nhuận</option>
+                            </select>
+                        </div>
+                        
+                        <div class="login">
+                            <button class="btn_submit" onclick="addData()">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="outside">
+                    Already have an account?
+                    <a class="btn" onclick="showSignUp()">Log In</a>
+                </div>
+    
+                <div class="policy">
+                    This site is protected by the Google <a href="https://policies.google.com/privacy" class="btn" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" class="btn" target="_blank">Terms of Service</a> apply.
+                </div>
+            </div>
+
+            <div class="modal" id="form-signup">
+                <div class="modal_form">
+                    <div class="input_form">
+                        <div class="title_input">
+                            <h1>Welcome back</h1>
+                            <p>We're happy to see you</p>
+                        </div>
+
+                        <div class="box_input">
+                            <input type="text" id="usernamelg" placeholder="Username">
+                        </div>
+
+                        <div class="box_input">
+                            <input type="password" id="passwordlg" placeholder="Password">
+                        </div>
+                        <div class="login">
+                            <button class="btn_submit" onclick="checkLogin()">Log In</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="outside">
+                    Don't have an account?
+                    <a class="btn" onclick="showLogin()">Sign up</a>
+                </div>
+            </div>
+        </div>
+        <script src="css/login.js"></script>
+    </body>
+</html>

@@ -35,3 +35,30 @@ function resetInterval() {
     clearInterval(slideInterval);
     slideInterval = setInterval(showSlides, 3000); 
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Mặc định hiển thị form Sign Up
+    document.getElementById('form-signup').classList.add('active');
+    document.getElementById('form-login').classList.remove('active');
+});
+
+function showSignUp() {
+    // Ẩn form đăng nhập và hiển thị form đăng ký
+    document.getElementById('form-login').classList.remove('active');
+    document.getElementById('form-signup').classList.add('active');
+}
+
+function showLogin() {
+    // Ẩn form đăng ký và hiển thị form đăng nhập
+    document.getElementById('form-signup').classList.remove('active');
+    document.getElementById('form-login').classList.add('active');
+}
+
+function showLoginForm() {
+    document.querySelector('.background2').style.display = 'block';
+}
+
+document.querySelector('.btn_close').addEventListener('click', function() {
+    // Ẩn phần tử có class background2
+    document.querySelector('.background2').style.display = 'none';
+});

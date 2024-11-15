@@ -53,44 +53,41 @@ function toggleProductMenu() {
     }
 }
 
-// Hàm hiển thị tab Whole Cake
+// Hàm hiển thị các tab sản phẩm cụ thể
 function wholecake() {
     toggleProductMenu(); // Hiện menu sản phẩm
     showTab('whole-cake'); // Hiện tab Whole Cake
     displayWholeCakes(); // Hiển thị sản phẩm Whole Cake
 }
 
-// Hàm hiển thị tab Short Cake
 function shortcake() {
-    toggleProductMenu(); // Hiện menu sản phẩm
-    showTab('short-cake'); // Hiện tab Short Cake
+    toggleProductMenu();
+    showTab('short-cake');
     displayshortcake();
 }
 
-// Hàm hiển thị tab Bread And Pastry
 function bread() {
-    toggleProductMenu(); // Hiện menu sản phẩm
-    showTab('bread-pastry'); // Hiện tab Bread And Pastry
+    toggleProductMenu();
+    showTab('bread-pastry');
     displaybread();
 }
 
-// Hàm hiển thị tab Dessert
 function dessert() {
-    toggleProductMenu(); // Hiện menu sản phẩm
-    showTab('dessert'); // Hiện tab Dessert
+    toggleProductMenu();
+    showTab('dessert');
     displaydessert();
 }
 
-// Hàm hiển thị tab Gifts
 function gifts() {
-    toggleProductMenu(); // Hiện menu sản phẩm
-    showTab('gifts'); // Hiện tab Gifts
+    toggleProductMenu();
+    showTab('gifts');
     displaygifts();
 }
 
-// Hàm hiển thị tab Cookies
 function cookies() {
-    toggleProductMenu(); // Hiện menu sản phẩm
-    showTab('cookies'); // Hiện tab Cookies
+    toggleProductMenu();
+    showTab('cookies');
     displaycookies();
 }
+
+
