@@ -25,7 +25,20 @@ nav {
     display: inline-flex;
     align-items: center;
 }
+.item input
+{
+    width: 250px;
+    background-color: white;
+    height: 30px;
+    color: black;
+    text-align: left;
+    margin-left: 70px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border: none;
+    outline: none;
 
+}
 .item1 {
     width: 250px;
     background-color: white;
