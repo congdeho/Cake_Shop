@@ -31,9 +31,9 @@ function displayWholeCakes() {
                         <h3>${product.name}</h3>
                         <div class="it">
                             <div class="it1">${product.price}</div>
-                            <div class="it2">
+                            <button class="it2" onclick="themVaoGioHang(${product.id}, '${product.name}');">
                                 <i class="material-icons">shopping_cart</i>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -118,9 +118,9 @@ function displayshortcake() {
                         <h3>${product.name}</h3>
                         <div class="it">
                             <div class="it1">${product.price}</div>
-                            <div class="it2">
+                            <button class="it2" onclick="themVaoGioHang(${product.id}, '${product.name}');">
                                 <i class="material-icons">shopping_cart</i>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -203,9 +203,9 @@ function displaybread() {
                         <h3>${product.name}</h3>
                         <div class="it">
                             <div class="it1">${product.price}</div>
-                            <div class="it2">
+                            <button class="it2" onclick="themVaoGioHang(${product.id}, '${product.name}');">
                                 <i class="material-icons">shopping_cart</i>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -286,9 +286,9 @@ function displaydessert() {
                         <h3>${product.name}</h3>
                         <div class="it">
                             <div class="it1">${product.price}</div>
-                            <div class="it2">
+                            <button class="it2" onclick="themVaoGioHang(${product.id}, '${product.name}');">
                                 <i class="material-icons">shopping_cart</i>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -371,9 +371,9 @@ function displaygifts() {
                         <h3>${product.name}</h3>
                         <div class="it">
                             <div class="it1">${product.price}</div>
-                            <div class="it2">
+                            <button class="it2" onclick="themVaoGioHang(${product.id}, '${product.name}');">
                                 <i class="material-icons">shopping_cart</i>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -456,9 +456,9 @@ function displaycookies() {
                         <h3>${product.name}</h3>
                         <div class="it">
                             <div class="it1">${product.price}</div>
-                            <div class="it2">
+                            <button class="it2" onclick="themVaoGioHang(${product.id}, '${product.name}');">
                                 <i class="material-icons">shopping_cart</i>
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>
