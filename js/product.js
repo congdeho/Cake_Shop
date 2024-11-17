@@ -22,7 +22,7 @@ function displayWholeCakes() {
                     <h3>${product.name}</h3>
                     <div class="it">
                         <div class="it1">${product.price}</div>
-                        <div class="it2">
+                        <div class="it2" onclick="themVaoGioHang(${product.id}, '${product.name}');">
                             <i class="material-icons">shopping_cart</i>
                         </div>
                     </div>

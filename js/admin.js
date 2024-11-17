@@ -433,14 +433,15 @@ function capNhatAnhSanPham(files, id) {
 function addTableKhachHang() {
     var tc = document.getElementsByClassName('khachhang')[0].getElementsByClassName('table-content')[0];
     var s = `<table class="table-outline hideImg">`;
-
-    for (var i = 0; i < users.length; i++) {
-        var u = users[i];
+    var listUser = getListUser();
+    console.log(listUser);
+    for (var i = 0; i < listUser.length; i++) {
+        var u = listUser[i];
         s += `<tr>
             <td style="width: 5%">` + u.id + `</td>
             <td style="width: 15%">` + u.name + `</td>
             <td style="width: 15%">` + u.email + `</td>
-            <td style="width: 15%">` + 21030 + `</td>
+            <td style="width: 15%">` + u.phone + `</td>
             <td style="width: 10%">` + u.username + `</td>
             <td style="width: 10%">` + u.password + `</td>
             <td style="width: 10%">
@@ -489,19 +490,23 @@ function openThemNguoiDung() {
 
 // vô hiệu hóa người dùng (tạm dừng, không cho đăng nhập vào)
 function voHieuHoaNguoiDung(inp, taikhoan) {
-    var listUser =users;
-    for(var u of listUser) {
-        if(u.username == taikhoan) {
-            let value = !inp.checked
-            u.status = value;
+    var listUser = getListUser();
+    for (var u of listUser) {
+        if (u.username == taikhoan) {
+            // Kiểm tra giá trị hiện tại của u.status và cập nhật
+            if (u.status === 'locked') {
+                u.status = 'active';
+            } else {
+                u.status = 'locked';
+            }
             setListUser(listUser);
             
-            setTimeout(() => alert(`${value ? 'locked' : 'active'} tải khoản ${u.username} thành công.`), 500);
+            setTimeout(() => alert(`${u.status === 'locked' ? 'locked' : 'active'} tài khoản ${u.username} thành công.`), 500);
             break;
         }
     }
     var span = inp.parentElement.nextElementSibling;
-        span.innerHTML = (inp.checked?'locked':'active');
+    span.innerHTML = (u.status === 'locked' ? 'locked' : 'active');
 }
 
 // Xóa người dùng

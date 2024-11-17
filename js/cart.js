@@ -1,3 +1,11 @@
+var currentuser; // user hiện tại, biến toàn cục
+window.onload = function () {
+    khoiTao();
+
+	currentuser = getCurrentUser();
+    console.log(currentuser);
+	addProductToTable(currentuser);
+}
 function navigateToContent(content) {
     // Lưu trạng thái mục người dùng chọn vào localStorage
     localStorage.setItem('currentContent', content);
@@ -23,45 +31,97 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 // Thêm sản phẩm vào giỏ hàng
-function addToCart(productName, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const existingProduct = cart.find(item => item.name === productName);
+// function addToCart(productName, price) {
+//     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+//     const existingProduct = cart.find(item => item.name === productName);
 
-    if (existingProduct) {
-        existingProduct.quantity += 1;
-    } else {
-        cart.push({ name: productName, price: price, quantity: 1 });
-    }
+//     if (existingProduct) {
+//         existingProduct.quantity += 1;
+//     } else {
+//         cart.push({ name: productName, price: price, quantity: 1 });
+//     }
 
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert('Sản phẩm đã được thêm vào giỏ hàng');
-}
+//     localStorage.setItem('cart', JSON.stringify(cart));
+//     alert('Sản phẩm đã được thêm vào giỏ hàng');
+// }
 
 // Hiển thị giỏ hàng trong trang checkout
-function displayCart() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartItems = document.getElementById('cart-items');
-    const totalPriceEl = document.getElementById('total-price');
-    let total = 0;
+function addProductToTable(user) {
+    if (!user || !user.products || user.products.length === 0) {
+        document.getElementById('cart-items').innerHTML = '<p>Giỏ hàng của bạn đang trống.</p>';
+        document.getElementById('total-price').textContent = '0';
+        return;
+    }
 
-    cartItems.innerHTML = '';
-    cart.forEach(item => {
-        cartItems.innerHTML += `
-            <div class="product-item">
-                <p><strong>${item.name}</strong></p>
-                <p>Số lượng: ${item.quantity}</p>
-                <p>Giá: ${item.price * item.quantity} VND</p>
-            </div>`;
-        total += item.price * item.quantity;
-    });
+    var cartContent = '';
+    var totalAmount = 0;
 
-    totalPriceEl.textContent = total.toLocaleString();
+    for (var product of user.products) {
+        var productInfo = getProductById(product.ma); // Hàm này lấy thông tin sản phẩm từ ID
+        var productTotal = product.soluong * productInfo.price;
+        totalAmount += productTotal;
+
+        cartContent += `
+            <div class="cart-item">
+                <img src="${productInfo.image}" alt="${productInfo.name}">
+                <div class="cart-item-details">
+                    <h3>${productInfo.name}</h3>
+                    <p>Giá: ${productInfo.price} VND</p>
+                    <p>Tổng: ${productTotal} VND</p>
+                </div>
+                <div class="quantity-controls">
+                    <button onclick="decreaseQuantity(${product.ma})">-</button>
+                    <span>${product.soluong}</span>
+                    <button onclick="increaseQuantity(${product.ma})">+</button>
+                </div>
+                <button onclick="removeFromCart(${product.ma})">Xóa</button>
+            </div>
+        `;
+    }
+
+    document.getElementById('cart-items').innerHTML = cartContent;
+    document.getElementById('total-price').textContent = totalAmount;
+    document.getElementById('total-price2').textContent = totalAmount;
+
 }
 
-// Xóa giỏ hàng
-function clearCart() {
-    localStorage.removeItem('cart');
-    displayCart();
-    alert('Giỏ hàng đã được làm trống');
+function getProductById(productId) {
+    // Hàm này lấy thông tin sản phẩm từ ID
+    list_products = getListProducts() || list_products
+    return list_products.find(product => product.id === productId);
 }
 
+function removeFromCart(productId) {
+    var user = getCurrentUser();
+    user.products = user.products.filter(product => product.ma !== productId);
+    setCurrentUser(user);
+    setListUser(getListUser().map(u => u.username === user.username ? user : u));
+    addProductToTable(user);
+}
+function increaseQuantity(productId) {
+    var user = getCurrentUser();
+    for (var product of user.products) {
+        if (product.ma === productId) {
+            product.soluong += 1;
+            break;
+        }
+    }
+    setCurrentUser(user);
+    setListUser(getListUser().map(u => u.username === user.username ? user : u));
+    addProductToTable(user);
+}
+
+function decreaseQuantity(productId) {
+    var user = getCurrentUser();
+    for (var product of user.products) {
+        if (product.ma === productId) {
+            if (product.soluong > 1) {
+                product.soluong -= 1;
+            }
+            break;
+        }
+    }
+    setCurrentUser(user);
+    setListUser(getListUser().map(u => u.username === user.username ? user : u));
+    addProductToTable(user);
+}

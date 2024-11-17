@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Store - Checkout</title>
     <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="css/taikhoan.css">
+    <link rel="stylesheet" href="css/index.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="cart.js" defer></script> <!-- Liên kết tới cart.js -->
-    <script src="checkout.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/dungchung.js"></script>
+    <script src="js/classes.js"></script>
+    <script src="data/dataproduct.js"></script>
+    <script src="data/user.js"></script>
 </head>
 <body>
     <header>
@@ -26,10 +32,30 @@
                     <div class="enter"><p>0347 348 024</p></div>
                     <i class="material-icons icon red">apartment</i>
                     <div class="enter"><p>Location </p></div>
-                    <i class="material-icons icon red">person</i>
-                    <div class="enter"><p>Account</p> </div>
-                    <i class="material-icons icon red">local_mall</i>
-                    <div class="enter"></div>
+                    <div class="enter">
+                        <div class="member">
+                            <a onclick="checkTaiKhoan()">
+                                <i class="material-icons icon red">person</i>
+                            </a>
+                            <div class="menuMember hide">
+                                <a href="nguoidung.html">Trang người dùng</a>
+                                <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="enter_member">
+                        <p>Tài khoản</p>
+                    </div>
+                    
+                    <div class="cart">
+                        <a href="cart.html">
+                            <i class="material-icons icon red">local_mall</i>
+                        </a>
+                        <span class="cart-number"></span>
+                    </div>
+                    <div class="enter">
+                        <p>Giỏ hàng</p>
+                    </div>
             </ul>
         </nav>
         <nav>
@@ -64,13 +90,12 @@
             </div>
             <div class="info-section">
                 <h2>Thông tin giao hàng</h2>
-                <form action="/submit-checkout" method="post">
+                <form action="javascript:thanhToan()" method="post">
                     <label for="street">Số nhà, đường:</label>
                     <input type="text" id="street" name="street" required />
                     <label for="city">Thành phố:</label>
                     <select id="city" name="city" required>
                         <option value="">Chọn thành phố</option>
-                        <!-- Add options for cities -->
                     </select>
                     <label for="district">Quận, huyện:</label>
                     <select id="district" name="district" required>
@@ -88,7 +113,7 @@
                     <textarea id="notes" name="notes" rows="2"></textarea>
 
                     <div class="summary">
-                        <p><strong>Tổng tiền:</strong> 500,000 VND</p>
+                        <p><strong>Tổng tiền:</strong> <span id="total-price2">0</span> VND</p>
                     </div>
                     <button type="submit" class="btn-submit">Thanh toán</button>
                 </form>
@@ -139,4 +164,5 @@
         </footer>
     </section>
 </body>
+<script>addContainTaiKhoan()</script>
 </html>

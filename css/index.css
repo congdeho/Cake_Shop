@@ -604,3 +604,26 @@ footer div {
 }
 
 /* ======= End Member ======= */
+
+/* ======= Start Cart ======= */
+.cart {
+    position: relative;
+}
+.cart-number {
+    position: absolute; /* Định vị tuyệt đối dựa trên phần tử cha */
+    top: 0; /* Căn trên cùng */
+    right: 0; /* Căn bên phải */
+    transform: translate(50%, -50%); /* Đẩy sang góc phải trên */
+    background-color: #ff0000; /* Màu nền của cart-number */
+    color: #fff; /* Màu chữ */
+    border-radius: 50%; /* Bo tròn cho phần tử */
+    padding: 2px 6px; /* Khoảng cách nội dung */
+    font-size: 12px; /* Kích thước chữ */
+    font-weight: bold; /* Đậm chữ */
+    line-height: 1; /* Chiều cao dòng nhỏ */
+    display: inline-block; /* Đảm bảo kích thước phù hợp với nội dung */
+    text-align: center; /* Căn giữa nội dung */
+}
+.cart a {
+    text-decoration: none; /* Loại bỏ gạch dưới */
+}

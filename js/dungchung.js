@@ -1,6 +1,6 @@
 var adminInfo = [{
     "username": "admin",
-    "pass": "1234"
+    "password": "1234"
 }];
 
 function getListAdmin() {
@@ -16,6 +16,7 @@ function khoiTao() {
     // get data từ localstorage
     list_products = getListProducts() || list_products;
     adminInfo = getListAdmin() || adminInfo;
+    listUser = getListUser();
 
     setupEventTaiKhoan();
     capNhat_ThongTin_CurrentUser();
@@ -31,6 +32,24 @@ function setListProducts(newList) {
 function getListProducts() {
     return JSON.parse(window.localStorage.getItem('ListProducts'));
 }
+function timKiemTheoMa(list, ma) {
+    for (var l of list) {
+        if (l.id == ma) return l;
+    }
+}
+function timKiemTheoMa2(list, ma) {
+    for (var l of list) {
+        if (l.id == ma) return l;
+    }
+}
+function numToString(num, char) {
+    return num.toLocaleString().split(',').join(char || '.');
+}
+
+function stringToNum(str, char) {
+    return Number(str.split(char || '.').join(''));
+}
+
 // ============================== TÀI KHOẢN ============================
 
 // Hàm get set cho người dùng hiện tại đã đăng nhập
@@ -44,13 +63,32 @@ function setCurrentUser(u) {
 
 // Hàm get set cho danh sách người dùng
 function getListUser() {
-    var data = JSON.parse(window.localStorage.getItem('ListUser')) || []
-    var l = [];
-    for (var d of data) {
-        l.push(d);
+    // Lấy dữ liệu từ localStorage
+    var data = JSON.parse(window.localStorage.getItem('ListUser')) || [];
+
+    // Nếu không có dữ liệu trong localStorage, sử dụng dữ liệu từ user.js
+    if (data.length === 0) {
+        data = users; // users được định nghĩa trong user.js
+        // Lưu dữ liệu vào localStorage
+        setListUser(data);
+    } else {
+        // Kết hợp dữ liệu từ localStorage và user.js
+        var userSet = new Set(data.map(user => user.username));
+        for (var user of users) {
+            if (!userSet.has(user.username)) {
+                data.push(user);
+            }
+        }
+        // Lưu dữ liệu kết hợp vào localStorage
+        setListUser(data);
     }
-    return l;
+
+    // Đảm bảo tất cả người dùng đều có cấu trúc đúng
+    data = data.map(user => new User(user.id, user.username, user.password, user.name, user.phone, user.email, user.status, user.products, user.donhang));
+
+    return data;
 }
+
 
 function setListUser(l) {
     window.localStorage.setItem('ListUser', JSON.stringify(l));
@@ -67,16 +105,64 @@ function updateListUser(u, newData) {
     setListUser(list)
 }
 
+function timKiemTheoMa(list, ma) {
+    for (var l of list) {
+        if (l.masp == ma) return l;
+    }
+}
+// ================ Cart Number + Thêm vào Giỏ hàng ======================
+
+function themVaoGioHang(masp, tensp) {
+    var user = getCurrentUser();
+    console.log(user);
+    if (!user) {
+        alert('Bạn cần đăng nhập để mua hàng !');
+        showTaiKhoan(true);
+        return;
+    }
+    if (user.status == 'locked') {
+        alert('Tài khoản của bạn hiện đang bị khóa nên không thể mua hàng!');
+        alert('Tài khoản của bạn đã bị khóa bởi Admin.', '#aa0000', '#fff', 10000);
+        return;
+    }
+    var t = new Date();
+    var daCoSanPham = false;;
+
+    for (var i = 0; i < user.products.length; i++) { // check trùng sản phẩm
+        if (user.products[i].ma == masp) {
+            user.products[i].soluong++;
+            daCoSanPham = true;
+            break;
+        }
+    }
+
+    if (!daCoSanPham) { // nếu không trùng thì mới thêm sản phẩm vào user.products
+        user.products.push({
+            "ma": masp,
+            "soluong": 1,
+            "date": t
+        });
+    }
+
+    alert('Đã thêm ' + tensp + ' vào giỏ.', '#17c671', '#fff', 3500);
+
+    setCurrentUser(user); // cập nhật giỏ hàng cho user hiện tại
+    updateListUser(user); // cập nhật list user
+    capNhat_ThongTin_CurrentUser(); // cập nhật giỏ hàng
+}
+
 function logIn(form) {
     event.preventDefault();
     // Lấy dữ liệu từ form
-    var name = form.username.value;
-    var pass = form.pass.value;
-    var newUser = new User(name, pass);
+    var username = form.username.value;
+    var password = form.pass.value;
+    let newUser = new User(null, username, password, null, null, null, null, null, null);
+
 
     // Lấy dữ liệu từ danh sách người dùng localstorage
-    var listUser = getListUser();
-
+    var listUser = getListUser() ;
+    console.log(listUser);
+    console.log(newUser);
     // Kiểm tra xem dữ liệu form có khớp với người dùng nào trong danh sách ko
     for (var u of listUser) {
         if (equalUser(newUser, u)) {
@@ -110,15 +196,16 @@ function logIn(form) {
 }
 
 function signUp(form) {
-    var hoten = form.hoten.value;
-    var sdt = form.sdt.value;
+     // Lấy dữ liệu các khách hàng hiện có
+     var listUser = getListUser();
+    var id = listUser.length + 1;
+    var name = form.hoten.value;
+    var phone = form.sdt.value;
     var email = form.email.value;
     var username = form.newUser.value;
     var pass = form.newPass.value;
-    var newUser = new User(username, pass, hoten, sdt, email);
-
-    // Lấy dữ liệu các khách hàng hiện có
-    var listUser = getListUser();
+    var status = 'active';
+    var newUser = new User(id, username, pass, name, phone, email, status);
 
     // Kiểm tra trùng admin
     for (var ad of adminInfo) {
@@ -138,6 +225,7 @@ function signUp(form) {
 
     // Lưu người mới vào localstorage
     listUser.push(newUser);
+    console.log("asdkashed");
     window.localStorage.setItem('ListUser', JSON.stringify(listUser));
 
     // Đăng nhập vào tài khoản mới tạo
@@ -223,15 +311,12 @@ function setupEventTaiKhoan() {
             document.getElementById(hide).style.display = 'none';
         })
     }
-
-    // Đoạn code tạo event trên được chuyển về js thuần từ code jquery
-    // Code jquery cho phần tài khoản được lưu ở cuối file này
 }
 function capNhat_ThongTin_CurrentUser() {
     var u = getCurrentUser();
     if (u) {
         // // Cập nhật số lượng hàng vào header
-        // document.getElementsByClassName('cart-number')[0].innerHTML = getTongSoLuongSanPhamTrongGioHang(u);
+        document.getElementsByClassName('cart-number')[0].innerHTML = getTongSoLuongSanPhamTrongGioHang(u);
         // // Cập nhật tên người dùng
         document.getElementsByClassName('enter_member')[0]
             .getElementsByTagName('p')[0].textContent = ' ' + u.username;
@@ -239,6 +324,13 @@ function capNhat_ThongTin_CurrentUser() {
         document.getElementsByClassName('menuMember')[0]
             .classList.remove('hide');
     }
+}
+function getTongSoLuongSanPhamTrongGioHang(u) {
+    var soluong = 0;
+    for (var p of u.products) {
+        soluong += p.soluong;
+    }
+    return soluong;
 }
 // Thêm contain Taikhoan
 function addContainTaiKhoan() {
