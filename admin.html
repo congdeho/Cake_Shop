@@ -183,7 +183,7 @@
                                 <td>
                                     <select name="chonLoai">
                                         <script>
-                                            var loai = ["Cake", "Bread", "Cookie", "Sandwich and Salad"];
+                                            var loai = ["Whole Cake", "Short Cake", "Bread And Pastry", "Dessert", "Gifts", "Cookies"];
                                             for (var c of loai) {
                                                 document.writeln(`<option value="` + c + `">` + c + `</option>`);
                                             }
@@ -208,24 +208,9 @@
                                 <td><textarea></textarea></td>
                             </tr>
                             <tr>
-                                <td>Size</td>
-                                <td>
-                                    <select name="chonSize" onchange="changeKichCoBanhInput(this.value)">
-                                        <option value="">Không</option>
-                                        <option value="1">Phù hợp cho bữa ăn</option>
-                                        <option value="2">Phù hợp cho ăn vặt</option>
-                                        <option value="3">Tùy chỉnh</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
                                 <td>Kích cỡ bánh:</td>
                                 <td><input type="text" placeholder=""></td>
                             </tr>
-                            <tr>
-                                <td>Texture:</td>
-                                <td><input type="text"></td>
-                            <tr>
                                 <td>Hương vị:</td>
                                 <td><input type="text"></td>
                             </tr>
@@ -300,7 +285,7 @@
                                 <option value="all">Tất cả</option>
                                 <option value="pending">Chưa xử lý</option>
                                 <option value="confirmed">Đã xác nhận</option>
-                                <option value="delivered">Đã giao</option>
+                                <option value="delivering">Đã giao</option>
                                 <option value="canceled">Đã huỷ</option>
                             </select>
                         </label>

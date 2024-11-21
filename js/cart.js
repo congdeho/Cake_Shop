@@ -87,7 +87,8 @@ function addProductToTable(user) {
 
 function getProductById(productId) {
     // Hàm này lấy thông tin sản phẩm từ ID
-    list_products = getListProducts() || list_products
+    list_products = getListProducts();
+    console.log(list_products);
     return list_products.find(product => product.id === productId);
 }
 

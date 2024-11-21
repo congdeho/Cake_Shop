@@ -81,6 +81,28 @@ function displayOrders() {
         orderTableBody.appendChild(row);
     });
 }
+function displayOrder(order) {
+    var orderList = order;
+    const orderTableBody = document.querySelector("#order-table tbody");
+    orderTableBody.innerHTML = '';
+    // Tạo một hàng mới
+    orderList.forEach((order, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${order.ma}</td>
+            <td>${order.maKhach}</td>
+            <td>${order.khach}</td>
+            <td>${order.diachi}</td>
+            <td>${order.ngaygio}</td>
+            <td>${order.tinhTrang}</td>
+            <td>
+                <button onclick="viewOrderDetails('${order.ma}')">Xem chi tiết</button>
+            </td>
+        `;
+        orderTableBody.appendChild(row);
+    });
+}
 
 function toggleOrderDetails(show) {
     const orderDetailsDiv = document.getElementById("order-details");
@@ -122,6 +144,7 @@ function viewOrderDetails(orderId) {
             <ul>${productDetails}</ul>
             <label for="order-status">Thay đổi tình trạng đơn hàng:</label>
             <select id="order-status">
+                <option value="Đang chờ xử lý" ${order.tinhTrang === 'Đang chờ xử lý' ? 'selected' : ''}>Đang chờ xử lý</option>
                 <option value="Đã xác nhận" ${order.tinhTrang === 'Đã xác nhận' ? 'selected' : ''}>Đã xác nhận</option>
                 <option value="Đang giao hàng" ${order.tinhTrang === 'Đang giao hàng' ? 'selected' : ''}>Đang giao hàng</option>
                 <option value="Đã hủy" ${order.tinhTrang === 'Đã hủy' ? 'selected' : ''}>Đã hủy</option>
@@ -165,7 +188,7 @@ function changeOrderStatus(orderId, newStatus) {
 }
 
 // Gọi hàm displayOrders khi trang được tải
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     displayOrders();
 });
 function closeModal() {
@@ -186,11 +209,45 @@ window.onload = function () {
 };
 
 function isStatusMatch(order, statusFilter) {
-    return statusFilter === "all" || order.status === statusFilter; // Kiểm tra trạng thái
+    const statusMapping = {
+        "pending": "Đang chờ xử lý",
+        "confirmed": "Đã xác nhận",
+        "delivering": "Đang giao hàng",
+        "canceled": "Đã hủy",
+    };
+    return statusFilter === "all" || order.tinhTrang === statusMapping[statusFilter]; // Kiểm tra trạng thái
 }
-
 function isDateMatch(order, startDate, endDate) {
-    return (!startDate || order.date >= startDate) && (!endDate || order.date <= endDate); // Kiểm tra ngày
+    // Nếu không có ngày bắt đầu và ngày kết thúc, trả về true để không lọc đơn hàng
+    if (!startDate && !endDate) {
+        return true;
+    }
+
+    // Lấy ngày từ order.ngaygio
+    const orderDate = new Date(order.ngaygio).toLocaleDateString('en-CA'); // Định dạng ngày thành yyyy-mm-dd
+
+    // Nếu chỉ chọn ngày bắt đầu mà chưa chọn ngày kết thúc, đặt ngày kết thúc là ngày hiện tại
+    if (startDate && !endDate) {
+        endDate = new Date().toLocaleDateString('en-CA'); // Định dạng ngày hiện tại thành chuỗi yyyy-mm-dd
+    }
+
+    // Nếu chỉ chọn ngày kết thúc mà chưa chọn ngày bắt đầu, tính tất cả ngày trước khi ngày kết thúc
+    if (!startDate && endDate) {
+        startDate = '1970-01-01'; // Đặt ngày bắt đầu là ngày đầu tiên của Unix epoch
+    }
+
+    // Chuyển đổi startDate và endDate thành chuỗi yyyy-mm-dd
+    const start = new Date(startDate).toLocaleDateString('en-CA');
+    const end = new Date(endDate).toLocaleDateString('en-CA');
+    console.log(start, end);
+    // Kiểm tra nếu ngày bắt đầu lớn hơn ngày kết thúc
+    if (new Date(start) > new Date(end)) {
+        alert('Ngày bắt đầu không thể lớn hơn ngày kết thúc.');
+        return false;
+    }
+
+    // Kiểm tra ngày của đơn hàng
+    return (!startDate || orderDate >= start) && (!endDate || orderDate <= end);
 }
 
 function isDistrictMatch(order, districtFilter) {
@@ -212,20 +269,32 @@ function isDistrictMatch(order, districtFilter) {
         "quangovap": "Quận Gò Vấp",
         "quanphunhuan": "Quận Phú Nhuận"
     };
-    return districtFilter === "all" || order.address === districtMapping[districtFilter]; // Kiểm tra quận
+    const district = getDistrictFromAddress(order.diachi); // Lấy quận từ địa chỉ
+    return districtFilter === "all" || district === districtMapping[districtFilter]; // Kiểm tra quận
 }
-
+function getDistrictFromAddress(address) {
+    const parts = address.split(','); // Tách chuỗi thành các phần tử
+    if (parts.length >= 3) {
+        return parts[2].trim(); // Lấy phần tử thứ 3 (quận) và loại bỏ khoảng trắng thừa
+    }
+    return ''; // Trả về chuỗi rỗng nếu không tìm thấy quận
+}
 function filterOrders() {
     const statusFilter = document.getElementById("filter-status").value;
     const startDate = document.getElementById("filter-start-date").value;
     const endDate = document.getElementById("filter-end-date").value;
     const districtFilter = document.getElementById("filter-district").value;
-
+    // Kiểm tra nếu ngày bắt đầu lớn hơn ngày kết thúc
+    if (startDate && endDate && startDate > endDate) {
+        alert("Ngày bắt đầu không thể lớn hơn ngày kết thúc.");
+        return;
+    }
+    const orders = getListDonHang(); // Giả sử hàm này trả về danh sách đơn hàng
     const filteredOrders = orders.filter(order =>
         isStatusMatch(order, statusFilter) &&
         isDateMatch(order, startDate, endDate) &&
         isDistrictMatch(order, districtFilter)
     );
-
-    displayOrders(filteredOrders); // Hiển thị đơn hàng đã lọc
+    console.log(filteredOrders);
+    displayOrder(filteredOrders); // Hiển thị đơn hàng đã lọc
 }

@@ -93,6 +93,7 @@ window.onload = function () {
 function addTableProducts() {
     var tc = document.getElementsByClassName('sanpham')[0].getElementsByClassName('table-content')[0];
     var s = `<table class="table-outline hideImg">`;
+    var list_products = getListProducts();
 
     for (var i = 0; i < list_products.length; i++) {
         var p = list_products[i];
@@ -160,12 +161,10 @@ function layThongTinSanPhamTuTable(id) {
     var img = tr[4].getElementsByTagName('td')[1].getElementsByTagName('img')[0].src;
     var giaTien = tr[5].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var moTa = tr[6].getElementsByTagName('td')[1].getElementsByTagName('textarea')[0].value;
-    var size = tr[7].getElementsByTagName('td')[1].getElementsByTagName('select')[0].value;
-    var kichCoBanh = tr[8].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
-    var texture = tr[9].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
-    var huongVi = tr[10].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
-    var promoName = tr[12].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
-    var promoValue = tr[13].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
+    var kichCoBanh = tr[7].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
+    var huongVi = tr[8].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
+    var promoName = tr[10].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
+    var promoValue = tr[11].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     if (isNaN(giaTien)) {
         alert('Giá phải là số nguyên');
         return false;
@@ -175,14 +174,13 @@ function layThongTinSanPhamTuTable(id) {
     }
     try {
         return {
-            "id": masp,
+            "id": parseInt(masp),
             "name": tenSanPham,
             "type": loai,
             "image": previewSrc || img,
             "price": parseInt(giaTien, 10),
             "description": moTa,
             "size": size,
-            "texture": texture,
             "tatse": huongVi,
             "promo": {
                 "name": promoName,
@@ -250,22 +248,6 @@ function autoMaSanPham() {
 //     // Đây chỉ là mẫu, có thể thay thế bằng code vẽ lại bảng thực tế
 //     console.log("Bảng sản phẩm được cập nhật:", list_products);
 // }
-function changeKichCoBanhInput(value) {
-    var inputKichCoBanh = document.querySelector('input[placeholder=""]'); // Chọn ô input "Kích cỡ bánh"
-
-    if (value === "3") {
-        inputKichCoBanh.disabled = false; // Cho phép nhập khi chọn "Tùy chỉnh"
-    } else {
-        inputKichCoBanh.disabled = true; // Vô hiệu hóa khi chọn các giá trị khác
-        inputKichCoBanh.value = ""; // Xóa giá trị khi bị vô hiệu hóa
-    }
-}
-
-// Đảm bảo ô input "Kích cỡ bánh" bị vô hiệu hóa khi load trang
-document.addEventListener('DOMContentLoaded', function () {
-    changeKichCoBanhInput(document.querySelector('select[name="chonSize"]').value);
-});
-
 // Xóa
 function xoaSanPham(id, tensp) {
     if (window.confirm('Bạn có chắc muốn xóa ' + tensp)) {
@@ -346,10 +328,12 @@ function addKhungSuaSanPham(masp) {
                 <td>Loại:</td>
                 <td>
                     <select name="chonLoaiSua" id="chonLoaiSua">
-                        <option value="Cake" ${sp.type === "Cake" ? "selected" : ""}>Cake</option>
-                        <option value="Bread" ${sp.type === "Bread" ? "selected" : ""}>Bread</option>
-                        <option value="Cookie" ${sp.type === "Cookie" ? "selected" : ""}>Cookie</option>
-                        <option value="Sandwich and Salad" ${sp.type === "Sandwich and Salad" ? "selected" : ""}>Sandwich and Salad</option>
+                        <option value="Whole Cake" ${sp.type === "Whole Cake" ? "selected" : ""}>Whole Cake</option>
+                        <option value="Short Cake" ${sp.type === "Short Cake" ? "selected" : ""}>Short Cake</option>
+                        <option value="Bread And Pastry" ${sp.type === "Bread And Pastry" ? "selected" : ""}>Bread And Pastry</option>
+                        <option value="Dessert" ${sp.type === "Dessert" ? "selected" : ""}>Dessert</option>
+                        <option value="Gifts" ${sp.type === "Gifts" ? "selected" : ""}>Gifts</option>
+                        <option value="Cookies" ${sp.type === "Cookies" ? "selected" : ""}>Cookies</option>
                     </select>
                 </td>
             </tr>
@@ -369,24 +353,9 @@ function addKhungSuaSanPham(masp) {
                 <td><textarea id="moTaSua">${sp.description}</textarea></td>
             </tr>                            
             <tr>
-                <td>Size</td>
-                <td>
-                    <select name="chonSizeSua" id="chonSizeSua" onchange="changeKichCoBanhInput(this.value)">
-                        <option value="">Không</option>
-                        <option value="1" ${sp.size === "Phù hợp cho bữa ăn" ? "selected" : ""}>Phù hợp cho bữa ăn</option>
-                        <option value="2" ${sp.size === "Phù hợp cho ăn vặt" ? "selected" : ""}>Phù hợp cho ăn vặt</option>
-                        <option value="3" ${sp.size === "Tùy chỉnh" ? "selected" : ""}>Tùy chỉnh</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
                 <td>Kích cỡ bánh:</td>
                 <td><input type="text" id="kichCoBanhSua" value="${sp.size}"></td>
             </tr>
-            <tr>
-                <td>Texture:</td>
-                <td><input type="text" id="textureSua"></td>
-            <tr>
                 <td>Hương vị:</td>
                 <td><input type="text" id="huongViSua" value="${sp.taste}"></td>
             </tr>
@@ -438,7 +407,7 @@ function addTableKhachHang() {
     for (var i = 0; i < listUser.length; i++) {
         var u = listUser[i];
         s += `<tr>
-            <td style="width: 5%">` + u.id + `</td>
+            <td style="width: 5%">` + (i+1) + `</td>
             <td style="width: 15%">` + u.name + `</td>
             <td style="width: 15%">` + u.email + `</td>
             <td style="width: 15%">` + u.phone + `</td>
@@ -511,15 +480,15 @@ function voHieuHoaNguoiDung(inp, taikhoan) {
 
 // Xóa người dùng
 function xoaNguoiDung(taikhoan) {
+    var listUser = getListUser();
     if(window.confirm('Xác nhận xóa '+taikhoan+'? \nMọi dữ liệu về '+taikhoan+' sẽ mất! Bao gồm cả những đơn hàng của '+taikhoan)) {
-        var listuser = users;
-        for(var i = 0; i < listuser.length; i++) {
-            if(listuser[i].username == taikhoan) {
-                listuser.splice(i, 1); // xóa
-                setListUser(listuser); // lưu thay đổi
+        for(var i = 0; i < listUser.length; i++) {
+            if(listUser[i].username == taikhoan) {
+                listUser.splice(i, 1); // xóa
+                setListUser(listUser); // lưu thay đổi
                 localStorage.removeItem('CurrentUser'); // đăng xuất khỏi tài khoản hiện tại (current user)
                 addTableKhachHang(); // vẽ lại bảng khách hàng
-                addTableDonHang(); // vẽ lại bảng đơn hàng
+                displayOrders(); // vẽ lại bảng đơn hàng
                 return;
             }
         }

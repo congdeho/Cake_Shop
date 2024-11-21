@@ -114,6 +114,7 @@ function timKiemTheoMa(list, ma) {
 
 function themVaoGioHang(masp, tensp) {
     var user = getCurrentUser();
+    console.log(listUser);
     console.log(user);
     if (!user) {
         alert('Bạn cần đăng nhập để mua hàng !');
@@ -166,7 +167,7 @@ function logIn(form) {
     // Kiểm tra xem dữ liệu form có khớp với người dùng nào trong danh sách ko
     for (var u of listUser) {
         if (equalUser(newUser, u)) {
-            if (u.off) {
+            if (u.status == 'locked') {
                 alert('Tài khoản này đang bị khoá. Không thể đăng nhập.');
                 return false;
             }
@@ -204,6 +205,7 @@ function signUp(form) {
     var email = form.email.value;
     var username = form.newUser.value;
     var pass = form.newPass.value;
+    var confirmPass = form.confirmPass.value;
     var status = 'active';
     var newUser = new User(id, username, pass, name, phone, email, status);
 
@@ -221,6 +223,11 @@ function signUp(form) {
             alert('Tên đăng nhập đã có người sử dụng !!');
             return false;
         }
+    }
+    // Kiểm tra xem mật khẩu nhập vào có đúng với nhập lại
+    if (pass != confirmPass) {
+        alert('Mật khẩu nhập lại không khớp !!');
+        return false;
     }
 
     // Lưu người mới vào localstorage
@@ -411,6 +418,12 @@ function addContainTaiKhoan() {
                                 Mật khẩu<span class="req">*</span>
                             </label>
                             <input name="newPass" type="password" required autocomplete="off" />
+                        </div> <!-- /pass -->
+                        <div class="field-wrap">
+                            <label>
+                                Xác nhận mật khẩu<span class="req">*</span>
+                            </label>
+                            <input name="confirmPass" type="password" required autocomplete="off" />
                         </div> <!-- /pass -->
 
                         <button type="submit" class="button button-block" >Tạo tài khoản</button>
