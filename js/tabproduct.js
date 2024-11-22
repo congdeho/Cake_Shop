@@ -89,5 +89,6 @@ function cookies() {
     showTab('cookies');
     displaycookies();
 }
-
-
+window.onload = function () {
+    showHome(); // Hiển thị tab Trang Chủ khi tải trang
+};
