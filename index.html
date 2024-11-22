@@ -6,67 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Store</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/taikhoan.css">
     <link rel="stylesheet" href="css/product.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/index.js"></script>
+    <script src="js/dungchung.js"></script>
+    <script src="js/classes.js"></script>
 </head>
 
 <body>
     <header>
+        <script>window.onload = function () {
+                khoiTao();
+            }</script>
         <nav>
             <ul>
-                <!-- Biểu tượng cảm xúc -->
                 <li>
                     <i class="material-icons">mood</i>
                 </li>
-            
-                <!-- Tìm kiếm -->
                 <li class="item">
 
                         <input type="text" placeholder="Tìm kiếm...">
 
                     <div class="item2">
-                        <i class="material-icons icons">search</i>
+                        <i class="material-icons icons ">search</i>
                     </div>
                 </li>
-            
-                <!-- Liên hệ -->
-                <li>
-                    <i class="material-icons icon red">phone</i>
-                    <div class="enter">
-                        <p>0347 348 024</p>
+                <i class="material-icons icon red">phone</i>
+                <div class="enter">
+                    <p>0347 348 024</p>
+                </div>
+                <i class="material-icons icon red">apartment</i>
+                <div class="enter">
+                    <p>Location </p>
+                </div>
+                <div class="enter">
+                    <div class="member">
+                        <a onclick="checkTaiKhoan()">
+                            <i class="material-icons icon red">person</i>
+                        </a>
+                        <div class="menuMember hide">
+                            <a href="nguoidung.html">Trang người dùng</a>
+                            <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
+                        </div>
                     </div>
-                </li>
-            
-                <!-- Hệ thống -->
-                <li>
-                    <i class="material-icons icon red">apartment</i>
-                    <div class="enter">
-                        <p>Hệ thống</p>
-                    </div>
-                </li>
-            
-                <!-- Đăng nhập (biểu tượng và chữ) -->
-                <li class="login-item">
-                    <i class="material-icons icon red">person</i>
-                    <div class="enter">
-                        <p onclick="showLoginForm()">Đăng nhập</p>
-                    </div>
-                </li>
-            
-                <!-- Giỏ hàng -->
-                <li>
+                </div>
+                <div class="enter_member">
+                    <p>Tài khoản</p>
+                </div>
+                
+                <div class="cart">
                     <a href="cart.html">
                         <i class="material-icons icon red">local_mall</i>
                     </a>
-                </li>
+                    <span class="cart-number">0</span>
+                </div>
+                <div class="enter">
+                    <p>Giỏ hàng</p>
+                </div>
             </ul>
-
         </nav>
         <nav>
             <ul class="menu">
                 <li><a href="#" onclick="showHome();">TRANG CHỦ</a></li>
                 <li class="dropdown">
-                    <a href="#">SẢN PHẨM</a>
+                    <a href="">SẢN PHẨM</a>
                     <ul class="dropdown-content">
                         <li><a href="#" onclick="wholecake()();">Whole Cake</a></li>
                         <li><a href="#" onclick="shortcake();">Short Cake</a></li>
@@ -76,7 +80,7 @@
                         <li><a href="#" onclick="cookies();">Cookies</a></li>
                     </ul>
                 </li>
-                        <li><a href="#" onclick="showNews();">TIN TỨC</a></li>
+                <li><a href="#" onclick="showNews();">TIN TỨC</a></li>
                 <li><a href="#" onclick="showPromotions();">KHUYẾN MÃI</a></li>
             </ul>
         </nav>
@@ -100,7 +104,7 @@
         </div>
 
         <button class="prev" onclick="prevSlide()">❮</button>
-        <button class="next" onclick="nextSlide()">❯</button>5
+        <button class="next" onclick="nextSlide()">❯</button>
     </div>
     <section id="product-section">
         <div id="home" class="product-tab" style="display:none;"> <!-- Nội dung cho TRANG CHỦ -->
@@ -213,84 +217,15 @@
             <div class="inline-container">
                 <p>Thông tin liên hệ</p>
             </div>
+
         </div>
     </footer>
 </body>
-<div class="background2">
-    <div class="btn_close"><i class="material-icons icon-small">close</i></div>
-    <div class="modal" id="form-login">
-        <div class="modal_form">
-            <form class="input_form" onsubmit="return logIn(form,this);">
-                <div class="title_input">
-                    <h1>Welcome to myBakery</h1>
-                    <p>Sign up to order now</p>
-                </div>
-
-                <div class="box_input">
-                    <input type="text" name="hoten" placeholder="Full name">
-                </div>
-
-                <div class="box_input">
-                    <input type="text" name="newUser" placeholder="Username">
-                </div>
-
-                <div class="box_input">
-                    <input type="password" name="newPass" placeholder="Password">
-                </div>
-
-                <div class="box_input">
-                    <input type="text" name="email" placeholder="Email">
-                </div>
-
-                <div class="box_input">
-                    <input type="text" name="sdt" placeholder="Phone Number">
-                </div>
-                
-                <div class="login">
-                    <button class="btn_submit" type="submit">Sign Up</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="outside">
-            Already have an account?
-            <a class="btn" onclick="showSignUp()">Log In</a>
-        </div>
-
-        <div class="policy">
-            This site is protected by the Google <a href="https://policies.google.com/privacy" class="btn" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" class="btn" target="_blank">Terms of Service</a> apply.
-        </div>
-    </div>
-
-    <div class="modal" id="form-signup">
-        <div class="modal_form">
-            <form class="input_form" onsubmit="return signUp(form,this);">
-                <div class="title_input">
-                    <h1>Welcome back</h1>
-                    <p>We're happy to see you</p>
-                </div>
-
-                <div class="box_input">
-                    <input type="text" name='username' placeholder="Username">
-                </div>
-
-                <div class="box_input">
-                    <input type="password" name="pass" placeholder="Password">
-                </div>
-                <div class="login">
-                    <button class="btn_submit" type="submit">Log In</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="outside">
-            Don't have an account?
-            <a class="btn" onclick="showLogin()">Sign up</a>
-        </div>
-    </div>
-</div>
+<script>addContainTaiKhoan()</script>
 <script src="js/product.js"></script>
-<script src="js/index.js"></script>
 <script src="js/tabproduct.js"></script>
+<script src="data/dataquanly.js"></script>
 <script src="data/dataproduct.js"></script>
+<script src="data/user.js"></script>
+
 </html>

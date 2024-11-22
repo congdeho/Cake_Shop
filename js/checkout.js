@@ -1,123 +1,151 @@
-// Hàm tính tổng giá dựa trên số lượng và giá của các sản phẩm
-function calculateTotal() {
-  // Lấy tất cả các sản phẩm
-  const products = document.querySelectorAll(".product-item");
-  let total = 0;
+document.addEventListener('DOMContentLoaded', function () {
+    const cities = [
+        {
+            name: "Thành phố Hồ Chí Minh",
+            districts: [
+                "Quận 1",
+                "Quận 3",
+                "Quận 5",
+                "Quận 7",
+                "Quận 10",
+                "Quận Bình Thạnh",
+                "Quận Gò Vấp",
+                "Quận Phú Nhuận",
+                "Quận Tân Bình",
+                "Quận Tân Phú",
+                "Quận Thủ Đức"
+            ]
+        }
+    ];
 
-  // Duyệt qua từng sản phẩm để tính tổng giá
-  products.forEach((product) => {
-    // Lấy giá sản phẩm (dạng text)
-    const price = parseFloat(
-      product.querySelector(".product-details p:nth-child(3)").textContent.replace(/[^\d]/g, "")
-    ); // Chuyển giá thành số (loại bỏ ký tự không phải số)
-    const quantity = parseInt(product.querySelector('input[type="number"]').value, 10); // Lấy số lượng sản phẩm
+    const wards = {
+        "Quận 1": ["Bến Nghé", "Bến Thành", "Cô Giang", "Đa Kao", "Nguyễn Cư Trinh", "Phạm Ngũ Lão", "Tân Định"],
+        "Quận 3": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường 6", "Phường 7", "Phường 8", "Phường 9", "Phường 10"],
+        "Quận 5": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường 6", "Phường 7", "Phường 8", "Phường 9", "Phường 10"],
+        "Quận 7": ["Phường Tân Hưng", "Phường Tân Kiểng", "Phường Tân Phong", "Phường Tân Phú", "Phường Tân Quy", "Phường Tân Thuận Đông", "Phường Tân Thuận Tây"],
+        "Quận 10": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường 6", "Phường 7", "Phường 8", "Phường 9", "Phường 10"],
+        "Quận Bình Thạnh": ["Phường 1", "Phường 2", "Phường 3", "Phường 5", "Phường 6", "Phường 7", "Phường 11", "Phường 12", "Phường 13", "Phường 14"],
+        "Quận Gò Vấp": ["Phường 1", "Phường 3", "Phường 4", "Phường 5", "Phường 6", "Phường 7", "Phường 8", "Phường 9", "Phường 10", "Phường 11"],
+        "Quận Phú Nhuận": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường 7", "Phường 8", "Phường 9", "Phường 10", "Phường 11"],
+        "Quận Tân Bình": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường 6", "Phường 7", "Phường 8", "Phường 9", "Phường 10"],
+        "Quận Tân Phú": ["Phường Hiệp Tân", "Phường Hòa Thạnh", "Phường Phú Thạnh", "Phường Phú Thọ Hòa", "Phường Phú Trung", "Phường Sơn Kỳ", "Phường Tân Quý", "Phường Tân Sơn Nhì"],
+        "Quận Thủ Đức": ["Phường Bình Chiểu", "Phường Bình Thọ", "Phường Hiệp Bình Chánh", "Phường Hiệp Bình Phước", "Phường Linh Chiểu", "Phường Linh Đông", "Phường Linh Tây", "Phường Linh Trung", "Phường Linh Xuân", "Phường Tam Bình"]
+    };
 
-    total += price * quantity; // Cộng giá vào tổng
-  });
+    // Lấy phần tử từ DOM
+    const citySelect = document.getElementById("city");
+    const districtSelect = document.getElementById("district");
+    const wardSelect = document.getElementById("ward");
 
-  // Cập nhật tổng giá hiển thị ở phần tóm tắt
-  document.querySelector(".summary p strong").textContent = `Tổng cộng: ${total.toLocaleString("vi-VN")} VND`;
+    // Điền dữ liệu thành phố vào dropdown
+    cities.forEach((city) => {
+        const option = document.createElement("option");
+        option.value = city.name;
+        option.textContent = city.name;
+        citySelect.appendChild(option);
+    });
+
+    // Xử lý khi người dùng chọn thành phố
+    citySelect.addEventListener("change", () => {
+        // Xóa các tùy chọn hiện tại trong dropdown của quận, huyện và phường, xã
+        districtSelect.innerHTML = '<option value="">Chọn quận, huyện</option>';
+        wardSelect.innerHTML = '<option value="">Chọn phường, xã</option>';
+
+        // Tìm thành phố được chọn
+        const selectedCity = cities.find((city) => city.name === citySelect.value);
+        if (selectedCity) {
+            // Điền các quận, huyện vào dropdown
+            selectedCity.districts.forEach((district) => {
+                const option = document.createElement("option");
+                option.value = district;
+                option.textContent = district;
+                districtSelect.appendChild(option);
+            });
+        }
+    });
+
+    // Xử lý khi người dùng chọn quận, huyện
+    districtSelect.addEventListener("change", () => {
+        // Xóa các tùy chọn hiện tại trong dropdown của phường, xã
+        wardSelect.innerHTML = '<option value="">Chọn phường, xã</option>';
+
+        // Điền các phường, xã dựa trên quận, huyện được chọn
+        const selectedDistrict = districtSelect.value;
+        if (wards[selectedDistrict]) {
+            wards[selectedDistrict].forEach((ward) => {
+                const option = document.createElement("option");
+                option.value = ward;
+                option.textContent = ward;
+                wardSelect.appendChild(option);
+            });
+        }
+    });
+
+    // Kiểm tra hợp lệ khi người dùng nhấn nút submit
+    document.querySelector("form").addEventListener("submit", (e) => {
+        if (!citySelect.value || !districtSelect.value || !wardSelect.value) {
+            alert("Vui lòng điền đầy đủ thông tin địa chỉ."); // Hiển thị cảnh báo nếu thông tin chưa đầy đủ
+            e.preventDefault(); // Ngăn việc submit nếu thông tin chưa đầy đủ
+        }
+    });
+});
+function thanhToan() {
+    var currentUser = getCurrentUser();
+    if (!currentUser) {
+        alert('Bạn cần đăng nhập để thực hiện thanh toán.');
+        return;
+    }
+
+    if (currentUser.status === 'locked') {
+        alert('Tài khoản của bạn hiện đang bị khóa nên không thể mua hàng!');
+        addAlertBox('Tài khoản của bạn đã bị khóa bởi Admin.', '#aa0000', '#fff', 10000);
+        return;
+    }
+
+    if (!currentUser.products.length) {
+        addAlertBox('Không có mặt hàng nào cần thanh toán !!', '#ffb400', '#fff', 2000);
+        return;
+    }
+
+    // Lấy thông tin địa chỉ và mô tả
+    var street = document.getElementById('street').value;
+    var city = document.getElementById('city').value;
+    var district = document.getElementById('district').value;
+    var ward = document.getElementById('ward').value;
+    var notes = document.getElementById('notes').value;
+
+    if (!street || !city || !district || !ward) {
+        alert('Vui lòng điền đầy đủ thông tin địa chỉ.');
+        return;
+    }
+
+    if (window.confirm('Thanh toán giỏ hàng ?')) {
+        const orderCount = currentUser.donhang.length; // Đếm số lượng đơn hàng hiện có
+        const orderId = 'DH' + currentUser.id + (orderCount + 1); // Tạo mã đơn hàng duy nhất
+        currentUser.donhang.push({
+            "id": orderId,
+            "sp": currentUser.products,
+            "ngaymua": new Date(),
+            "tinhTrang": 'Đang chờ xử lý',
+            "diachi": {
+                "street": street,
+                "city": city,
+                "district": district,
+                "ward": ward
+            },
+            "notes": notes
+        });
+        currentUser.products = [];
+        setCurrentUser(currentUser);
+        setListUser(getListUser().map(u => u.username === currentUser.username ? currentUser : u));
+        capNhatMoiThu();
+        alert('Các sản phẩm đã được gửi vào đơn hàng và chờ xử lý.', '#17c671', '#fff', 4000);
+    }
 }
 
-// Gọi hàm tính tổng khi thay đổi số lượng sản phẩm
-document.querySelectorAll('input[type="number"]').forEach(input => {
-  input.addEventListener('input', calculateTotal);
-});
-
-// Gọi hàm tính tổng ngay khi tải trang
-window.onload = calculateTotal;
-
-// Dữ liệu đầy đủ về các quận, huyện và phường/xã tại TP. Hồ Chí Minh
-const cities = [
-  {
-    name: "TP HCM",
-    districts: [
-      "Quận 1",
-      "Quận 3",
-      "Quận 4",
-      "Quận 5",
-      "Quận 6",
-      "Quận 7",
-      "Quận 8",
-      "Quận 10",
-      "Quận 11",
-      "Quận 12",
-      "Bình Thạnh",
-      "Gò Vấp",
-      "Phú Nhuận",
-      "Tân Bình",
-      "Tân Phú",
-      "Bình Tân",
-      "Thủ Đức",
-      "Củ Chi",
-      "Hóc Môn",
-      "Bình Chánh",
-      "Nhà Bè",
-      "Cần Giờ",
-    ],
-  },
-];
-
-// Danh sách các phường/xã theo từng quận
-const wards = {
-  "Quận 1": ["Bến Nghé", "Bến Thành", "Cô Giang", "Đa Kao", "Nguyễn Cư Trinh", "Phạm Ngũ Lão", "Tân Định"],
-  "Quận 3": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5", "Phường 6", "Phường 7", "Phường 8", "Phường 9", "Phường 10"],
-  "Quận 4": ["Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 6", "Phường 8", "Phường 9", "Phường 10", "Phường 13"],
-};
-
-// Lấy phần tử từ DOM
-const citySelect = document.getElementById("city");
-const districtSelect = document.getElementById("district");
-const wardSelect = document.getElementById("ward");
-
-// Điền dữ liệu thành phố vào dropdown
-cities.forEach((city) => {
-  const option = document.createElement("option");
-  option.value = city.name;
-  option.textContent = city.name;
-  citySelect.appendChild(option);
-});
-
-// Xử lý khi người dùng chọn thành phố
-citySelect.addEventListener("change", () => {
-  // Xóa các tùy chọn hiện tại trong dropdown của quận, huyện và phường, xã
-  districtSelect.innerHTML = '<option value="">Chọn quận, huyện</option>';
-  wardSelect.innerHTML = '<option value="">Chọn phường, xã</option>';
-
-  // Tìm thành phố được chọn
-  const selectedCity = cities.find((city) => city.name === citySelect.value);
-  if (selectedCity) {
-    // Điền các quận, huyện vào dropdown
-    selectedCity.districts.forEach((district) => {
-      const option = document.createElement("option");
-      option.value = district;
-      option.textContent = district;
-      districtSelect.appendChild(option);
-    });
-  }
-});
-
-// Xử lý khi người dùng chọn quận, huyện
-districtSelect.addEventListener("change", () => {
-  // Xóa các tùy chọn hiện tại trong dropdown của phường, xã
-  wardSelect.innerHTML = '<option value="">Chọn phường, xã</option>';
-
-  // Điền các phường, xã dựa trên quận, huyện được chọn
-  const selectedDistrict = districtSelect.value;
-  if (wards[selectedDistrict]) {
-    wards[selectedDistrict].forEach((ward) => {
-      const option = document.createElement("option");
-      option.value = ward;
-      option.textContent = ward;
-      wardSelect.appendChild(option);
-    });
-  }
-});
-
-// Kiểm tra hợp lệ khi người dùng nhấn nút submit
-document.querySelector("form").addEventListener("submit", (e) => {
-  if (!citySelect.value || !districtSelect.value || !wardSelect.value) {
-    alert("Vui lòng điền đầy đủ thông tin địa chỉ."); // Hiển thị cảnh báo nếu thông tin chưa đầy đủ
-    e.preventDefault(); // Ngăn việc submit nếu thông tin chưa đầy đủ
-  }
-});
+function capNhatMoiThu() {
+    // Hàm này sẽ cập nhật lại giao diện và các thông tin cần thiết
+    addProductToTable(getCurrentUser());
+    // Cập nhật số lượng sản phẩm trong giỏ hàng
+    document.querySelector('.cart-number').textContent = getCurrentUser().products.length;
+}

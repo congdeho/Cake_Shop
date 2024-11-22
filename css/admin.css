@@ -460,3 +460,86 @@ input:checked+.slider:before {
   margin: auto; /* Căn giữa bảng trong thẻ chứa */
   text-align: center; /* Căn giữa văn bản bên trong bảng */
 }
+/* Định dạng cho modal */
+.modal {
+    display: none; /* Ẩn modal mặc định */
+    position: fixed; /* Định vị cố định */
+    z-index: 1000; /* Đảm bảo modal hiển thị trên cùng */
+    left: 0;
+    top: 0;
+    width: 100%; /* Chiều rộng toàn màn hình */
+    height: 100%; /* Chiều cao toàn màn hình */
+    overflow: auto; /* Cho phép cuộn nếu nội dung quá dài */
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền mờ */
+}
+
+/* Định dạng cho nội dung modal */
+.modal-content {
+    background-color: #000000;
+    margin: 10% auto; /* Căn giữa modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Chiều rộng modal */
+    max-width: 600px; /* Chiều rộng tối đa */
+    border-radius: 8px; /* Bo tròn góc */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Đổ bóng */
+}
+
+/* Định dạng cho nút đóng modal */
+.close-button {
+    color: #aaa;
+    position: absolute; /* Định vị tuyệt đối */
+    top: 10px; /* Cách trên cùng 10px */
+    right: 10px; /* Cách bên phải 10px */
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Định dạng cho tiêu đề modal */
+.modal-content h2 {
+    margin-top: 0;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Định dạng cho chi tiết đơn hàng */
+#order-details {
+    margin-top: 20px;
+}
+
+#order-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#order-details li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#order-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#order-actions button {
+    padding: 10px 20px;
+    margin:0 10px 0;
+    width: 80px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
