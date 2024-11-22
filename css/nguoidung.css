@@ -1,0 +1,172 @@
+
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 25%;
+    background-color: #fef6f5;
+    padding: 20px;
+}
+.sidebar h4 {
+  margin-left: 50%;
+  margin-top: 0;
+  cursor: pointer; /* Thêm con trỏ để chỉ ra rằng đây là phần có thể nhấn */
+  margin-right: 10px;
+}
+.sidebar h4 i {
+  margin-right: 10px;
+  color: rgb(0, 132, 142);
+}
+.main-content {
+    width: 75%;
+    padding: 0 20px 20px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.main-content h2 {
+    margin-top: 0;
+}
+
+#content-item {
+    margin-top: 20px;
+}
+
+.order-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .order-item {
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
+  }
+  
+  .shop-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .label {
+    color: #fff;
+    background-color: #f44336;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .favorite {
+    background-color: #ff4081;
+  }
+  .order-status {
+    color: #fb6767;
+  }
+  
+  .chat-button, .view-shop {
+    font-size: 14px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #008cba;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .order-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .order-details {
+    display: flex;
+    flex-direction: column;
+  }
+  .product-order {
+    display: flex;
+    border-bottom: 0.2px solid #eee;
+  }
+  .order-details img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .product-name {
+    font-weight: bold;
+  }
+  
+  .product-variant {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .order-btn {
+    text-align: right;
+  }
+  
+  .price del {
+    color: #999;
+    font-size: 14px;
+  }
+  
+  .price {
+    color: #f44336;
+    font-weight: bold;
+  }
+  
+  .total {
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    color: #333;
+  }
+  
+  .btns {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btns.received {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .btns.contact {
+    background-color: #008cba;
+    color: white;
+  }
+  
+  .btns.cancel {
+    background-color: #fbc02d;
+    color: white;
+  }
+  button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+/* Định dạng nút khi bị vô hiệu hóa */
+button:disabled {
+    background-color: #cccccc; 
+    color: #666666;          
+    cursor: not-allowed;     
+    opacity: 0.7;            
+}
