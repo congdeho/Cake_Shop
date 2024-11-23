@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/taikhoan.css">
+    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/nguoidung.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/dungchung.js"></script>
+    <script src="js/nguoidung.js"></script>
+    <script src="js/classes.js"></script>
+</head>
+
+<body>
+    <header>
+        <script>window.onload = function () {
+                khoiTao();
+            }</script>
+        <nav>
+            <ul>
+                <li>
+                    <i class="material-icons">mood</i>
+                </li>
+                <li class="item">
+
+                        <input type="text" placeholder="Tìm kiếm...">
+
+                    <div class="item2">
+                        <i class="material-icons icons ">search</i>
+                    </div>
+                </li>
+                <i class="material-icons icon red">phone</i>
+                <div class="enter">
+                    <p>0347 348 024</p>
+                </div>
+                <i class="material-icons icon red">apartment</i>
+                <div class="enter">
+                    <p>Location </p>
+                </div>
+                <div class="enter">
+                    <div class="member">
+                        <a onclick="checkTaiKhoan()">
+                            <i class="material-icons icon red">person</i>
+                        </a>
+                        <div class="menuMember hide">
+                            <a href="nguoidung.html">Trang người dùng</a>
+                            <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="enter_member">
+                    <p>Tài khoản</p>
+                </div>
+                
+                <div class="cart">
+                    <a href="cart.html">
+                        <i class="material-icons icon red">local_mall</i>
+                    </a>
+                    <span class="cart-number">0</span>
+                </div>
+                <div class="enter">
+                    <p>Giỏ hàng</p>
+                </div>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" onclick="showHome();">TRANG CHỦ</a></li>
+                <li class="dropdown">
+                    <a href="">SẢN PHẨM</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#" onclick="wholecake()();">Whole Cake</a></li>
+                        <li><a href="#" onclick="shortcake();">Short Cake</a></li>
+                        <li><a href="#" onclick="bread();">Bread And Pastry</a></li>
+                        <li><a href="#" onclick="dessert();">Dessert</a></li>
+                        <li><a href="#" onclick="gifts();">Gifts</a></li>
+                        <li><a href="#" onclick="cookies();">Cookies</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="showNews();">TIN TỨC</a></li>
+                <li><a href="#" onclick="showPromotions();">KHUYẾN MÃI</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <div class="user-sidebar">
+                <h4><i class="fas fa-user"></i> Thông tin người dùng</h4>
+            </div>
+            <div class="order-sidebar">
+                <h4><i class="fas fa-box"></i> Đơn hàng của tôi</h4>
+            </div>
+        </div>
+        <div class="main-content">
+            <h2></h2>  <!-- Hiện chữ hồ sơ của tôi hoặc đơn hàng của tôi ở đây -->
+            <div id="content-item">
+                <!-- Danh sách đơn hàng hoặc người dùng sẽ được hiển thị ở đây -->
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="overlay"></div>
+        <div id="content">
+            <div class="cont">
+                <div class="info-item">
+                    <i class="material-icons icon-small">location_on</i>
+                    561 Điện Biên Phủ, phường 25, quận Bình Thạnh
+                </div>
+                <div class="info-item">
+                    <i class="material-icons icon-small">mail</i>
+                    phamn5265@gmail.com
+                </div>
+                <div class="info-item">
+                    <i class="material-icons icon-small">phone_iphone</i>
+                    0347348024
+                </div>
+            </div>
+            <div class="cont">
+                <div class="inline-container">
+                    <img src="https://dangkywebvoibocongthuong.com/wp-content/uploads/2021/11/logo-da-thong-bao-bo-cong-thuong.png"
+                        class="logo">
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="inline-container">
+                <div>&copy; 2024 Online Store. All rights reserved.</div>
+            </div>
+            <div class="inline-container">
+                <p>Chính sách giao hàng</p>
+                <p>Chính sách trả hàng - hoàn tiền</p>
+                <p>Phương thức thanh toán</p>
+                <p>Điều khoản & điều kiện thanh toán</p>
+                <p>Bảo vệ thông tin cá nhân người tiêu dùng</p>
+            </div>
+            <div class="inline-container">
+                <p>Thông tin liên hệ</p>
+            </div>
+
+        </div>
+    </footer>
+</body>
+<script>addContainTaiKhoan()</script>
+<script src="js/product.js"></script>
+<script src="js/tabproduct.js"></script>
+<script src="data/dataquanly.js"></script>
+<script src="data/dataproduct.js"></script>
+<script src="data/user.js"></script>
+
+</html>
