@@ -90,5 +90,7 @@ function cookies() {
     displaycookies();
 }
 window.onload = function () {
-    showHome(); // Hiển thị tab Trang Chủ khi tải trang
+    showHome();
+    khoiTao();
+     // Hiển thị tab Trang Chủ khi tải trang
 };
