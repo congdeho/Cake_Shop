@@ -32,6 +32,10 @@ function setListProducts(newList) {
 function getListProducts() {
     return JSON.parse(window.localStorage.getItem('ListProducts'));
 }
+
+function getProductById(id) {
+    return list_products.find(p => p.id === id);
+}   
 function timKiemTheoMa(list, ma) {
     for (var l of list) {
         if (l.id == ma) return l;
