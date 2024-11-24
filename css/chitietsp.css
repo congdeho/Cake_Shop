@@ -1,0 +1,89 @@
+/* Tổng thể container chi tiết sản phẩm */
+.details {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Tiêu đề sản phẩm */
+.details h1 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+/* Hình ảnh sản phẩm */
+.details img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.details img:hover {
+    transform: scale(1.05);
+}
+
+/* Thông tin sản phẩm */
+.details p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* Tô đậm phần tên thuộc tính */
+.details p strong {
+    color: #000;
+    font-weight: bold;
+}
+
+/* Nút "Thêm vào giỏ hàng" */
+.details button {
+    padding: 10px 15px;
+    margin-top: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Nút "Quay lại" */
+.details button:first-child {
+    background-color: #007bff;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.details button:first-child:hover {
+    background-color: #0056b3;
+}
+
+/* Nút "Thêm vào giỏ hàng" */
+.details button:last-child {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.details button:last-child:hover {
+    background-color: #218838;
+}
+
+/* Hiệu ứng cho các nút */
+.details button i {
+    margin-right: 5px;
+    vertical-align: middle;
+}

@@ -9,82 +9,77 @@ function displayWholeCakes() {
     // Lọc các sản phẩm loại Whole Cake
     const wholeCakes = list_products.filter(product => product.type === "Whole Cake");
 
-    // Hiển thị sản phẩm (giới hạn trang ban đầu)
-    const productsPerPage = 6;  // Số lượng sản phẩm mỗi trang
-    let currentPage = 1;
+    // Tạo container hiển thị chi tiết sản phẩm
+    const productDetailsContainer = document.createElement('div');
+    productDetailsContainer.id = 'product-details';
+    productDetailsContainer.style.display = 'none'; // Ban đầu ẩn chi tiết sản phẩm
 
-    // Hàm hiển thị các sản phẩm của trang hiện tại
-    function showProducts(page) {
-        const startIndex = (page - 1) * productsPerPage;
-        const endIndex = page * productsPerPage;
-        const productsToDisplay = wholeCakes.slice(startIndex, endIndex);
+    // Hàm hiển thị chi tiết sản phẩm
+    function showProductDetails(product) {
+        productDetailsContainer.innerHTML = `
+            <div class="details">
+                <button onclick="hideProductDetails()">Quay lại</button>
+                <h1>${product.name}</h1>
+                <img src="${product.image}" alt="${product.name}">
+                <p><strong>Giá:</strong> ${product.price} VND</p>
+                <p><strong>Mô tả:</strong> ${product.description}</p>
+                <p><strong>Hương vị:</strong> ${product.taste}</p>
+                <p><strong>Kích thước:</strong> ${product.size}</p>
+                <p><strong>Khuyến mãi:</strong> ${product.promo.name}</p>
+                <button onclick="themVaoGioHang(${product.id}, '${product.name}')">Thêm vào giỏ hàng</button>
+            </div>
+        `;
+        productContainer.style.display = 'none'; // Ẩn danh sách sản phẩm
+        productDetailsContainer.style.display = 'block'; // Hiển thị chi tiết sản phẩm
+    }
 
-        productsToDisplay.forEach(product => {
-            const productDiv = document.createElement('div');
-            productDiv.classList.add('product-item');
-            
-            // Nội dung sản phẩm
-            productDiv.innerHTML = `
-                <div class="product2">
-                    <div class="product">
-                        <img src="${product.image}" alt="${product.name}" class="zoom-image">
-                        <h3>${product.name}</h3>
-                        <div class="it">
-                            <div class="it1">${product.price}</div>
-                            <button class="it2" onclick="themVaoGioHang(${product.id}, '${product.name}');">
-                                <i class="material-icons">shopping_cart</i>
-                            </button>
-                        </div>
+    // Hàm ẩn chi tiết sản phẩm
+    function hideProductDetails() {
+        productDetailsContainer.style.display = 'none'; // Ẩn chi tiết sản phẩm
+        productContainer.style.display = 'block'; // Hiển thị lại danh sách sản phẩm
+    }
+
+    // Thêm vào `window` để có thể gọi trong HTML
+    window.hideProductDetails = hideProductDetails;
+
+    // Hiển thị danh sách sản phẩm
+    wholeCakes.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('product-item');
+        
+        // Nội dung sản phẩm
+        productDiv.innerHTML = `
+            <div class="product2">
+                <div class="product">
+                    <img src="${product.image}" alt="${product.name}" class="zoom-image" onclick="showProductDetailsById(${product.id})">
+                    <h3>${product.name}</h3>
+                    <div class="it">
+                        <div class="it1">${product.price}</div>
+                        <button class="it2" onclick="themVaoGioHang(${product.id}, '${product.name}');">
+                            <i class="material-icons">shopping_cart</i>
+                        </button>
                     </div>
                 </div>
-            `;
-            
-            // Thêm sản phẩm vào container
-            productContainer.appendChild(productDiv);
-        });
-    }
+            </div>
+        `;
+        
+        // Thêm sản phẩm vào container
+        productContainer.appendChild(productDiv);
+    });
 
-    // Hiển thị trang đầu tiên
-    showProducts(currentPage);
+    // Hàm hiển thị chi tiết sản phẩm từ ID
+    window.showProductDetailsById = function (id) {
+        const product = list_products.find(p => p.id === id);
+        if (product) {
+            showProductDetails(product);
+        }
+    };
 
-    // Tạo nút chuyển trang
-    const paginationContainer = document.createElement('div');
-    paginationContainer.classList.add('pagination');
-
-    const totalPages = Math.ceil(wholeCakes.length / productsPerPage);
-
-    // Hàm chuyển trang
-    function handlePageChange(page) {
-        if (page < 1 || page > totalPages) return;
-        currentPage = page;
-        productContainer.innerHTML = ''; // Xóa các sản phẩm hiện tại
-        showProducts(page);
-    }
-
-    // Tạo nút trước
-    const prevButton = document.createElement('button');
-    prevButton.textContent = 'Trang trước';
-    prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-    paginationContainer.appendChild(prevButton);
-
-    // Tạo các nút số trang
-    for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = i;
-        pageButton.addEventListener('click', () => handlePageChange(i));
-        paginationContainer.appendChild(pageButton);
-    }
-
-    // Tạo nút sau
-    const nextButton = document.createElement('button');
-    nextButton.textContent = 'Trang sau';
-    nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-    paginationContainer.appendChild(nextButton);
-
-    // Thêm container chứa sản phẩm và nút chuyển trang vào tab
+    // Thêm container sản phẩm và chi tiết vào tab
     wholeCakeTab.appendChild(productContainer);
-    wholeCakeTab.appendChild(paginationContainer);
+    wholeCakeTab.appendChild(productDetailsContainer);
 }
+
 
 function displayshortcake() {
     const shortCakeTab = document.getElementById('short-cake');
