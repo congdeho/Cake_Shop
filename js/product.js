@@ -53,24 +53,43 @@ function displayWholeCakes() {
         if (page < 1 || page > totalPages) return;
         currentPage = page;
         showProducts(page);
+        updatePagination(); // Cập nhật lại phân trang
     }
 
-    const prevButton = document.createElement('button');
-    prevButton.textContent = 'Trang trước';
-    prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-    paginationContainer.appendChild(prevButton);
+    function updatePagination() {
+        paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
-    for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = i;
-        pageButton.addEventListener('click', () => handlePageChange(i));
-        paginationContainer.appendChild(pageButton);
+        // Nút "Trang trước"
+        if (currentPage > 1) {
+            const prevButton = document.createElement('button');
+            prevButton.textContent = '❮';
+            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+            paginationContainer.appendChild(prevButton);
+        }
+
+        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+        const startPage = Math.max(1, currentPage - pageRange);
+        const endPage = Math.min(totalPages, currentPage + pageRange);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            if (i === currentPage) {
+                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            }
+            pageButton.addEventListener('click', () => handlePageChange(i));
+            paginationContainer.appendChild(pageButton);
+        }
+
+        // Nút "Trang sau"
+        if (currentPage < totalPages) {
+            const nextButton = document.createElement('button');
+            nextButton.textContent = '❯';
+            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+            paginationContainer.appendChild(nextButton);
+        }
     }
-
-    const nextButton = document.createElement('button');
-    nextButton.textContent = 'Trang sau';
-    nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-    paginationContainer.appendChild(nextButton);
 
     // Hiển thị chi tiết sản phẩm
     function showProductDetails(product) {
@@ -111,6 +130,9 @@ function displayWholeCakes() {
     wholeCakeTab.appendChild(productContainer);
     wholeCakeTab.appendChild(productDetailsContainer);
     wholeCakeTab.appendChild(paginationContainer);
+
+    // Cập nhật phân trang ban đầu
+    updatePagination();
 }
 
 
@@ -125,18 +147,18 @@ function displayshortcake() {
     productDetailsContainer.id = 'product-details';
     productDetailsContainer.style.display = 'none';
 
-    const wholeCakes = list_products.filter(product => product.type === "Short Cake");
+    const shortCakes = list_products.filter(product => product.type === "Short Cake");
 
     // Phân trang
     const productsPerPage = 6;
     let currentPage = 1;
-    const totalPages = Math.ceil(wholeCakes.length / productsPerPage);
+    const totalPages = Math.ceil(shortCakes.length / productsPerPage);
 
     // Hiển thị danh sách sản phẩm theo trang
     function showProducts(page) {
         const startIndex = (page - 1) * productsPerPage;
         const endIndex = page * productsPerPage;
-        const productsToDisplay = wholeCakes.slice(startIndex, endIndex);
+        const productsToDisplay = shortCakes.slice(startIndex, endIndex);
 
         productContainer.innerHTML = ''; // Xóa danh sách cũ
 
@@ -169,24 +191,43 @@ function displayshortcake() {
         if (page < 1 || page > totalPages) return;
         currentPage = page;
         showProducts(page);
+        updatePagination(); // Cập nhật lại phân trang
     }
 
-    const prevButton = document.createElement('button');
-    prevButton.textContent = 'Trang trước';
-    prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-    paginationContainer.appendChild(prevButton);
+    function updatePagination() {
+        paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
-    for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = i;
-        pageButton.addEventListener('click', () => handlePageChange(i));
-        paginationContainer.appendChild(pageButton);
+        // Nút "Trang trước"
+        if (currentPage > 1) {
+            const prevButton = document.createElement('button');
+            prevButton.textContent = '❮';
+            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+            paginationContainer.appendChild(prevButton);
+        }
+
+        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+        const startPage = Math.max(1, currentPage - pageRange);
+        const endPage = Math.min(totalPages, currentPage + pageRange);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            if (i === currentPage) {
+                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            }
+            pageButton.addEventListener('click', () => handlePageChange(i));
+            paginationContainer.appendChild(pageButton);
+        }
+
+        // Nút "Trang sau"
+        if (currentPage < totalPages) {
+            const nextButton = document.createElement('button');
+            nextButton.textContent = '❯';
+            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+            paginationContainer.appendChild(nextButton);
+        }
     }
-
-    const nextButton = document.createElement('button');
-    nextButton.textContent = 'Trang sau';
-    nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-    paginationContainer.appendChild(nextButton);
 
     // Hiển thị chi tiết sản phẩm
     function showProductDetails(product) {
@@ -214,7 +255,7 @@ function displayshortcake() {
 
     // Gắn vào `window` để gọi từ HTML
     window.showProductDetailsById = function (id) {
-        const product = wholeCakes.find(p => p.id === id);
+        const product = shortCakes.find(p => p.id === id);
         if (product) {
             showProductDetails(product);
         }
@@ -227,6 +268,9 @@ function displayshortcake() {
     wholeCakeTab.appendChild(productContainer);
     wholeCakeTab.appendChild(productDetailsContainer);
     wholeCakeTab.appendChild(paginationContainer);
+
+    // Cập nhật phân trang ban đầu
+    updatePagination();
 }
 
 
@@ -243,18 +287,18 @@ function displaybread() {
     productDetailsContainer.id = 'product-details';
     productDetailsContainer.style.display = 'none';
 
-    const wholeCakes = list_products.filter(product => product.type === "Bread and Pastry");
+    const breadAndPastry = list_products.filter(product => product.type === "Bread and Pastry");
 
     // Phân trang
     const productsPerPage = 6;
     let currentPage = 1;
-    const totalPages = Math.ceil(wholeCakes.length / productsPerPage);
+    const totalPages = Math.ceil(breadAndPastry.length / productsPerPage);
 
     // Hiển thị danh sách sản phẩm theo trang
     function showProducts(page) {
         const startIndex = (page - 1) * productsPerPage;
         const endIndex = page * productsPerPage;
-        const productsToDisplay = wholeCakes.slice(startIndex, endIndex);
+        const productsToDisplay = breadAndPastry.slice(startIndex, endIndex);
 
         productContainer.innerHTML = ''; // Xóa danh sách cũ
 
@@ -287,24 +331,43 @@ function displaybread() {
         if (page < 1 || page > totalPages) return;
         currentPage = page;
         showProducts(page);
+        updatePagination(); // Cập nhật lại phân trang
     }
 
-    const prevButton = document.createElement('button');
-    prevButton.textContent = 'Trang trước';
-    prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-    paginationContainer.appendChild(prevButton);
+    function updatePagination() {
+        paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
-    for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = i;
-        pageButton.addEventListener('click', () => handlePageChange(i));
-        paginationContainer.appendChild(pageButton);
+        // Nút "Trang trước"
+        if (currentPage > 1) {
+            const prevButton = document.createElement('button');
+            prevButton.textContent = '❮';
+            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+            paginationContainer.appendChild(prevButton);
+        }
+
+        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+        const startPage = Math.max(1, currentPage - pageRange);
+        const endPage = Math.min(totalPages, currentPage + pageRange);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            if (i === currentPage) {
+                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            }
+            pageButton.addEventListener('click', () => handlePageChange(i));
+            paginationContainer.appendChild(pageButton);
+        }
+
+        // Nút "Trang sau"
+        if (currentPage < totalPages) {
+            const nextButton = document.createElement('button');
+            nextButton.textContent = '❯';
+            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+            paginationContainer.appendChild(nextButton);
+        }
     }
-
-    const nextButton = document.createElement('button');
-    nextButton.textContent = 'Trang sau';
-    nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-    paginationContainer.appendChild(nextButton);
 
     // Hiển thị chi tiết sản phẩm
     function showProductDetails(product) {
@@ -332,7 +395,7 @@ function displaybread() {
 
     // Gắn vào `window` để gọi từ HTML
     window.showProductDetailsById = function (id) {
-        const product = wholeCakes.find(p => p.id === id);
+        const product = breadAndPastry.find(p => p.id === id);
         if (product) {
             showProductDetails(product);
         }
@@ -345,6 +408,9 @@ function displaybread() {
     wholeCakeTab.appendChild(productContainer);
     wholeCakeTab.appendChild(productDetailsContainer);
     wholeCakeTab.appendChild(paginationContainer);
+
+    // Cập nhật phân trang ban đầu
+    updatePagination();
 }
 
 
@@ -359,18 +425,18 @@ function displaydessert() {
     productDetailsContainer.id = 'product-details';
     productDetailsContainer.style.display = 'none';
 
-    const wholeCakes = list_products.filter(product => product.type === "Dessert");
+    const desserts = list_products.filter(product => product.type === "Dessert");
 
     // Phân trang
     const productsPerPage = 6;
     let currentPage = 1;
-    const totalPages = Math.ceil(wholeCakes.length / productsPerPage);
+    const totalPages = Math.ceil(desserts.length / productsPerPage);
 
     // Hiển thị danh sách sản phẩm theo trang
     function showProducts(page) {
         const startIndex = (page - 1) * productsPerPage;
         const endIndex = page * productsPerPage;
-        const productsToDisplay = wholeCakes.slice(startIndex, endIndex);
+        const productsToDisplay = desserts.slice(startIndex, endIndex);
 
         productContainer.innerHTML = ''; // Xóa danh sách cũ
 
@@ -403,24 +469,43 @@ function displaydessert() {
         if (page < 1 || page > totalPages) return;
         currentPage = page;
         showProducts(page);
+        updatePagination(); // Cập nhật lại phân trang
     }
 
-    const prevButton = document.createElement('button');
-    prevButton.textContent = 'Trang trước';
-    prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-    paginationContainer.appendChild(prevButton);
+    function updatePagination() {
+        paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
-    for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = i;
-        pageButton.addEventListener('click', () => handlePageChange(i));
-        paginationContainer.appendChild(pageButton);
+        // Nút "Trang trước"
+        if (currentPage > 1) {
+            const prevButton = document.createElement('button');
+            prevButton.textContent = '❮';
+            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+            paginationContainer.appendChild(prevButton);
+        }
+
+        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+        const startPage = Math.max(1, currentPage - pageRange);
+        const endPage = Math.min(totalPages, currentPage + pageRange);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            if (i === currentPage) {
+                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            }
+            pageButton.addEventListener('click', () => handlePageChange(i));
+            paginationContainer.appendChild(pageButton);
+        }
+
+        // Nút "Trang sau"
+        if (currentPage < totalPages) {
+            const nextButton = document.createElement('button');
+            nextButton.textContent = '❯';
+            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+            paginationContainer.appendChild(nextButton);
+        }
     }
-
-    const nextButton = document.createElement('button');
-    nextButton.textContent = 'Trang sau';
-    nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-    paginationContainer.appendChild(nextButton);
 
     // Hiển thị chi tiết sản phẩm
     function showProductDetails(product) {
@@ -448,7 +533,7 @@ function displaydessert() {
 
     // Gắn vào `window` để gọi từ HTML
     window.showProductDetailsById = function (id) {
-        const product = wholeCakes.find(p => p.id === id);
+        const product = desserts.find(p => p.id === id);
         if (product) {
             showProductDetails(product);
         }
@@ -461,7 +546,11 @@ function displaydessert() {
     wholeCakeTab.appendChild(productContainer);
     wholeCakeTab.appendChild(productDetailsContainer);
     wholeCakeTab.appendChild(paginationContainer);
+
+    // Cập nhật phân trang ban đầu
+    updatePagination();
 }
+
 
 
 // Hàm hiển thị các sản phẩm Gifts
@@ -476,18 +565,18 @@ function displaygifts() {
     productDetailsContainer.id = 'product-details';
     productDetailsContainer.style.display = 'none';
 
-    const wholeCakes = list_products.filter(product => product.type === "Gifts");
+    const gifts = list_products.filter(product => product.type === "Gifts");
 
     // Phân trang
     const productsPerPage = 6;
     let currentPage = 1;
-    const totalPages = Math.ceil(wholeCakes.length / productsPerPage);
+    const totalPages = Math.ceil(gifts.length / productsPerPage);
 
     // Hiển thị danh sách sản phẩm theo trang
     function showProducts(page) {
         const startIndex = (page - 1) * productsPerPage;
         const endIndex = page * productsPerPage;
-        const productsToDisplay = wholeCakes.slice(startIndex, endIndex);
+        const productsToDisplay = gifts.slice(startIndex, endIndex);
 
         productContainer.innerHTML = ''; // Xóa danh sách cũ
 
@@ -520,24 +609,43 @@ function displaygifts() {
         if (page < 1 || page > totalPages) return;
         currentPage = page;
         showProducts(page);
+        updatePagination(); // Cập nhật lại phân trang
     }
 
-    const prevButton = document.createElement('button');
-    prevButton.textContent = 'Trang trước';
-    prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-    paginationContainer.appendChild(prevButton);
+    function updatePagination() {
+        paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
-    for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = i;
-        pageButton.addEventListener('click', () => handlePageChange(i));
-        paginationContainer.appendChild(pageButton);
+        // Nút "Trang trước"
+        if (currentPage > 1) {
+            const prevButton = document.createElement('button');
+            prevButton.textContent = '❮';
+            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+            paginationContainer.appendChild(prevButton);
+        }
+
+        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+        const startPage = Math.max(1, currentPage - pageRange);
+        const endPage = Math.min(totalPages, currentPage + pageRange);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            if (i === currentPage) {
+                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            }
+            pageButton.addEventListener('click', () => handlePageChange(i));
+            paginationContainer.appendChild(pageButton);
+        }
+
+        // Nút "Trang sau"
+        if (currentPage < totalPages) {
+            const nextButton = document.createElement('button');
+            nextButton.textContent = '❯';
+            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+            paginationContainer.appendChild(nextButton);
+        }
     }
-
-    const nextButton = document.createElement('button');
-    nextButton.textContent = 'Trang sau';
-    nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-    paginationContainer.appendChild(nextButton);
 
     // Hiển thị chi tiết sản phẩm
     function showProductDetails(product) {
@@ -565,7 +673,7 @@ function displaygifts() {
 
     // Gắn vào `window` để gọi từ HTML
     window.showProductDetailsById = function (id) {
-        const product = wholeCakes.find(p => p.id === id);
+        const product = gifts.find(p => p.id === id);
         if (product) {
             showProductDetails(product);
         }
@@ -578,6 +686,9 @@ function displaygifts() {
     wholeCakeTab.appendChild(productContainer);
     wholeCakeTab.appendChild(productDetailsContainer);
     wholeCakeTab.appendChild(paginationContainer);
+
+    // Cập nhật phân trang ban đầu
+    updatePagination();
 }
 
 
@@ -600,7 +711,7 @@ function displaycookies() {
     let currentPage = 1;
     const totalPages = Math.ceil(wholeCakes.length / productsPerPage);
 
-    // Hiển thị danh sách sản phẩm theo trang
+    // Hàm hiển thị sản phẩm theo trang
     function showProducts(page) {
         const startIndex = (page - 1) * productsPerPage;
         const endIndex = page * productsPerPage;
@@ -629,32 +740,58 @@ function displaycookies() {
         });
     }
 
-    // Tạo phân trang
-    const paginationContainer = document.createElement('div');
-    paginationContainer.classList.add('pagination');
+    // Hàm tạo phân trang
+    function createPagination(currentPage, totalPages) {
+        const paginationContainer = document.createElement('div');
+        paginationContainer.classList.add('pagination');
 
+        // Nút "Trang trước"
+        if (currentPage > 1) {
+            const prevButton = document.createElement('button');
+            prevButton.textContent = '❮';
+            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+            paginationContainer.appendChild(prevButton);
+        }
+
+        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+        const startPage = Math.max(1, currentPage - pageRange);
+        const endPage = Math.min(totalPages, currentPage + pageRange);
+
+        for (let i = startPage; i <= endPage; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            if (i === currentPage) {
+                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            }
+            pageButton.addEventListener('click', () => handlePageChange(i));
+            paginationContainer.appendChild(pageButton);
+        }
+
+        // Nút "Trang sau"
+        if (currentPage < totalPages) {
+            const nextButton = document.createElement('button');
+            nextButton.textContent = '❯';
+            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+            paginationContainer.appendChild(nextButton);
+        }
+
+        return paginationContainer;
+    }
+
+    // Xử lý sự kiện thay đổi trang
     function handlePageChange(page) {
         if (page < 1 || page > totalPages) return;
         currentPage = page;
         showProducts(page);
+        updatePagination();
     }
 
-    const prevButton = document.createElement('button');
-    prevButton.textContent = 'Trang trước';
-    prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-    paginationContainer.appendChild(prevButton);
-
-    for (let i = 1; i <= totalPages; i++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = i;
-        pageButton.addEventListener('click', () => handlePageChange(i));
-        paginationContainer.appendChild(pageButton);
+    // Cập nhật phân trang
+    function updatePagination() {
+        const paginationContainer = createPagination(currentPage, totalPages);
+        wholeCakeTab.appendChild(paginationContainer);
     }
-
-    const nextButton = document.createElement('button');
-    nextButton.textContent = 'Trang sau';
-    nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-    paginationContainer.appendChild(nextButton);
 
     // Hiển thị chi tiết sản phẩm
     function showProductDetails(product) {
@@ -694,7 +831,9 @@ function displaycookies() {
     showProducts(currentPage);
     wholeCakeTab.appendChild(productContainer);
     wholeCakeTab.appendChild(productDetailsContainer);
-    wholeCakeTab.appendChild(paginationContainer);
+
+    // Cập nhật phân trang ban đầu
+    updatePagination();
 }
 
 

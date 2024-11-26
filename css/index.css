@@ -22,22 +22,48 @@ nav {
 }
 
 .item {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-}
-.item input
-{
-    width: 250px;
-    background-color: white;
-    height: 30px;
-    color: black;
-    text-align: left;
     margin-left: 70px;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border: none;
-    outline: none;
+    margin-bottom: 6px;
+}
+form {
+    display: flex; /* Align input and button horizontally */
+    align-items: center; /* Align with adjacent items */
+    height: 30px; /* Adjust height to match other items */
 
+}
+
+.search-input {
+    width: 300px; /* Adjust width */
+    height: 100%; /* Match the form height */
+    font-size: 16px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px 0 0 25px; /* Rounded corners */
+    outline: none;
+    box-sizing: border-box;
+}
+
+.search-button {
+    height: 100%; /* Match the form height */
+    width: 50px; /* Adjust button width */
+    background-color: #3174bb;
+    border: none; /* Remove border */
+    border-radius: 0 25px 25px 0; /* Rounded corners on the right */
+    display: flex; /* Center icon */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.search-button i {
+    font-size: 24px; /* Adjust icon size */
+    color: white;
+}
+
+.search-button:hover {
+    background-color: #255a8f; /* Darker blue on hover */
 }
 .item1 {
     width: 250px;
@@ -564,6 +590,7 @@ footer div {
     /* Màu sắc của icon */
     font-size: 30px;
     /* Kích thước icon */
+   
 }
 
 /* Hiệu ứng hover cho nút đóng */
@@ -595,4 +622,79 @@ footer div {
 }
 .cart a {
     text-decoration: none; /* Loại bỏ gạch dưới */
+}
+
+
+.pagination-button {
+    padding: 10px 15px; 
+    font-size: 14px;
+    color: #3174bb;
+    background-color: #fff; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: all 0.3s ease; 
+}
+
+.pagination-button:hover {
+    background-color: #3174bb; 
+    color: #fff; 
+    border-color: #3174bb;
+}
+
+.pagination-button.active {
+    background-color: #3174bb; 
+    color: #fff; 
+    border-color: #3174bb;
+    font-weight: bold; 
+}
+
+.pagination-button:disabled {
+    background-color: #f1f1f1; 
+    color: #aaa;
+    border-color: #ddd; 
+    cursor: not-allowed; 
+}
+/* CSS cho phân trang */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 3px;
+    
+}
+
+.pagination button {
+    padding: 10px 15px; 
+    font-size: 12px; 
+    color: #3174bb; 
+    background-color: #fff; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+
+}
+
+.pagination button:hover {
+    background-color: #3174bb; 
+    color: #fff; 
+    border-color: #3174bb;
+}
+
+/* Làm nổi bật nút phân trang hiện tại */
+.pagination button.active {
+    background-color: #3174bb;
+    color: #fff;
+    border-color: #3174bb;
+    font-weight: bold; 
+}
+
+
+.pagination button:disabled {
+    background-color: #f1f1f1;
+    color: #aaa;
+    border-color: #ddd;
+    cursor: not-allowed; 
 }

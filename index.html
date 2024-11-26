@@ -8,28 +8,34 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/taikhoan.css">
     <link rel="stylesheet" href="css/product.css">
-    <link rel="stylesheet" href="css/chitietsp.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="js/index.js"></script>
     <script src="js/dungchung.js"></script>
-    <script src="js/classes.js"></script>
+    <script src="js/classes.js"></script><link rel="shortcut icon" href="#">
+
+
 </head>
 
 <body>
     <header>
+        <script>window.onload = function () {
+                khoiTao();
+            }</script>
         <nav>
             <ul>
                 <li>
                     <i class="material-icons">mood</i>
                 </li>
                 <li class="item">
-
-                        <input type="text" placeholder="Tìm kiếm...">
-
-                    <div class="item2">
-                        <i class="material-icons icons ">search</i>
-                    </div>
+                   
+                    <form action="/search" method="GET">
+                        <input type="text" name="query" placeholder="Tìm kiếm..." class="search-input">
+                        <button type="submit" class="search-button">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </form>
                 </li>
+
                 <i class="material-icons icon red">phone</i>
                 <div class="enter">
                     <p>0347 348 024</p>
@@ -52,7 +58,7 @@
                 <div class="enter_member">
                     <p>Tài khoản</p>
                 </div>
-                
+
                 <div class="cart">
                     <a href="cart.html">
                         <i class="material-icons icon red">local_mall</i>
@@ -105,35 +111,49 @@
         <button class="next" onclick="nextSlide()">❯</button>
     </div>
     <section id="product-section">
+        <div id="search-results-tab" class="product-tab" style="display: none;">
+            <div id="search-results"></div>
+            <div id="pagination"></div>
+        </div>
         <div id="home" class="product-tab" style="display:none;"> <!-- Nội dung cho TRANG CHỦ -->
+
             <div class="home-container">
                 <div class="home">
                     <img src="image/anhbia3.png" class="picture" alt="">
                     <div class="adv">RỦ RÊ TIỆC CHILL - NGẠI CHI VỀ GIÁ 😆<br>
-                        🍩 Chiêu đãi các "cạ cứng" của Paris Baguette với vô vàn bánh ngon, đa dạng từ bánh mặn đến bánh ngọt, bánh mì đến bánh ngàn lớp.<br>
-                        😍 Thỏa sức lựa chọn 5 bánh bất kì chỉ với 150k, cho bữa tiệc xế chiều thịnh soạn cùng bạn bè, đồng nghiệp thật là chill ✌️<br>
+                        🍩 Chiêu đãi các "cạ cứng" của Paris Baguette với vô vàn bánh ngon, đa dạng từ bánh mặn đến bánh
+                        ngọt, bánh mì đến bánh ngàn lớp.<br>
+                        😍 Thỏa sức lựa chọn 5 bánh bất kì chỉ với 150k, cho bữa tiệc xế chiều thịnh soạn cùng bạn bè,
+                        đồng nghiệp thật là chill ✌️<br>
                         📌 Chương trình diễn ra đến hết ngày 31/03/2024.<br>
                         Chỉ áp dụng khi mua trực tiếp tại cửa hàng.
-                        Không áp dụng đồng thời cùng các chương trình khuyến mãi hkác.</div>
+                        Không áp dụng đồng thời cùng các chương trình khuyến mãi khác.</div>
                 </div>
-                
+
                 <div class="home">
                     <img src="image/anhbia2.png" class="picture" alt="">
                     <div class="adv">Nắng không còn gay gắt như độ giữa mùa 🔆<br>
                         Chẳng mấy chốc nữa mà mùa Thu sang.<br>
-                        😍 Điểm thêm chút ngọt ngào, vàng tươi cho ngày cuối hạ thôi ảm đạm với những chiếc bánh Bắp bạn nhé!<br>
-                        🌽 Thiên đường "Bắp" với đủ loại từ bánh ngọt đầy ắp kem, bánh ngàn lớp nướng thơm lừng, cho đến bánh kem và pudding bắp béo ngậy.<br>
-                        🎉 Ghé ngay cửa hàng gần nhất để trải nghiệm những sản phẩm mới cùng nhiều chương trình khuyến mãi hấp dẫn kèm theo nhé!</div>
+                        😍 Điểm thêm chút ngọt ngào, vàng tươi cho ngày cuối hạ thôi ảm đạm với những chiếc bánh Bắp bạn
+                        nhé!<br>
+                        🌽 Thiên đường "Bắp" với đủ loại từ bánh ngọt đầy ắp kem, bánh ngàn lớp nướng thơm lừng, cho đến
+                        bánh kem và pudding bắp béo ngậy.<br>
+                        🎉 Ghé ngay cửa hàng gần nhất để trải nghiệm những sản phẩm mới cùng nhiều chương trình khuyến
+                        mãi hấp dẫn kèm theo nhé!</div>
                 </div>
 
                 <div class="home">
                     <img src="image/anhbia1.jpg" class="picture" alt="">
                     <div class="adv">🎂 FRUITY FRESH CREAM CAKE luôn chiều lòng được mọi thực khách.<br>
-                        Không chỉ bởi vẻ ngoài rực rỡ, mà hương vị lại càng đặc biệt khó quên với nhân cocktail trái cây len lõi trong từng lớp bánh bông lan mềm ẩm, được gói gọn trong lớp kem sữa tươi trắng nõn và ngọt ngào 😍<br>
-                        ✨ FRUITY FRESH CREAM CAKE là lựa chọn lý tưởng cho các buổi tiệc, lễ kỷ niệm, hay đơn giản là một bữa xế chiều để thưởng thức cùng gia đình, bạn bè.<br>
+                        Không chỉ bởi vẻ ngoài rực rỡ, mà hương vị lại càng đặc biệt khó quên với nhân cocktail trái cây
+                        len lõi trong từng lớp bánh bông lan mềm ẩm, được gói gọn trong lớp kem sữa tươi trắng nõn và
+                        ngọt ngào 😍<br>
+                        ✨ FRUITY FRESH CREAM CAKE là lựa chọn lý tưởng cho các buổi tiệc, lễ kỷ niệm, hay đơn giản là
+                        một bữa xế chiều để thưởng thức cùng gia đình, bạn bè.<br>
                         🎂 Tủ bánh kem của Paris Baguette luôn được "làm mới" mỗi ngày chờ bạn ghé qua!</div>
                 </div>
-            </div>        </div>
+            </div>
+        </div>
         <div id="news" class="product-tab" style="display:none;"> <!-- Nội dung cho TIN TỨC -->
             <h1>Tin Tức Mới Nhất</h1>
             <p>Cập nhật tin tức và sự kiện mới nhất từ cửa hàng của chúng tôi.</p>
@@ -153,6 +173,35 @@
                 <div class="list" onclick="dessert();">Dessert</div>
                 <div class="list" onclick="gifts();">Gifts</div>
                 <div class="list" onclick="cookies();">Cookies</div>
+
+
+                <div id="filter-controls">
+                    <label for="price-range">Chọn khoảng giá:</label>
+                    <select id="price-range">
+                        <option value="">-- Chọn giá --</option>
+                        <option value="0-50000">Dưới 50k</option>
+                        <option value="50000-100000">50k - 100k</option>
+                        <option value="100000-200000">100k - 200k</option>
+                        <option value="200000-Infinity">Trên 200k</option>
+                    </select>
+
+                    <label for="size-select">Chọn kích thước:</label>
+                    <select id="size-select">
+                        <option value="">-- Chọn kích thước --</option>
+                        <option value="16cm">16cm</option>
+                        <option value="12cm">12cm</option>
+                        <option value="6cm">6cm</option>
+                        <option value="20cm">20cm</option>
+                        <option value="22cm">22cm</option>
+                        <option value="200ml">200ml</option>
+                    </select>
+
+                    <button id="apply-filters">Lọc</button>
+                </div>
+
+
+
+
             </div>
         </div>
 
@@ -174,7 +223,11 @@
         <div id="cookies" class="product-tab" style="display:none;">
             <!-- Các sản phẩm Cookies sẽ được hiển thị ở đây -->
         </div>
-        <div class="pagination" id="pagination"></div> 
+        <div id="filtered-products" class="product-tab" style="display:none;">
+            <!-- Kết quả lọc sẽ hiển thị ở đây -->
+        </div>
+
+        <div class="pagination" id="pagination"></div>
         </div>
     </section>
     <footer>
@@ -225,5 +278,9 @@
 <script src="data/dataquanly.js"></script>
 <script src="data/dataproduct.js"></script>
 <script src="data/user.js"></script>
+<script src="js/timkiem.js"></script>
+<script src="js/filter.js"></script>
+
+
 
 </html>

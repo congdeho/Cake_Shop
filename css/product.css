@@ -47,6 +47,7 @@
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow:hidden;
 }
 
 
@@ -117,7 +118,7 @@
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.4);
     position: sticky;
     top: 20px;
-    height: 400px;
+    height: 550px;
     margin-left: 20px;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -165,4 +166,170 @@
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 14px;
     padding: 20px;
+}
+
+/* Mỗi sản phẩm trong kết quả tìm kiếm */
+.search-result-item {
+    display: inline-block;
+    width: calc(30% - 100px);
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ảnh sản phẩm */
+.search-result-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng phóng to khi hover vào ảnh */
+.search-result-item img:hover {
+    transform: scale(1.15);
+}
+
+/* Tiêu đề sản phẩm */
+.search-result-item h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+/* Giá sản phẩm */
+.search-result-item p strong {
+    font-weight: bold;
+    color: #007bff; /* Màu giá nổi bật */
+    font-size: 14px;
+}
+
+/* Phần khuyến mãi hoặc các thông tin bổ sung */
+.search-result-item .it {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.search-result-item .it1 {
+    width: 100px;
+    background-color: rgba(165, 178, 183, 0.8);
+    height: 30px;
+    color: black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.4);
+    font-size: 15px;
+}
+
+.search-result-item .it2 {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(119, 164, 167);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+.pagination-button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.pagination-button.active {
+    background-color: #3174bb; /* Màu nền khi trang được chọn */
+    color: white; /* Màu chữ khi trang được chọn */
+    border-color:#3174bb; /* Đổi màu viền khi trang được chọn */
+}
+
+.pagination-button:hover {
+    background-color: #ddd; /* Màu nền khi hover vào nút */
+}
+/* Lớp để ẩn phần tử */
+.hidden {
+    display: none;
+}
+.filter-size-section {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+#size-select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+#filter-controls {
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo cột */
+    align-items: center; /* Canh giữa theo chiều ngang */
+    margin: 20px auto; /* Khoảng cách trên dưới và canh giữa */
+    padding: 20px;
+    background-color: rgb(202, 226, 226); /* Màu nền đồng bộ */
+    border-radius: 10px; /* Bo tròn góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
+    width: 80%; /* Chiếm 80% chiều rộng container */
+}
+
+#filter-controls label {
+    font-size: 18px; /* Kích thước chữ */
+    color: #333; /* Màu chữ */
+    margin-bottom: 10px; /* Khoảng cách dưới */
+}
+
+#filter-controls select,
+#filter-controls button {
+    width: 80%; /* Chiều rộng đồng bộ */
+    padding: 10px; /* Khoảng cách bên trong */
+    margin: 10px 0; /* Khoảng cách trên dưới */
+    font-size: 16px; /* Kích thước chữ */
+    border: 1px solid #ccc; /* Viền */
+    border-radius: 5px; /* Bo góc */
+    background-color: #fff; /* Màu nền */
+    cursor: pointer; /* Thêm hiệu ứng con trỏ */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    transition: background-color 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+#filter-controls select:hover,
+#filter-controls button:hover {
+    background-color: rgb(146, 162, 162); /* Màu khi hover */
+    color: white; /* Màu chữ khi hover */
+}
+
+#filter-controls button {
+    font-weight: bold; /* Chữ đậm cho nút */
+}
+
+.filter-size-section {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+#size-select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
 }
