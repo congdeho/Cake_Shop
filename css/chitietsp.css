@@ -1,89 +1,75 @@
-/* Tổng thể container chi tiết sản phẩm */
+/* Container chính cho chi tiết sản phẩm */
 .details {
-    margin: 20px auto;
     max-width: 800px;
+    margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-    text-align: center;
-    overflow: hidden;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Nút "Quay lại" */
+.details button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.details button:hover {
+    background-color: #e55b4d;
 }
 
 /* Tiêu đề sản phẩm */
 .details h1 {
-    font-size: 26px;
+    font-size: 24px;
     color: #333;
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-transform: capitalize;
+    margin-bottom: 15px;
 }
 
-/* Hình ảnh sản phẩm */
+/* Ảnh sản phẩm */
 .details img {
-    width: 100%;
-    max-width: 400px;
+    max-width: 100%;
     height: auto;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.details img:hover {
-    transform: scale(1.05);
+    display: block;
+    margin: 15px auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
 }
 
 /* Thông tin sản phẩm */
 .details p {
     font-size: 16px;
+    line-height: 1.5;
     color: #555;
     margin: 10px 0;
-    line-height: 1.6;
 }
 
-/* Tô đậm phần tên thuộc tính */
 .details p strong {
-    color: #000;
-    font-weight: bold;
+    color: #333;
 }
 
 /* Nút "Thêm vào giỏ hàng" */
-.details button {
-    padding: 10px 15px;
-    margin-top: 15px;
-    font-size: 16px;
+.details button:last-of-type {
+    display: block;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
     border: none;
-    border-radius: 5px;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
+    margin-top: 20px;
 }
 
-/* Nút "Quay lại" */
-.details button:first-child {
-    background-color: #007bff;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.details button:first-child:hover {
-    background-color: #0056b3;
-}
-
-/* Nút "Thêm vào giỏ hàng" */
-.details button:last-child {
-    background-color: #28a745;
-    color: #fff;
-}
-
-.details button:last-child:hover {
-    background-color: #218838;
-}
-
-/* Hiệu ứng cho các nút */
-.details button i {
-    margin-right: 5px;
-    vertical-align: middle;
+.details button:last-of-type:hover {
+    background-color: #45a049;
 }
