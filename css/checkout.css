@@ -370,7 +370,7 @@ textarea {
   max-width: 1000px;
 }
 .cart-section {
-  flex: 5; /* Chiếm 1/2 chiều rộng container */
+  flex: 0.7; /* Chiếm 1/2 chiều rộng container */
   padding: 20px;
   background-color: #ffffff;
   border-radius: 8px;
@@ -378,7 +378,7 @@ textarea {
 }
 
 .info-section {
-  flex: 2; /* Chiếm 1/2 chiều rộng container */
+  flex: 0.3; /* Chiếm 1/2 chiều rộng container */
   padding: 20px;
   background-color: #ffffff;
   border-radius: 8px;
