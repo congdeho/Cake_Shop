@@ -10,7 +10,13 @@ function getProductById(productId) {
     return list_products.find(product => product.id === productId);
 }
 
+function loadOrdersFromLocalStorage() {
+    const storedOrders = localStorage.getItem('orders');
+    return storedOrders ? JSON.parse(storedOrders) : [];
+}
+
 // Tính tổng doanh thu, sản phẩm bán chạy nhất và bán ế nhất
+let orders = loadOrdersFromLocalStorage(); // Load orders from local storage
 function calculateSummary() {
     let totalRevenue = 0; // Tổng doanh thu
     productSales = {}; // Đặt lại dữ liệu bán hàng
