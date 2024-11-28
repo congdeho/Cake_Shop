@@ -1,6 +1,4 @@
-window.onload = function () {
-	khoiTao();
-}
+
 document.addEventListener("DOMContentLoaded", () => {
     const products = Array.from(document.querySelectorAll('.product'));
     const itemsPerPage = 9;

@@ -90,27 +90,31 @@
             </div>
             <div class="info-section">
                 <h2>Thông tin giao hàng</h2>
-                <form action="javascript:thanhToan()" method="post">
+                    <form action="javascript:thanhToan()" method="post">
                     <label for="street">Số nhà, đường:</label>
                     <input type="text" id="street" name="street" required />
+
                     <label for="city">Thành phố:</label>
                     <select id="city" name="city" required>
                         <option value="">Chọn thành phố</option>
                     </select>
+                    
+
                     <label for="district">Quận, huyện:</label>
                     <select id="district" name="district" required>
                         <option value="">Chọn quận, huyện</option>
-                        <!-- Add options for districts -->
+                    
                     </select>
 
                     <label for="ward">Phường, xã:</label>
                     <select id="ward" name="ward" required>
                         <option value="">Chọn phường, xã</option>
-                        <!-- Add options for wards -->
+                       
                     </select>
 
                     <label for="notes">Ghi chú (tùy chọn):</label>
                     <textarea id="notes" name="notes" rows="2"></textarea>
+                    <button type="button" onclick="saveAddress()">Lưu địa chỉ</button>
 
                     <div class="summary">
                         <p><strong>Tổng tiền:</strong> <span id="total-price2">0</span> VND</p>

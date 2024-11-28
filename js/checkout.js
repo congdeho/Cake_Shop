@@ -106,7 +106,34 @@ function thanhToan() {
         addAlertBox('Không có mặt hàng nào cần thanh toán !!', '#ffb400', '#fff', 2000);
         return;
     }
+  function saveAddress() {
+    const street = document.getElementById("street").value;
+    const city = document.getElementById("city").value;
+    const district = document.getElementById("district").value;
+    const ward = document.getElementById("ward").value;
 
+    const address = {
+      street,
+      city,
+      district,
+      ward,
+    };
+
+    localStorage.setItem("address", JSON.stringify(address));
+    alert("Địa chỉ đã được lưu!");
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    // Lấy dữ liệu địa chỉ từ localStorage
+    const savedAddress = JSON.parse(localStorage.getItem("address"));
+
+    if (savedAddress) {
+      // Điền các trường thông tin nếu có dữ liệu
+      document.getElementById("street").value = savedAddress.street || "";
+      document.getElementById("city").value = savedAddress.city || "";
+      document.getElementById("district").value = savedAddress.district || "";
+      document.getElementById("ward").value = savedAddress.ward || "";
+    }
+  });
     // Lấy thông tin địa chỉ và mô tả
     var street = document.getElementById('street').value;
     var city = document.getElementById('city').value;
