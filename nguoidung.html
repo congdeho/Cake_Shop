@@ -28,12 +28,14 @@
                 </li>
                 <li class="item">
 
-                        <input type="text" placeholder="Tìm kiếm...">
-
-                    <div class="item2">
-                        <i class="material-icons icons ">search</i>
-                    </div>
+                    <form action="/search" method="GET" class="search-form">
+                        <input type="text" name="query" placeholder="Tìm kiếm..." class="search-input">
+                        <button type="submit" class="search-button">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </form>
                 </li>
+
                 <i class="material-icons icon red">phone</i>
                 <div class="enter">
                     <p>0347 348 024</p>
@@ -56,7 +58,7 @@
                 <div class="enter_member">
                     <p>Tài khoản</p>
                 </div>
-                
+
                 <div class="cart">
                     <a href="cart.html">
                         <i class="material-icons icon red">local_mall</i>
@@ -70,24 +72,24 @@
         </nav>
         <nav>
             <ul class="menu">
-                <li><a href="#" onclick="showHome();">TRANG CHỦ</a></li>
+                <li><a href="index.html">TRANG CHỦ</a></li>
                 <li class="dropdown">
-                    <a href="">SẢN PHẨM</a>
-                    <ul class="dropdown-content">
-                        <li><a href="#" onclick="wholecake()();">Whole Cake</a></li>
-                        <li><a href="#" onclick="shortcake();">Short Cake</a></li>
-                        <li><a href="#" onclick="bread();">Bread And Pastry</a></li>
-                        <li><a href="#" onclick="dessert();">Dessert</a></li>
-                        <li><a href="#" onclick="gifts();">Gifts</a></li>
-                        <li><a href="#" onclick="cookies();">Cookies</a></li>
-                    </ul>
+                    <a href="index.html">SẢN PHẨM</a>
+                    <!-- <ul class="dropdown-content">
+                        <li><a href="index.html">Whole Cake</a></li>
+                        <li><a href="index.html">Short Cake</a></li>
+                        <li><a href="index.html">Bread And Pastry</a></li>
+                        <li><a href="index.html">Dessert</a></li>
+                        <li><a href="index.html">Gifts</a></li>
+                        <li><a href="index.html">Cookies</a></li>
+                    </ul> -->
                 </li>
-                <li><a href="#" onclick="showNews();">TIN TỨC</a></li>
-                <li><a href="#" onclick="showPromotions();">KHUYẾN MÃI</a></li>
+                <li><a href="index.html">TIN TỨC</a></li>
+                <li><a href="index.html">KHUYẾN MÃI</a></li>
             </ul>
         </nav>
-
     </header>
+
     <div class="container">
         <div class="sidebar">
             <div class="user-sidebar">

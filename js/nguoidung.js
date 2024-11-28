@@ -102,3 +102,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Hiển thị thông tin người dùng mặc định khi tải trang
     showUserInfo();
 });
+
+window.onload = function () {
+    const params = new URLSearchParams(window.location.search);
+    const section = params.get("section");
+    if (section === "wholecake") {
+        wholecake();
+    }
+};
+
