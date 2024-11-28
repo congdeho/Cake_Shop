@@ -22,23 +22,50 @@ nav {
 }
 
 .item {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-}
-.item input
-{
-    width: 250px;
-    background-color: white;
-    height: 30px;
-    color: black;
-    text-align: left;
     margin-left: 70px;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border: none;
-    outline: none;
-
+    margin-bottom: 6px;
 }
+
+.search-form {
+    display: flex; 
+    align-items: center;
+    height: 30px;
+}
+
+.search-input {
+    width: 300px; /* Adjust width */
+    height: 100%; /* Match the form height */
+    font-size: 16px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px 0 0 25px; /* Rounded corners */
+    outline: none;
+    box-sizing: border-box;
+}
+
+.search-button {
+    height: 100%; /* Match the form height */
+    width: 50px; /* Adjust button width */
+    background-color: #3174bb;
+    border: none; /* Remove border */
+    border-radius: 0 25px 25px 0; /* Rounded corners on the right */
+    display: flex; /* Center icon */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.search-button i {
+    font-size: 24px; /* Adjust icon size */
+    color: white;
+}
+
+.search-button:hover {
+    background-color: #255a8f; /* Darker blue on hover */
+}
+
 .item1 {
     width: 250px;
     background-color: white;
