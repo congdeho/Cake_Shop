@@ -13,6 +13,7 @@ function setListAdmin(l) {
 
 // Hàm khởi tạo, tất cả các trang đều cần
 function khoiTao() {
+    console.log('Khoi tao');
     // get data từ localstorage
     list_products = getListProducts() || list_products;
     adminInfo = getListAdmin() || adminInfo;
@@ -35,7 +36,7 @@ function getListProducts() {
 
 function getProductById(id) {
     return list_products.find(p => p.id === id);
-}   
+}
 function timKiemTheoMa(list, ma) {
     for (var l of list) {
         if (l.id == ma) return l;

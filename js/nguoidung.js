@@ -1,5 +1,14 @@
 // Cập nhật trạng thái đơn hàng
 function changeOrderStatus(orderId, newStatus) {
+    const confirmationMessage =
+        newStatus === 'Đã hủy'
+            ? 'Bạn có chắc chắn muốn hủy đơn hàng này không?'
+            : 'Bạn có chắc chắn đã nhận được hàng không?';
+
+    if (!confirm(confirmationMessage)) {
+        return; // Hủy thao tác nếu người dùng chọn "Hủy"
+    }
+
     let users = getListUser();
     let userIndex = -1;
     let orderIndex = -1;
@@ -17,15 +26,16 @@ function changeOrderStatus(orderId, newStatus) {
         console.log(users[userIndex].donhang[orderIndex].tinhTrang);
         users[userIndex].donhang[orderIndex].tinhTrang = newStatus;
         setListUser(users); // Cập nhật lại danh sách người dùng trong localStorage
-        //Cập nhật lại người dùng hiện tại
-        setCurrentUser(users[userIndex]);
+        setCurrentUser(users[userIndex]); // Cập nhật lại người dùng hiện tại
         showOrderList(); // Cập nhật lại danh sách đơn hàng
     }
 }
 
+
 // Hiển thị danh sách đơn hàng
 function showOrderList() {
     const user = getCurrentUser();
+    console.log(user);
     const contentItemDiv = document.getElementById('content-item');
     contentItemDiv.innerHTML = '<h2>Đơn hàng của tôi</h2>';
     user.donhang.forEach(order => {
@@ -34,7 +44,7 @@ function showOrderList() {
 
          // Kiểm tra điều kiện để xác định trạng thái nút
          const cancelDisabled = order.tinhTrang !== 'Đang chờ xử lý' ? 'disabled' : '';
-         const receivedDisabled = order.tinhTrang !== 'Đang giao' ? 'disabled' : '';
+         const receivedDisabled = order.tinhTrang !== 'Đang giao hàng' ? 'disabled' : '';
 
         // Tính tổng tiền của đơn hàng
         const totalOrderPrice = order.sp.reduce((total, sp) => {

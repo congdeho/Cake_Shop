@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/d696fbacd3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/admin.css">
 </head>
+
 <body>
     <div class="wrapper">
         <aside id="sidebar" class="js-sidebar">
@@ -46,11 +47,11 @@
                             User
                         </a>
                     </li>
-                     <li class="sidebar-item">
-                         <a href="#" class="sidebar-link collapsed" data-bs-target="#statistical"
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#statistical"
                             aria-expanded="false"><i class="fa-solid fa-chart-line pe-2"></i>
                             Statistical
-                      </a>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -107,19 +108,17 @@
                                     <div class="card-body py-4">
                                         <div class="d-flex align-items-start">
                                             <div class="flex-grow-1">
-                                                <h4 class="mb-2">
+                                                <h4 class="mb-2" id="doanhthu">
                                                     $ 78.00
                                                 </h4>
                                                 <p class="mb-2">
-                                                    Total Earnings
+                                                    Tổng doanh thu
                                                 </p>
                                                 <div class="mb-0">
                                                     <span class="badge text-success me-2">
                                                         +9.0%
                                                     </span>
-                                                    <span class="text-muted">
-                                                        Since Last Month
-                                                    </span>
+                                                
                                                 </div>
                                             </div>
                                         </div>
@@ -211,8 +210,8 @@
                                 <td>Kích cỡ bánh:</td>
                                 <td><input type="text" placeholder=""></td>
                             </tr>
-                                <td>Hương vị:</td>
-                                <td><input type="text"></td>
+                            <td>Hương vị:</td>
+                            <td><input type="text"></td>
                             </tr>
                             <tr>
                                 <th colspan="2">Khuyến mãi</th>
@@ -285,7 +284,8 @@
                                 <option value="all">Tất cả</option>
                                 <option value="pending">Chưa xử lý</option>
                                 <option value="confirmed">Đã xác nhận</option>
-                                <option value="delivering">Đã giao</option>
+                                <option value="delivering">Đang giao hàng</option>
+                                <option value="completed">Đã hoàn thành</option>
                                 <option value="canceled">Đã huỷ</option>
                             </select>
                         </label>
@@ -320,19 +320,27 @@
                         </label>
                     </div>
 
+
                     <!-- Bảng danh sách đơn hàng -->
                     <div class="table-content">
                         <table id="order-table" class="table-header">
                             <thead>
                                 <tr>
-                                  <th title="Sắp xếp">STT<i class="fa fa-sort"></i></th>
-                                  <th title="Sắp xếp">Mã Đơn hàng<i class="fa fa-sort"></i></th>
-                                  <th title="Sắp xếp">ID Khách Hàng<i class="fa fa-sort"></i></th>
-                                  <th title="Sắp xếp">Khách hàng<i class="fa fa-sort"></i></th>
-                                  <th title="Sắp xếp">Địa chỉ<i class="fa fa-sort"></i></th>
-                                  <th title="Sắp xếp">Ngày đặt<i class="fa fa-sort"></i></th>
-                                  <th title="Sắp xếp">Tình trạng<i class="fa fa-sort"></i></th>
-                                  <th title="Sắp xếp">Hành động<i class="fa fa-sort"></i></th>
+                                    <th title="Sắp xếp" onclick="sortDonHangTable('stt')">STT<i class="fa fa-sort"></i>
+                                    </th>
+                                    <th title="Sắp xếp" onclick="sortDonHangTable('madon')">Mã Đơn hàng<i
+                                            class="fa fa-sort"></i></th>
+                                    <th title="Sắp xếp" onclick="sortDonHangTable('makhach')">ID Khách Hàng<i
+                                            class="fa fa-sort"></i></th>
+                                    <th title="Sắp xếp" onclick="sortDonHangTable('tenkhach')">Khách hàng<i
+                                            class="fa fa-sort"></i></th>
+                                    <th title="Sắp xếp" onclick="sortDonHangTable('diachi')">Địa chỉ<i
+                                            class="fa fa-sort"></i></th>
+                                    <th title="Sắp xếp" onclick="sortDonHangTable('ngaydat')">Ngày đặt<i
+                                            class="fa fa-sort"></i></th>
+                                    <th title="Sắp xếp" onclick="sortDonHangTable('tinhtrang')">Tình trạng<i
+                                            class="fa fa-sort"></i></th>
+                                    <th title="Sắp xếp">Hành động<i class="fa fa-sort"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -381,51 +389,59 @@
                     <div class="table-content">
                     </div>
                 </div>
-                 <!-- Thống Kê -->
+                <!-- Thống Kê -->
                 <div class="thongke">
-  <header class="header">
-    <h3>Thống Kê Kinh Doanh</h3>
-  </header>
-  <div class="summary">
-    <h2>Tổng Doanh Thu: <span id="totalRevenue">0 VNĐ</span></h2>
-    <h3>Bán chạy nhất: <span id="bestSellingProduct">Chưa có</span></h3>
-    <h3>Bán ít nhất: <span id="worstSellingProduct">Chưa có</span></h3>
-  </div>
-  <!-- Product Table -->
-  <table id="itemDetails" class="table-header">
-    <thead>
-           <tr>
-                <th title="Sắp xếp">Tên Mặt Hàng<i class="fa fa-sort"></i></th>
-                <th title="Sắp xếp">Số Lượng Bán Ra<i class="fa fa-sort"></i></th>
-                <th title="Sắp xếp">Doanh Thu<i class="fa fa-sort"></i></th>
-            </tr>
-    </thead>
-    <tbody>
-      <!-- Populated by JavaScript -->
-    </tbody>
-  </table>
+                    <header class="header">
+                        <h3>Thống Kê Kinh Doanh</h3>
+                    </header>
+                    <div class="summary">
+                        <h2>Tổng Doanh Thu: <span id="totalRevenue">0 VNĐ</span></h2>
+                        <h3>Bán chạy nhất: <span id="bestSellingProduct">Chưa có</span></h3>
+                        <h3>Bán ít nhất: <span id="worstSellingProduct">Chưa có</span></h3>
+                    </div>
+                    <!-- Product Table -->
+                    <table id="itemDetails" class="table-header">
+                        <thead>
+                            <tr>
+                                <th title="Sắp xếp" onclick="sortItemDetailsTable('ten')">Tên Mặt Hàng<i
+                                        class="fa fa-sort"></i></th>
+                                <th title="Sắp xếp" onclick="sortItemDetailsTable('soluong')">Số Lượng Bán Ra<i
+                                        class="fa fa-sort"></i></th>
+                                <th title="Sắp xếp" onclick="sortItemDetailsTable('doanhthu')">Doanh Thu<i
+                                        class="fa fa-sort"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
 
-  <!-- Order Table -->
-  <table id="invoiceDetails" class="table-header">
-    <thead>
-      <tr>
-                <th title="Sắp xếp">ID Đơn Hàng <i class="fa fa-sort"></i></th>
-                <th title="Sắp xếp">Khách Hàng <i class="fa fa-sort"></i></th>
-                <th title="Sắp xếp">Địa Chỉ<i class="fa fa-sort"></i></th>
-                <th title="Sắp xếp">Ngày<i class="fa fa-sort"></i></th>
-                <th title="Sắp xếp">Trạng Thái<i class="fa fa-sort"></i></th>
-                <th title="Sắp xếp">Số tiền Thanh toán<i class="fa fa-sort"></i></th>
-            </tr>
+                    <!-- Order Table -->
+                    <table id="invoiceDetails" class="table-header">
+                        <thead>
+                            <tr>
+                                <th title="Sắp xếp" onclick="sortInvoiceDetailsTable('id')">ID Đơn Hàng <i
+                                        class="fa fa-sort"></i></th>
+                                <th title="Sắp xếp" onclick="sortInvoiceDetailsTable('khach')">Khách Hàng <i
+                                        class="fa fa-sort"></i></th>
+                                <th title="Sắp xếp" onclick="sortInvoiceDetailsTable('diachi')">Địa Chỉ<i
+                                        class="fa fa-sort"></i></th>
+                                <th title="Sắp xếp" onclick="sortInvoiceDetailsTable('ngay')">Ngày<i
+                                        class="fa fa-sort"></i></th>
+                                <th title="Sắp xếp" onclick="sortInvoiceDetailsTable('trangthai')">Trạng Thái<i
+                                        class="fa fa-sort"></i></th>
+                                <th title="Sắp xếp" onclick="sortInvoiceDetailsTable('sotien')">Số tiền Thanh toán<i
+                                        class="fa fa-sort"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
 
-    </thead>
-    <tbody>
-      <!-- Populated by JavaScript -->
-    </tbody>
-  </table>
-
-  <div id="pagination">
-    <!-- Pagination buttons -->
-  </div>
+                    <div id="pagination">
+                        <!-- Pagination buttons -->
+                    </div>
                 </div>
             </main>
             <a href="#" class="theme-toggle">
@@ -440,7 +456,6 @@
     <script src="data/user.js"></script>
     <script src="js/dungchung.js"></script>
     <script src="data/dataquanly.js"></script>
-    <script src="js/thongke.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/quanly.js"></script>
 </body>
