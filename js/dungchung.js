@@ -167,8 +167,6 @@ function logIn(form) {
 
     // Lấy dữ liệu từ danh sách người dùng localstorage
     var listUser = getListUser() ;
-    console.log(listUser);
-    console.log(newUser);
     // Kiểm tra xem dữ liệu form có khớp với người dùng nào trong danh sách ko
     for (var u of listUser) {
         if (equalUser(newUser, u)) {
