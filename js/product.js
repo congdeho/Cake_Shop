@@ -60,43 +60,43 @@ function displayWholeCakes() {
         paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
         if (totalPages > 1) {   
-        // Nút "Trang trước"
-        if (currentPage > 1) {
-            const prevButton = document.createElement('button');
-            prevButton.textContent = '❮';
-            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-            paginationContainer.appendChild(prevButton);
-        }
-
-        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
-        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
-        const startPage = Math.max(1, currentPage - pageRange);
-        const endPage = Math.min(totalPages, currentPage + pageRange);
-
-        for (let i = startPage; i <= endPage; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.textContent = i;
-            if (i === currentPage) {
-                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            // Nút "Trang trước"
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.textContent = '❮';
+                prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+                paginationContainer.appendChild(prevButton);
             }
-            pageButton.addEventListener('click', () => handlePageChange(i));
-            paginationContainer.appendChild(pageButton);
-        }
 
-        // Nút "Trang sau"
-        if (currentPage < totalPages) {
-            const nextButton = document.createElement('button');
-            nextButton.textContent = '❯';
-            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-            paginationContainer.appendChild(nextButton);
+            // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+            const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+            const startPage = Math.max(1, currentPage - pageRange);
+            const endPage = Math.min(totalPages, currentPage + pageRange);
+
+            for (let i = startPage; i <= endPage; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                if (i === currentPage) {
+                    pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+                }
+                pageButton.addEventListener('click', () => handlePageChange(i));
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // Nút "Trang sau"
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = '❯';
+                nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+                paginationContainer.appendChild(nextButton);
+            }
+            paginationContainer.style.display = 'block';
         }
-    paginationContainer.style.display = 'block';
-}
-else {
-    // If there's only one page, hide pagination
-    paginationContainer.style.display = 'none';
-}
-}
+        else {
+            // If there's only one page, hide pagination
+            paginationContainer.style.display = 'none';
+        }
+    }
 
     // Hiển thị chi tiết sản phẩm
     function showProductDetails(product) {
@@ -206,43 +206,43 @@ function displayshortcake() {
         paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
         if (totalPages > 1) {   
-        // Nút "Trang trước"
-        if (currentPage > 1) {
-            const prevButton = document.createElement('button');
-            prevButton.textContent = '❮';
-            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-            paginationContainer.appendChild(prevButton);
-        }
-
-        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
-        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
-        const startPage = Math.max(1, currentPage - pageRange);
-        const endPage = Math.min(totalPages, currentPage + pageRange);
-
-        for (let i = startPage; i <= endPage; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.textContent = i;
-            if (i === currentPage) {
-                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            // Nút "Trang trước"
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.textContent = '❮';
+                prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+                paginationContainer.appendChild(prevButton);
             }
-            pageButton.addEventListener('click', () => handlePageChange(i));
-            paginationContainer.appendChild(pageButton);
-        }
 
-        // Nút "Trang sau"
-        if (currentPage < totalPages) {
-            const nextButton = document.createElement('button');
-            nextButton.textContent = '❯';
-            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-            paginationContainer.appendChild(nextButton);
+            // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+            const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+            const startPage = Math.max(1, currentPage - pageRange);
+            const endPage = Math.min(totalPages, currentPage + pageRange);
+
+            for (let i = startPage; i <= endPage; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                if (i === currentPage) {
+                    pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+                }
+                pageButton.addEventListener('click', () => handlePageChange(i));
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // Nút "Trang sau"
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = '❯';
+                nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+                paginationContainer.appendChild(nextButton);
+            }
+            paginationContainer.style.display = 'block';
         }
-        paginationContainer.style.display = 'block';
+        else {
+            // If there's only one page, hide pagination
+            paginationContainer.style.display = 'none';
+        }
     }
-    else {
-        // If there's only one page, hide pagination
-        paginationContainer.style.display = 'none';
-    }
-}
 
     // Hiển thị chi tiết sản phẩm
     function showProductDetails(product) {
@@ -354,42 +354,42 @@ function displaybread() {
         paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
         if (totalPages > 1) {   
-        // Nút "Trang trước"
-        if (currentPage > 1) {
-            const prevButton = document.createElement('button');
-            prevButton.textContent = '❮';
-            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-            paginationContainer.appendChild(prevButton);
-        }
-
-        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
-        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
-        const startPage = Math.max(1, currentPage - pageRange);
-        const endPage = Math.min(totalPages, currentPage + pageRange);
-
-        for (let i = startPage; i <= endPage; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.textContent = i;
-            if (i === currentPage) {
-                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            // Nút "Trang trước"
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.textContent = '❮';
+                prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+                paginationContainer.appendChild(prevButton);
             }
-            pageButton.addEventListener('click', () => handlePageChange(i));
-            paginationContainer.appendChild(pageButton);
-        }
 
-        // Nút "Trang sau"
-        if (currentPage < totalPages) {
-            const nextButton = document.createElement('button');
-            nextButton.textContent = '❯';
-            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-            paginationContainer.appendChild(nextButton);
+            // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+            const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+            const startPage = Math.max(1, currentPage - pageRange);
+            const endPage = Math.min(totalPages, currentPage + pageRange);
+
+            for (let i = startPage; i <= endPage; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                if (i === currentPage) {
+                    pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+                }
+                pageButton.addEventListener('click', () => handlePageChange(i));
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // Nút "Trang sau"
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = '❯';
+                nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+                paginationContainer.appendChild(nextButton);
+            }
+            paginationContainer.style.display = 'block';
         }
-        paginationContainer.style.display = 'block';
-    }
-    else {
-        // If there's only one page, hide pagination
-        paginationContainer.style.display = 'none';
-    }
+        else {
+            // If there's only one page, hide pagination
+            paginationContainer.style.display = 'none';
+        }
     }
 
     // Hiển thị chi tiết sản phẩm
@@ -500,42 +500,42 @@ function displaydessert() {
         paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
         if (totalPages > 1) {   
-        // Nút "Trang trước"
-        if (currentPage > 1) {
-            const prevButton = document.createElement('button');
-            prevButton.textContent = '❮';
-            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-            paginationContainer.appendChild(prevButton);
-        }
-
-        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
-        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
-        const startPage = Math.max(1, currentPage - pageRange);
-        const endPage = Math.min(totalPages, currentPage + pageRange);
-
-        for (let i = startPage; i <= endPage; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.textContent = i;
-            if (i === currentPage) {
-                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            // Nút "Trang trước"
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.textContent = '❮';
+                prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+                paginationContainer.appendChild(prevButton);
             }
-            pageButton.addEventListener('click', () => handlePageChange(i));
-            paginationContainer.appendChild(pageButton);
-        }
 
-        // Nút "Trang sau"
-        if (currentPage < totalPages) {
-            const nextButton = document.createElement('button');
-            nextButton.textContent = '❯';
-            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-            paginationContainer.appendChild(nextButton);
+            // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+            const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+            const startPage = Math.max(1, currentPage - pageRange);
+            const endPage = Math.min(totalPages, currentPage + pageRange);
+
+            for (let i = startPage; i <= endPage; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                if (i === currentPage) {
+                    pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+                }
+                pageButton.addEventListener('click', () => handlePageChange(i));
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // Nút "Trang sau"
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = '❯';
+                nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+                paginationContainer.appendChild(nextButton);
+            }
+            paginationContainer.style.display = 'block';
         }
-        paginationContainer.style.display = 'block';
-    }
-    else {
-        // If there's only one page, hide pagination
-        paginationContainer.style.display = 'none';
-    }
+        else {
+            // If there's only one page, hide pagination
+            paginationContainer.style.display = 'none';
+        }
     }
 
     // Hiển thị chi tiết sản phẩm
@@ -648,42 +648,42 @@ function displaygifts() {
         paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
         if (totalPages > 1) {   
-        // Nút "Trang trước"
-        if (currentPage > 1) {
-            const prevButton = document.createElement('button');
-            prevButton.textContent = '❮';
-            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-            paginationContainer.appendChild(prevButton);
-        }
-
-        // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
-        const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
-        const startPage = Math.max(1, currentPage - pageRange);
-        const endPage = Math.min(totalPages, currentPage + pageRange);
-
-        for (let i = startPage; i <= endPage; i++) {
-            const pageButton = document.createElement('button');
-            pageButton.textContent = i;
-            if (i === currentPage) {
-                pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+            // Nút "Trang trước"
+            if (currentPage > 1) {
+                const prevButton = document.createElement('button');
+                prevButton.textContent = '❮';
+                prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+                paginationContainer.appendChild(prevButton);
             }
-            pageButton.addEventListener('click', () => handlePageChange(i));
-            paginationContainer.appendChild(pageButton);
-        }
 
-        // Nút "Trang sau"
-        if (currentPage < totalPages) {
-            const nextButton = document.createElement('button');
-            nextButton.textContent = '❯';
-            nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-            paginationContainer.appendChild(nextButton);
+            // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+            const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+            const startPage = Math.max(1, currentPage - pageRange);
+            const endPage = Math.min(totalPages, currentPage + pageRange);
+
+            for (let i = startPage; i <= endPage; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                if (i === currentPage) {
+                    pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+                }
+                pageButton.addEventListener('click', () => handlePageChange(i));
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // Nút "Trang sau"
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = '❯';
+                nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+                paginationContainer.appendChild(nextButton);
+            }
+            paginationContainer.style.display = 'block';
         }
-        paginationContainer.style.display = 'block';
-    }
-    else {
-        // If there's only one page, hide pagination
-        paginationContainer.style.display = 'none';
-    }
+        else {
+            // If there's only one page, hide pagination
+            paginationContainer.style.display = 'none';
+        }
     }
 
     // Hiển thị chi tiết sản phẩm
@@ -780,58 +780,58 @@ function displaycookies() {
         });
     }
 
-       // Tạo phân trang
-       const paginationContainer = document.createElement('div');
-       paginationContainer.classList.add('pagination');
-   
-       function handlePageChange(page) {
-           if (page < 1 || page > totalPages) return;
-           currentPage = page;
-           showProducts(page);
-           updatePagination(); // Cập nhật lại phân trang
-       }
-   
-       function updatePagination() {
-           paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
-   
-           if (totalPages > 1) {   
-           // Nút "Trang trước"
-           if (currentPage > 1) {
-               const prevButton = document.createElement('button');
-               prevButton.textContent = '❮';
-               prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-               paginationContainer.appendChild(prevButton);
-           }
-   
-           // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
-           const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
-           const startPage = Math.max(1, currentPage - pageRange);
-           const endPage = Math.min(totalPages, currentPage + pageRange);
-   
-           for (let i = startPage; i <= endPage; i++) {
-               const pageButton = document.createElement('button');
-               pageButton.textContent = i;
-               if (i === currentPage) {
-                   pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
-               }
-               pageButton.addEventListener('click', () => handlePageChange(i));
-               paginationContainer.appendChild(pageButton);
-           }
-   
-           // Nút "Trang sau"
-           if (currentPage < totalPages) {
-               const nextButton = document.createElement('button');
-               nextButton.textContent = '❯';
-               nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
-               paginationContainer.appendChild(nextButton);
-           }
-           paginationContainer.style.display = 'block';
+        // Tạo phân trang
+        const paginationContainer = document.createElement('div');
+        paginationContainer.classList.add('pagination');
+    
+    function handlePageChange(page) {
+        if (page < 1 || page > totalPages) return;
+        currentPage = page;
+        showProducts(page);
+        updatePagination(); // Cập nhật lại phân trang
+    }
+    
+    function updatePagination() {
+        paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
+
+        if (totalPages > 1) {   
+            // Nút "Trang trước"
+            if (currentPage > 1) {
+            const prevButton = document.createElement('button');
+            prevButton.textContent = '❮';
+            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+            paginationContainer.appendChild(prevButton);
+            }
+
+            // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
+            const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
+            const startPage = Math.max(1, currentPage - pageRange);
+            const endPage = Math.min(totalPages, currentPage + pageRange);
+    
+            for (let i = startPage; i <= endPage; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                if (i === currentPage) {
+                    pageButton.classList.add('active'); // Thêm lớp active cho nút hiện tại
+                }
+                pageButton.addEventListener('click', () => handlePageChange(i));
+                paginationContainer.appendChild(pageButton);
+            }
+
+            // Nút "Trang sau"
+            if (currentPage < totalPages) {
+                const nextButton = document.createElement('button');
+                nextButton.textContent = '❯';
+                nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
+                paginationContainer.appendChild(nextButton);
+            }
+            paginationContainer.style.display = 'block';
         }
         else {
             // If there's only one page, hide pagination
             paginationContainer.style.display = 'none';
         }
-       }
+    }
 
     // Hiển thị chi tiết sản phẩm
     function showProductDetails(product) {
