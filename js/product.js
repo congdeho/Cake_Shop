@@ -59,6 +59,8 @@ function displayWholeCakes() {
     function updatePagination() {
         paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
+        
+
         // Nút "Trang trước"
         if (currentPage > 1) {
             const prevButton = document.createElement('button');
@@ -106,8 +108,9 @@ function displayWholeCakes() {
                 <button onclick="themVaoGioHang(${product.id}, '${product.name}')">Thêm vào giỏ hàng</button>
             </div>
         `;
-        productContainer.style.display = 'none';
-        productDetailsContainer.style.display = 'block';
+        productContainer.style.display = 'none'; // Ẩn danh sách sản phẩm
+        productDetailsContainer.style.display = 'block'; // Hiển thị chi tiết sản phẩm
+        paginationContainer.style.display = 'none'; // Ẩn phân trang khi xem chi tiết sản phẩm
     }
 
     function hideProductDetails() {
@@ -244,8 +247,9 @@ function displayshortcake() {
                 <button onclick="themVaoGioHang(${product.id}, '${product.name}')">Thêm vào giỏ hàng</button>
             </div>
         `;
-        productContainer.style.display = 'none';
-        productDetailsContainer.style.display = 'block';
+        productContainer.style.display = 'none'; // Ẩn danh sách sản phẩm
+        productDetailsContainer.style.display = 'block'; // Hiển thị chi tiết sản phẩm
+        paginationContainer.style.display = 'none'; // Ẩn phân trang khi xem chi tiết sản phẩm
     }
 
     function hideProductDetails() {
@@ -384,8 +388,9 @@ function displaybread() {
                 <button onclick="themVaoGioHang(${product.id}, '${product.name}')">Thêm vào giỏ hàng</button>
             </div>
         `;
-        productContainer.style.display = 'none';
-        productDetailsContainer.style.display = 'block';
+        productContainer.style.display = 'none'; // Ẩn danh sách sản phẩm
+        productDetailsContainer.style.display = 'block'; // Hiển thị chi tiết sản phẩm
+        paginationContainer.style.display = 'none'; // Ẩn phân trang khi xem chi tiết sản phẩm
     }
 
     function hideProductDetails() {
@@ -475,6 +480,7 @@ function displaydessert() {
     function updatePagination() {
         paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
+        if (totalPages > 1) {   
         // Nút "Trang trước"
         if (currentPage > 1) {
             const prevButton = document.createElement('button');
@@ -505,6 +511,12 @@ function displaydessert() {
             nextButton.addEventListener('click', () => handlePageChange(currentPage + 1));
             paginationContainer.appendChild(nextButton);
         }
+        paginationContainer.style.display = 'block';
+    }
+    else {
+        // If there's only one page, hide pagination
+        paginationContainer.style.display = 'none';
+    }
     }
 
     // Hiển thị chi tiết sản phẩm
@@ -522,8 +534,9 @@ function displaydessert() {
                 <button onclick="themVaoGioHang(${product.id}, '${product.name}')">Thêm vào giỏ hàng</button>
             </div>
         `;
-        productContainer.style.display = 'none';
-        productDetailsContainer.style.display = 'block';
+        productContainer.style.display = 'none'; // Ẩn danh sách sản phẩm
+        productDetailsContainer.style.display = 'block'; // Hiển thị chi tiết sản phẩm
+        paginationContainer.style.display = 'none'; // Ẩn phân trang khi xem chi tiết sản phẩm
     }
 
     function hideProductDetails() {
@@ -662,8 +675,9 @@ function displaygifts() {
                 <button onclick="themVaoGioHang(${product.id}, '${product.name}')">Thêm vào giỏ hàng</button>
             </div>
         `;
-        productContainer.style.display = 'none';
-        productDetailsContainer.style.display = 'block';
+        productContainer.style.display = 'none'; // Ẩn danh sách sản phẩm
+        productDetailsContainer.style.display = 'block'; // Hiển thị chi tiết sản phẩm
+        paginationContainer.style.display = 'none'; // Ẩn phân trang khi xem chi tiết sản phẩm
     }
 
     function hideProductDetails() {
@@ -808,8 +822,9 @@ function displaycookies() {
                 <button onclick="themVaoGioHang(${product.id}, '${product.name}')">Thêm vào giỏ hàng</button>
             </div>
         `;
-        productContainer.style.display = 'none';
-        productDetailsContainer.style.display = 'block';
+        productContainer.style.display = 'none'; // Ẩn danh sách sản phẩm
+        productDetailsContainer.style.display = 'block'; // Hiển thị chi tiết sản phẩm
+        paginationContainer.style.display = 'none'; // Ẩn phân trang khi xem chi tiết sản phẩm
     }
 
     function hideProductDetails() {
