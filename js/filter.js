@@ -52,7 +52,7 @@ function displayFilteredProducts(filters) {
                         <img src="${product.image}" alt="${product.name}" class="zoom-image" onclick="showProductDetailsById(${product.id})">
                         <h3>${product.name}</h3>
                         <div class="it">
-                            <div class="it1">${product.price} VND</div>
+                            <div class="it1">${product.price}</div>
                             <button class="it2" onclick="themVaoGioHang(${product.id}, '${product.name}');">
                                 <i class="material-icons">shopping_cart</i>
                             </button>
@@ -68,10 +68,15 @@ function displayFilteredProducts(filters) {
     const paginationContainer = document.createElement('div');
     paginationContainer.classList.add('pagination');
 
+    
     // Tạo HTML cho phân trang
     function renderPagination() {
         let paginationHTML = '';
 
+        if( totalPages === 1)
+        {
+            paginationContainer.style.display = 'none';
+        }
         // Nút "Trang trước"
         if (currentPage > 1) {
             paginationHTML += `<button class="pagination-button" data-page="${currentPage - 1}">❮</button>`;

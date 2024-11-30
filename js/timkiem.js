@@ -73,7 +73,7 @@ function updatePagination() {
     const paginationContainer = document.getElementById('pagination');
     const totalPages = Math.ceil(totalResults / productsPerPage);
 
-    if (totalResults === 0) {
+    if (totalResults === 0 || totalPages === 1) {
         paginationContainer.style.display = 'none'; // Ẩn phân trang khi không có kết quả
         return;
     }
