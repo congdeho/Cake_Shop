@@ -18,16 +18,17 @@
 
 <body>
     <header>
-        <script>window.onload = function () {
+        <script>
+            window.onload = function () {
                 khoiTao();
-            }</script>
+            }
+        </script>
         <nav>
             <ul>
                 <li>
                     <i class="material-icons">mood</i>
                 </li>
                 <li class="item">
-
                     <form action="/search" method="GET" class="search-form">
                         <input type="text" name="query" placeholder="Tìm kiếm..." class="search-input">
                         <button type="submit" class="search-button">
@@ -35,6 +36,40 @@
                         </button>
                     </form>
                 </li>
+
+                <div class="hamburger" onclick="toggleMenu()">
+                    <i class="material-icons">menu</i>
+                </div>
+                
+                <div class="hamburger_display">
+                    <div class="logo">
+                        <i class="material-icons">mood</i>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="showHome();">Trang chủ</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="shortcake();">Short Cake</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="bread();">Bread And Pastry</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="dessert();">Dessert</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="gifts();">Gifts</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="cookies();">Cookies</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="showNews();">Tin tức</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="showPromotions();">Khuyến mãi</a>
+                    </div>
+                </div>
 
                 <i class="material-icons icon red">phone</i>
                 <div class="enter">

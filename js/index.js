@@ -36,29 +36,26 @@ function resetInterval() {
     slideInterval = setInterval(showSlides, 3000); 
 }
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Mặc định hiển thị form Sign Up
-//     document.getElementById('form-signup').classList.add('active');
-//     document.getElementById('form-login').classList.remove('active');
-// });
+function toggleMenu() {
+    var menu = document.querySelector(".hamburger_display");
+    // Nếu menu đang ẩn, hiển thị nó
+    if (menu.style.display === "none" || menu.style.display === "") {
+        menu.style.display = "block";
+    } else {
+        menu.style.display = "none";
+    }
+}
 
-// function showSignUp() {
-//     // Ẩn form đăng nhập và hiển thị form đăng ký
-//     document.getElementById('form-login').classList.remove('active');
-//     document.getElementById('form-signup').classList.add('active');
-// }
+document.addEventListener('click', function(event) {
+    var menu = document.querySelector(".hamburger_display");
+    var hamburger = document.querySelector(".hamburger");
 
-// function showLogin() {
-//     // Ẩn form đăng ký và hiển thị form đăng nhập
-//     document.getElementById('form-signup').classList.remove('active');
-//     document.getElementById('form-login').classList.add('active');
-// }
+    // Nếu người dùng click vào phần tử hamburger hoặc trong menu thì không làm gì
+    if (hamburger.contains(event.target) || menu.contains(event.target)) {
+        return;
+    }
 
-// function showLoginForm() {
-//     document.querySelector('.background2').style.display = 'block';
-// }
+    // Nếu click ra ngoài, ẩn menu
+    menu.style.display = "none";
+});
 
-// document.querySelector('.btn_close').addEventListener('click', function() {
-//     // Ẩn phần tử có class background2
-//     document.querySelector('.background2').style.display = 'none';
-// });
