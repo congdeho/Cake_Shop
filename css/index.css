@@ -315,17 +315,12 @@ footer div {
 }
 
 #content {
-    display: flex;
-    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 100PX;
     flex: 1;
     margin-top: 100px;
 }
 
-.cont {
-    flex: 1;
-    justify-content: flex-start;
-    margin-left: 200px;
-}
 
 .info-item {
     display: flex;
@@ -698,7 +693,7 @@ footer div {
 
 
 /* ======= Responsive ======= */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
     nav ul {
         flex-direction: column;
         align-items: flex-start;
@@ -723,6 +718,11 @@ footer div {
         display: none;
         flex-direction: column;
         width: 100%;
+    }
+
+    .slider
+    {
+        height: 200px;
     }
 
 }
