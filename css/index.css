@@ -725,6 +725,10 @@ footer div {
         height: 200px;
     }
 
+    #product1 {
+        display: none;
+    }
+
 }
 
 .hamburger {
@@ -739,7 +743,7 @@ footer div {
     position: fixed; /* Cố định toàn màn hình */
     top: 0;
     left: 0;
-    width: 70%; /* Chiếm toàn bộ chiều rộng */
+    width: 300px; /* Chiếm toàn bộ chiều rộng */
     height: 100%; /* Chiếm toàn bộ chiều cao */
     background-color: rgba(30, 58, 138, 0.8);
     z-index: 1000;
