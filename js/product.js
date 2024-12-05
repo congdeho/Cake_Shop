@@ -744,18 +744,18 @@ function displaycookies() {
     productDetailsContainer.id = 'product-details';
     productDetailsContainer.style.display = 'none';
 
-    const wholeCakes = list_products.filter(product => product.type === "Cookies");
+    const gifts = list_products.filter(product => product.type === "Cookies");
 
     // Phân trang
     const productsPerPage = 6;
     let currentPage = 1;
-    const totalPages = Math.ceil(wholeCakes.length / productsPerPage);
+    const totalPages = Math.ceil(gifts.length / productsPerPage);
 
-    // Hàm hiển thị sản phẩm theo trang
+    // Hiển thị danh sách sản phẩm theo trang
     function showProducts(page) {
         const startIndex = (page - 1) * productsPerPage;
         const endIndex = page * productsPerPage;
-        const productsToDisplay = wholeCakes.slice(startIndex, endIndex);
+        const productsToDisplay = gifts.slice(startIndex, endIndex);
 
         productContainer.innerHTML = ''; // Xóa danh sách cũ
 
@@ -780,34 +780,34 @@ function displaycookies() {
         });
     }
 
-        // Tạo phân trang
-        const paginationContainer = document.createElement('div');
-        paginationContainer.classList.add('pagination');
-    
+    // Tạo phân trang
+    const paginationContainer = document.createElement('div');
+    paginationContainer.classList.add('pagination');
+
     function handlePageChange(page) {
         if (page < 1 || page > totalPages) return;
         currentPage = page;
         showProducts(page);
         updatePagination(); // Cập nhật lại phân trang
     }
-    
+
     function updatePagination() {
         paginationContainer.innerHTML = ''; // Xóa nút phân trang cũ
 
         if (totalPages > 1) {   
             // Nút "Trang trước"
             if (currentPage > 1) {
-            const prevButton = document.createElement('button');
-            prevButton.textContent = '❮';
-            prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
-            paginationContainer.appendChild(prevButton);
+                const prevButton = document.createElement('button');
+                prevButton.textContent = '❮';
+                prevButton.addEventListener('click', () => handlePageChange(currentPage - 1));
+                paginationContainer.appendChild(prevButton);
             }
 
             // Hiển thị các số trang (hiển thị số trang gần với trang hiện tại)
             const pageRange = 2; // Hiển thị tối đa 2 trang trước và sau trang hiện tại
             const startPage = Math.max(1, currentPage - pageRange);
             const endPage = Math.min(totalPages, currentPage + pageRange);
-    
+
             for (let i = startPage; i <= endPage; i++) {
                 const pageButton = document.createElement('button');
                 pageButton.textContent = i;
