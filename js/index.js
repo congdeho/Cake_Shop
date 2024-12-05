@@ -36,6 +36,8 @@ function resetInterval() {
     slideInterval = setInterval(showSlides, 3000); 
 }
 
+/* ======= Responsive ======= */
+
 function toggleMenu() {
     var menu = document.querySelector(".hamburger_display");
     // Nếu menu đang ẩn, hiển thị nó
@@ -59,3 +61,7 @@ document.addEventListener('click', function(event) {
     menu.style.display = "none";
 });
 
+function closeHamburgerMenu() {
+    var menu = document.querySelector(".hamburger_display");
+    menu.style.display = "none";
+}
