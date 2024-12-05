@@ -788,9 +788,14 @@ footer div {
     transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 700px) {
     .hamburger {
         display: block;
+    }
+
+    .home
+    {
+        display: none;
     }
 }
 
