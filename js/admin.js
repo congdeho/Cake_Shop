@@ -162,6 +162,7 @@ function layThongTinSanPhamTuTable(id) {
     var tenSanPham = tr[2].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var loai = tr[3].getElementsByTagName('td')[1].getElementsByTagName('select')[0].value;
     var img = tr[4].getElementsByTagName('td')[1].getElementsByTagName('img')[0].src;
+    var imageSrc = previewSrc || img;
     var giaTien = tr[5].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var moTa = tr[6].getElementsByTagName('td')[1].getElementsByTagName('textarea')[0].value;
     var kichCoBanh = tr[7].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
@@ -180,7 +181,7 @@ function layThongTinSanPhamTuTable(id) {
             "id": parseInt(masp),
             "name": tenSanPham,
             "type": loai,
-            "image": previewSrc || img,
+            "image": imageSrc,
             "price": parseInt(giaTien, 10),
             "description": moTa,
             "size": size,
@@ -190,6 +191,7 @@ function layThongTinSanPhamTuTable(id) {
                 "discount": parseInt(promoValue, 10)
             }
         }
+        
     } catch (e) {
         alert('Lỗi: ' + e.toString());
         return false;
@@ -230,12 +232,19 @@ function capNhatAnhSanPham(files, imgId) {
     if (file) {
         var reader = new FileReader();
         reader.onload = function(e) {
+            // Gán ảnh vào thẻ <img>
             document.getElementById(imgId).src = e.target.result;
+            // Lưu ảnh vào previewSrc để dùng sau
             previewSrc = e.target.result;
         };
         reader.readAsDataURL(file);
+    } else {
+        // Nếu không có file, xóa ảnh hiện tại
+        document.getElementById(imgId).src = "";
+        previewSrc = ""; // Đặt lại biến previewSrc
     }
 }
+
 
 function autoMaSanPham() {
     document.getElementById('maspThem').value = list_products.length + 1;
@@ -383,23 +392,23 @@ function addKhungSuaSanPham(masp) {
     document.getElementById("khungSuaSanPham").innerHTML = s;
     document.getElementById("khungSuaSanPham").style.transform = 'scale(1)';
 }
-function capNhatAnhSanPham(files, id) {
-    // var url = '';
-    // if(files.length) url = window.URL.createObjectURL(files[0]);
+// function capNhatAnhSanPham(files, id) {
+//     // var url = '';
+//     // if(files.length) url = window.URL.createObjectURL(files[0]);
     
-    // document.getElementById(id).src = url;
+//     // document.getElementById(id).src = url;
 
-    const reader = new FileReader();
-    reader.addEventListener("load", function () {
-        // convert image file to base64 string
-        previewSrc = reader.result;
-        document.getElementById(id).src = previewSrc;
-    }, false);
+//     const reader = new FileReader();
+//     reader.addEventListener("load", function () {
+//         // convert image file to base64 string
+//         previewSrc = reader.result;
+//         document.getElementById(id).src = previewSrc;
+//     }, false);
 
-    if (files[0]) {
-        reader.readAsDataURL(files[0]);
-    }
-}
+//     if (files[0]) {
+//         reader.readAsDataURL(files[0]);
+//     }
+// }
 // ====================== Khách Hàng =============================
 // Vẽ bảng
 function addTableKhachHang() {
@@ -423,6 +432,10 @@ function addTableKhachHang() {
                         <span class="slider round"></span>
                     </label>
                     <span class="tooltiptext">` + (u.status === 'active' ? 'active' : 'locked') + `</span>
+                </div>
+                <div class="tooltip-icon">
+                    <i class="fa fa-edit" onclick="addKhungSuaNguoiDung('`+u.username+`')"></i>
+                    <span class="tooltiptext">Sửa</span>
                 </div>
                 <div class="tooltip-icon">
                     <i class="fa fa-remove" onclick="xoaNguoiDung('`+u.username+`')"></i>
@@ -455,9 +468,125 @@ function timKiemNguoiDung(inp) {
         }
     }
 }
+function layThongTinNguoiDungTuTable(id) {
+    var khung = document.getElementById(id);
+    listUser = getListUser();
+    var idUser = listUser.length + 1;
+    var tr = khung.getElementsByTagName('tr');
+    var ten = tr[1].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
+    var email = tr[2].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
+    var sdt = tr[3].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
+    var taikhoan = tr[4].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
+    var matkhau = tr[5].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
+    var xacnhanmatkhau = tr[6].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
+    var trangthai = 'active';
+    
+    try {
+        return {
+            "id": idUser,
+            "username": taikhoan,
+            "password":  matkhau,
+            "repassword": xacnhanmatkhau,
+            "status": trangthai,
+            "name": ten,
+            "email": email,
+            "phone": sdt,
+            }
+        }
+    catch (e) {
+        alert('Lỗi: ' + e.toString());
+        return false;
+    }
+}
 
-function openThemNguoiDung() {
-    window.alert('Not Available!');
+
+function themNguoiDung() {
+    var NewUser = layThongTinNguoiDungTuTable('khungThemNguoiDung');
+    console.log(NewUser);
+    if (!NewUser) return;
+
+    if (NewUser.password != NewUser.repassword) {
+        alert('Mật khẩu không khớp');
+        return;
+    }
+
+    // Kiểm tra trùng tài khoản
+    for (var u of listUser) {
+        if (u.username === NewUser.username) {
+            alert('Tài khoản đã tồn tại');
+            return;
+        }
+    }
+    // Kiểm tra trùng email
+    for (var u of listUser) {
+        if (u.email === NewUser.email) {
+            alert('Email đã tồn tại');
+            return;
+        }
+    }
+    // Kiểm tra trùng số điện thoại
+    for (var u of listUser) {
+        if (u.phone === NewUser.phone) {
+            alert('Số điện thoại đã tồn tại');
+            return;
+        }
+    }
+    // Kiểm tra trùng admin
+    for (var u of adminInfo) {
+        if (u.username === NewUser.username) {
+            alert('Tài khoản đã tồn tại');
+            return;
+        }
+    }
+    // Kiểm tra độ dài mật khẩu
+    if (NewUser.password.length < 6) {
+        alert('Mật khẩu phải có ít nhất 6 ký tự');
+        return;
+    }
+    // Kiểm tra định dạng email
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(NewUser.email)) {
+        alert('Email không hợp lệ');
+        return;
+    }
+    // Kiểm tra định dạng số điện thoại
+    var phonePattern = /^0\d{9}$/;
+    if (!phonePattern.test(NewUser.phone)) {
+        alert('Số điện thoại phải bắt đầu bằng số 0 và phải đủ 10 số !!');
+        return false;
+    }
+
+    // Tạo đối tượng User mới
+    var id = listUser.length > 0 ? listUser[listUser.length - 1].id + 1 : 1; // Tự động tăng ID
+    var user = new User(
+        id,
+        NewUser.username,
+        NewUser.password,
+        NewUser.name,
+        NewUser.phone,
+        NewUser.email,
+        "active"
+    );
+
+    // Thêm người dùng vào list_users
+    listUser.push(user);
+
+    // Lưu vào localStorage
+    setListUser(listUser);
+
+    // Vẽ lại table
+    addTableKhachHang();
+    resetFormNguoiDung();
+    alert('Thêm người dùng "' + user.name + '" thành công.');
+    document.getElementById('khungThemNguoiDung').style.transform = 'scale(0)';
+}
+function resetFormNguoiDung() {
+    document.getElementById('hoTenNguoiDungThem').value = "";
+    document.getElementById('emailNguoiDungThem').value = "";
+    document.getElementById('sdtNguoiDungThem').value = "";
+    document.getElementById('taiKhoanNguoiDungThem').value = "";
+    document.getElementById('matKhauNguoiDungThem').value = "";
+    document.getElementById('xacNhanMatKhauNguoiDungThem').value = "";
 }
 
 // vô hiệu hóa người dùng (tạm dừng, không cho đăng nhập vào)
@@ -479,6 +608,73 @@ function voHieuHoaNguoiDung(inp, taikhoan) {
     }
     var span = inp.parentElement.nextElementSibling;
     span.innerHTML = (u.status === 'locked' ? 'locked' : 'active');
+}
+
+// Sửa người dùng
+function addKhungSuaNguoiDung(taikhoan) {
+    var listUser = getListUser();
+    var user = listUser.find(u => u.username === taikhoan);
+
+    if (user) {
+        // Điền thông tin vào các ô input
+        document.getElementById('hoTenNguoiDungSua').value = user.name;
+        document.getElementById('emailNguoiDungSua').value = user.email;
+        document.getElementById('sdtNguoiDungSua').value = user.phone;
+        document.getElementById('taiKhoanNguoiDungSua').value = user.username; // Không cho sửa username
+        document.getElementById('matKhauNguoiDungSua').value = user.password;
+        document.getElementById('xacNhanMatKhauNguoiDungSua').value = user.password;
+
+        // Hiển thị khung sửa
+        document.getElementById('khungSuaNguoiDung').style.transform = 'scale(1)';
+    } else {
+        alert('Không tìm thấy người dùng!');
+    }
+}
+
+function suaNguoiDung() {
+    var listUser = getListUser();
+
+    var ten = document.getElementById('hoTenNguoiDungSua').value;
+    var email = document.getElementById('emailNguoiDungSua').value;
+    var sdt = document.getElementById('sdtNguoiDungSua').value;
+    var taikhoan = document.getElementById('taiKhoanNguoiDungSua').value; // Không cho sửa
+    var matkhau = document.getElementById('matKhauNguoiDungSua').value;
+    var xacnhanmatkhau = document.getElementById('xacNhanMatKhauNguoiDungSua').value;
+
+    // Kiểm tra dữ liệu hợp lệ
+    if (matkhau !== xacnhanmatkhau) {
+        alert('Mật khẩu không khớp!');
+        return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Email không hợp lệ!');
+        return;
+    }
+    if (!/^0\d{9}$/.test(sdt)) {
+        alert('Số điện thoại phải bắt đầu bằng số 0 và đủ 10 số!');
+        return;
+    }
+
+    // Tìm người dùng và cập nhật thông tin
+    var user = listUser.find(u => u.username === taikhoan);
+    if (user) {
+        user.name = ten;
+        user.email = email;
+        user.phone = sdt;
+        user.password = matkhau;
+
+        // Lưu lại danh sách vào localStorage
+        setListUser(listUser);
+
+        // Vẽ lại bảng
+        addTableKhachHang();
+
+        // Ẩn khung sửa
+        document.getElementById('khungSuaNguoiDung').style.transform = 'scale(0)';
+        alert('Cập nhật thông tin thành công!');
+    } else {
+        alert('Không tìm thấy người dùng!');
+    }
 }
 
 // Xóa người dùng
@@ -946,7 +1142,7 @@ function getValueOfTypeInTable_SanPham(tr, loai) {
     var td = tr.getElementsByTagName('td');
     switch (loai) {
         case 'stt': return Number(td[0].innerHTML);
-        case 'masp': return td[1].innerHTML.toLowerCase();
+        case 'masp': return Number(td[1].innerHTML);
         case 'ten': return td[2].innerHTML.toLowerCase();
         case 'gia': return stringToNum(td[3].innerHTML);
         case 'khuyenmai': return td[4].innerHTML.toLowerCase();

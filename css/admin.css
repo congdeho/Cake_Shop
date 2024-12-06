@@ -226,7 +226,17 @@ html[data-bs-theme="light"] .theme-toggle .fa-sun {
     vertical-align: top;
     border-top: 1px solid #23282c;
 }
-
+.table-content textarea {
+    width: 80%;
+    height: 100px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    color: #000;
+    font-size: 16px;
+    resize: none;
+}
 .table-top {
     margin: 20px 30px 20px 0;
     float: right;
@@ -252,7 +262,7 @@ main table {
     display: block; /* Chỉ hiển thị tab được chọn */
 }
 /* Ẩn tất cả các ảnh bên trong bảng sản phẩm */
-.table-outline img {
+.table-content .table-outline img {
     display: none;
     position: absolute; /* Để ảnh hiện nổi lên trên */
     width: 100px;       /* Đặt kích thước ảnh */
@@ -263,15 +273,16 @@ main table {
     /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); */
 }
 
+
 /* Hiển thị ảnh khi hover vào liên kết sản phẩm */
-.table-outline td a:hover + img {
+.table-content .table-outline td a:hover + img {
     display: block;
 }
 /* ========================= tooltip from w3school  ====================== */
 .tooltip-icon {
     position: relative;
     display: inline-block;
-    padding: 5px;
+    padding: 5px 15px 5px 5px;
 }
 
 .tooltip-icon .tooltiptext {
@@ -542,4 +553,11 @@ input:checked+.slider:before {
     color: #fff;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+.hinhDaiDien {
+    max-height: 100px;
+    max-width: 100px;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
 }

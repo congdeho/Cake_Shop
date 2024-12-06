@@ -65,7 +65,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="image/profile.jpg" class="avatar img-fluid rounded" alt="">
+                                <img src="image/profile.png" class="avatar img-fluid rounded" alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
@@ -96,7 +96,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6 align-self-end text-end">
-                                                <img src="image/customer-support.jpg" class="img-fluid illustration-img"
+                                                <img src="image/logo-tiem-banh.jpg" class="img-fluid illustration-img"
                                                     alt="">
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@
                             </tr>
                             <tr>
                                 <td>Mã sản phẩm:</td>
-                                <td><input type="text" id="maspThem"></td>
+                                <td><input type="text" id="maspThem"readonly></td>
                             </tr>
                             <tr>
                                 <td>Tên sản phẩm:</td>
@@ -194,7 +194,7 @@
                                 <td>Hình:</td>
                                 <td>
                                     <img class="hinhDaiDien" id="anhDaiDienSanPhamThem" src="">
-                                    <input type="file" accept="image/product/*"
+                                    <input type="file" accept="image/*"
                                         onchange="capNhatAnhSanPham(this.files, 'anhDaiDienSanPhamThem')">
                                 </td>
                             </tr>
@@ -365,7 +365,11 @@
                             <option value="taikhoan">Tìm theo tài khoản</option>
                         </select>
                         <input type="text" placeholder="Tìm kiếm..." onkeyup="timKiemNguoiDung(this)">
-                        <button onclick="openThemNguoiDung()"><i class="fa fa-plus-square"></i> Thêm người dùng</button>
+                        <button
+                            onclick="document.getElementById('khungThemNguoiDung').style.transform = 'scale(1)'; autoMaSanPham()">
+                            <i class="fa fa-plus-square"></i>
+                            Thêm khách hàng
+                        </button>
                     </div>
                     <table class="table-header">
                         <tr>
@@ -388,6 +392,81 @@
 
                     <div class="table-content">
                     </div>
+                    <div id="khungThemNguoiDung" class="overlay">
+                        <span class="close" onclick="this.parentElement.style.transform = 'scale(0)';">&times;</span>
+                        <table class="overlayTable table-outline table-content table-header">
+                            <tr>
+                                <th colspan="2">Thêm Khách Hàng</th>
+                            </tr>
+                            <tr>
+                                <td>Họ và Tên:</td>
+                                <td><input type="text" id="hoTenNguoiDungThem"></td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td><input type="email" id="emailNguoiDungThem"></td>
+                            </tr>
+                            <tr>
+                                <td>Số Điện Thoại:</td>
+                                <td><input type="tel" id="sdtNguoiDungThem"></td>
+                            </tr>
+                            <tr>
+                                <td>Tài Khoản:</td>
+                                <td><input type="text" id="taiKhoanNguoiDungThem"></td>
+                            </tr>
+                            <tr>
+                                <td>Mật Khẩu:</td>
+                                <td><input type="password" id="matKhauNguoiDungThem"></td>
+                            </tr>
+                           <tr>
+                                <td>Xác nhận mật khẩu</td>
+                                <td><input type="password" id="xacNhanMatKhauNguoiDungThem"></td>
+                           </tr>
+                            <tr>
+                                <td colspan="2" class="table-footer">
+                                    <button onclick="themNguoiDung()">THÊM</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="khungSuaNguoiDung" class="overlay">
+                        <span class="close" onclick="this.parentElement.style.transform = 'scale(0)';">&times;</span>
+                        <table class="overlayTable table-outline table-content table-header">
+                            <tr>
+                                <th colspan="2">Sửa Thông Tin Khách Hàng</th>
+                            </tr>
+                            <tr>
+                                <td>Họ và Tên:</td>
+                                <td><input type="text" id="hoTenNguoiDungSua"></td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td><input type="email" id="emailNguoiDungSua"></td>
+                            </tr>
+                            <tr>
+                                <td>Số Điện Thoại:</td>
+                                <td><input type="tel" id="sdtNguoiDungSua"></td>
+                            </tr>
+                            <tr>
+                                <td>Tài Khoản:</td>
+                                <td><input type="text" id="taiKhoanNguoiDungSua" readonly></td>
+                            </tr>
+                            <tr>
+                                <td>Mật Khẩu:</td>
+                                <td><input type="password" id="matKhauNguoiDungSua"></td>
+                            </tr>
+                            <tr>
+                                <td>Xác nhận mật khẩu:</td>
+                                <td><input type="password" id="xacNhanMatKhauNguoiDungSua"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="table-footer">
+                                    <button onclick="suaNguoiDung()">CẬP NHẬT</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
                 </div>
                 <!-- Thống Kê -->
                 <div class="thongke">

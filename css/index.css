@@ -2,6 +2,7 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    
 }
 
 header {
@@ -161,27 +162,35 @@ ul li i {
 
 .menu a {
     color: white;
-    padding: 2px;
+    padding: 5px 10px; /* Tăng không gian cho liên kết */
     display: inline-block;
-    text-decoration: none;
-    margin-right: 50px;
+    text-decoration: none; /* Xóa gạch chân mặc định */
+    margin-right: 30px; /* Giảm khoảng cách hợp lý hơn */
     position: relative;
+    font-size: 16px; /* Tăng kích thước chữ */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển màu chữ */
+}
+
+.menu a:hover {
+    color: rgb(0, 39, 58); /* Đổi màu chữ khi hover */
 }
 
 .menu a::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: 50%; /* Bắt đầu từ giữa */
     bottom: 0;
     width: 0;
     height: 3px;
     background-color: rgb(0, 132, 142);
-    transition: width 0.4s ease-in;
+    transition: all 0.4s ease-in-out; /* Hiệu ứng chuyển động mượt */
+    transform: translateX(-50%); /* Căn giữa đường */
 }
 
 .menu a:hover::after {
-    width: 100%;
+    width: 100%; /* Trải rộng toàn bộ chiều ngang khi hover */
 }
+
 
 .dropdown-content {
     display: none;
@@ -727,12 +736,6 @@ footer div {
         height: 200px;
     }
 
-    #product1 {
-        display: none;
-    }
-    .pagination{
-        display: none;
-    }
 
 }
 
@@ -751,6 +754,7 @@ footer div {
     width: 300px; /* Chiếm toàn bộ chiều rộng */
     height: 100%; /* Chiếm toàn bộ chiều cao */
     background-color: rgba(30, 58, 138, 0.8);
+    
     z-index: 1000;
     display: none;
 }
@@ -786,10 +790,12 @@ footer div {
     font-size: 20px; /* Kích thước chữ */
     color: #fff; /* Màu chữ */
     transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */
+    
+    
 }
 
 .hamburger_menu a:hover {
-    color: #fff; /* Màu chữ khi hover */
+    color: #ffffff; /* Màu chữ khi hover */
     transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
 }
 
