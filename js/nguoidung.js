@@ -42,9 +42,9 @@ function showOrderList() {
         const orderItemDiv = document.createElement('div');
         orderItemDiv.classList.add('order-item');
 
-         // Kiểm tra điều kiện để xác định trạng thái nút
-         const cancelDisabled = order.tinhTrang !== 'Đang chờ xử lý' ? 'disabled' : '';
-         const receivedDisabled = order.tinhTrang !== 'Đang giao hàng' ? 'disabled' : '';
+        // Kiểm tra điều kiện để xác định trạng thái nút
+        const cancelDisabled = order.tinhTrang !== 'Đang chờ xử lý' ? 'disabled' : '';
+        const receivedDisabled = order.tinhTrang !== 'Đang giao hàng' ? 'disabled' : '';
 
         // Tính tổng tiền của đơn hàng
         const totalOrderPrice = order.sp.reduce((total, sp) => {
@@ -60,23 +60,25 @@ function showOrderList() {
             <div class="order-content">
                 <div class="order-details">
                     ${order.sp.map(sp => {
-                        const product = getProductById(sp.ma);
-                        const totalPrice = sp.soluong * product.price;
-                        return `
+            const product = getProductById(sp.ma);
+            const totalPrice = sp.soluong * product.price;
+            return `
                             <div class="product-order">
                                 <img src="${product.image}" alt="${product.name}">
                                 <div class="order-item-detail">
                                     <p class="product-name">Tên sản phẩm: ${product.name}</p>
                                     <p class="product-variant">Số lượng: ${sp.soluong}</p>
-                                    <p class="product-price">Giá: ${Number(product.price).toLocaleString()} VNĐ</p>
                                     <p class="product-total">Thành tiền: ${Number(totalPrice).toLocaleString()} VNĐ</p>
                                 </div>
                             </div>
                         `;
-                    }).join('')}
+        }).join('')}
                 </div>
                 <div class="order-btn">
-                    <p class="product-total">Thành tiền : ${Number(totalOrderPrice).toLocaleString()} VNĐ</p>
+                    <div class="total-all">
+                        <span class="label">Thành tiền:</span>
+                        <span class="amount">${Number(totalOrderPrice).toLocaleString()} VNĐ</span>
+                    </div>                    
                     <button class="btns cancel"  ${cancelDisabled} onclick="changeOrderStatus('${order.id}', 'Đã hủy')">Hủy đơn hàng</button>
                     <button class="btns received" ${receivedDisabled} onclick="changeOrderStatus('${order.id}', 'Đã giao')">Đã Nhận Hàng</button>
                 </div>
@@ -101,14 +103,15 @@ document.addEventListener('DOMContentLoaded', function () {
             <p><strong>Số điện thoại:</strong> ${user.phone}</p>
             <p><strong>Email:</strong> ${user.email}</p>
             <p><strong>Tên đăng nhập:</strong> ${user.username}</p>
-            <p><strong>Mật khẩu:</strong> <a href=#>Đổi mật khẩu </></p>
+<p><strong>Mật khẩu:</strong> <a href="#" id="change-password-link">Đổi mật khẩu</a></p>    
+
         `;
     }
-
+    const userNameh3 = document.querySelector('.icon-user h3');
+    userNameh3.innerText = user.name;
     // Gắn sự kiện click cho các mục trong sidebar
     document.querySelector('.user-sidebar h4').addEventListener('click', showUserInfo);
     document.querySelector('.order-sidebar h4').addEventListener('click', showOrderList);
-
     // Hiển thị thông tin người dùng mặc định khi tải trang
     showUserInfo();
 });
@@ -121,3 +124,4 @@ window.onload = function () {
     }
 };
 
+// Show the modal

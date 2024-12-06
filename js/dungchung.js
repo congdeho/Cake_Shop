@@ -200,8 +200,8 @@ function logIn(form) {
 }
 
 function signUp(form) {
-     // Lấy dữ liệu các khách hàng hiện có
-     var listUser = getListUser();
+    // Lấy dữ liệu các khách hàng hiện có
+    var listUser = getListUser();
     var id = listUser.length + 1;
     var name = form.hoten.value;
     var phone = form.sdt.value;
@@ -227,9 +227,30 @@ function signUp(form) {
             return false;
         }
     }
+
+    // Kiểm tra xem mật khẩu có đủ 6 ký tự
+    if (pass.length < 6) {
+        alert('Mật khẩu phải có ít nhất 6 ký tự !!');
+        return false;
+    }
+
     // Kiểm tra xem mật khẩu nhập vào có đúng với nhập lại
     if (pass != confirmPass) {
         alert('Mật khẩu nhập lại không khớp !!');
+        return false;
+    }
+
+    // Kiểm tra số điện thoại phải bắt đầu bằng số 0 và phải đủ 10 số
+    var phonePattern = /^0\d{9}$/;
+    if (!phonePattern.test(phone)) {
+        alert('Số điện thoại phải bắt đầu bằng số 0 và phải đủ 10 số !!');
+        return false;
+    }
+
+    // Kiểm tra email phải đúng định dạng
+    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    if (!emailPattern.test(email)) {
+        alert('Email không đúng định dạng !!');
         return false;
     }
 
@@ -248,7 +269,7 @@ function signUp(form) {
 
 function logOut() {
     window.localStorage.removeItem('CurrentUser');
-    location.reload();
+    window.location.href = 'index.html';
 }
 
 // Hiển thị form tài khoản, giá trị truyền vào là true hoặc false
@@ -264,7 +285,7 @@ function checkTaiKhoan() {
     if (!getCurrentUser()) {
         showTaiKhoan(true);
     }
-    closeHamburgerMenu();
+    // closeHamburgerMenu();
 }
 
 // Tạo event, hiệu ứng cho form tài khoản
@@ -374,8 +395,6 @@ function addContainTaiKhoan() {
                             </label>
                             <input name="pass" type="password" required autocomplete="off" />
                         </div> <!-- pass -->
-
-                        <p class="forgot"><a href="#">Quên mật khẩu?</a></p>
 
                         <button type="submit" class="button button-block" >Tiếp tục</button>
 
