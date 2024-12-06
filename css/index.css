@@ -629,6 +629,7 @@ footer div {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-left: 5px;
 }
 
 .pagination-button:hover {
@@ -668,6 +669,7 @@ footer div {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-left: 5px;
 }
 
 .pagination button:hover {
@@ -726,6 +728,9 @@ footer div {
     }
 
     #product1 {
+        display: none;
+    }
+    .pagination{
         display: none;
     }
 

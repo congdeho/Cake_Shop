@@ -241,23 +241,7 @@
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
-.pagination-button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    background-color: #f1f1f1;
-    border: 1px solid #ddd;
-    cursor: pointer;
-}
 
-.pagination-button.active {
-    background-color: #3174bb; /* Màu nền khi trang được chọn */
-    color: white; /* Màu chữ khi trang được chọn */
-    border-color:#3174bb; /* Đổi màu viền khi trang được chọn */
-}
-
-.pagination-button:hover {
-    background-color: #ddd; /* Màu nền khi hover vào nút */
-}
 /* Lớp để ẩn phần tử */
 .hidden {
     display: none;
