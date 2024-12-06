@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <p><strong>Số điện thoại:</strong> ${user.phone}</p>
             <p><strong>Email:</strong> ${user.email}</p>
             <p><strong>Tên đăng nhập:</strong> ${user.username}</p>
-            <p><strong>Trạng thái:</strong> ${user.status}</p>
+            <p><strong>Mật khẩu:</strong> <a href=#>Đổi mật khẩu </></p>
         `;
     }
 

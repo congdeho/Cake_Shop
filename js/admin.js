@@ -705,6 +705,7 @@ window.onclick = function (event) {
 }
 
 window.onload = function () {
+    const orders = getListDonHang();
     displayOrders(orders); // Hiển thị đơn hàng khi tải trang
     addEventChangeTab();
 };

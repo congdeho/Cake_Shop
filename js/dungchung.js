@@ -18,8 +18,7 @@ function khoiTao() {
     list_products = getListProducts() || list_products;
     adminInfo = getListAdmin() || adminInfo;
     listUser = getListUser();
-    //setListProducts(list_products);
-
+    // setListProducts(list_products);
     setupEventTaiKhoan();
     capNhat_ThongTin_CurrentUser();
     // addEventCloseAlertButton();
