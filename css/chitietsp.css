@@ -35,7 +35,7 @@
 
 /* Ảnh sản phẩm */
 .details img {
-    max-width: 100%;
+    max-width: 30%;
     height: auto;
     display: block;
     margin: 15px auto;

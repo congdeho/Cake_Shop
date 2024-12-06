@@ -315,17 +315,12 @@ footer div {
 }
 
 #content {
-    display: flex;
-    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 100PX;
     flex: 1;
     margin-top: 100px;
 }
 
-.cont {
-    flex: 1;
-    justify-content: flex-start;
-    margin-left: 200px;
-}
 
 .info-item {
     display: flex;
@@ -694,4 +689,127 @@ footer div {
   color: #aaa;
   border-color: #ddd;
   cursor: not-allowed;
+}
+
+
+/* ======= Responsive ======= */
+@media screen and (max-width: 850px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2px;
+    }
+
+    .search-form {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search-input {
+        width: 80%;
+    }
+
+    .icon.red, .cart, .enter, .enter_member {
+        display: none;
+    }
+
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .slider
+    {
+        height: 200px;
+    }
+
+    #product1 {
+        display: none;
+    }
+
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    border: 1px solid #333; /* Thêm khung với màu xám đậm */
+    padding: 2px; /* Khoảng cách giữa khung và các đường gạch */
+    border-radius: 8px; /* Bo góc của khung */
+}
+
+.hamburger_display {
+    position: fixed; /* Cố định toàn màn hình */
+    top: 0;
+    left: 0;
+    width: 300px; /* Chiếm toàn bộ chiều rộng */
+    height: 100%; /* Chiếm toàn bộ chiều cao */
+    background-color: rgba(30, 58, 138, 0.8);
+    z-index: 1000;
+    display: none;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    display: flex; /* Sử dụng flexbox để căn giữa nội dung */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding: 10px;
+
+}
+
+.logo i {
+    font-size: 100px; /* Kích thước font trùng với kích thước của div */
+    line-height: 1; /* Loại bỏ khoảng cách dòng không cần thiết */
+}
+
+.hamburger_menu {
+    border-bottom: 1px solid black;
+    height: 50px;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: flex-start; /* Căn trái theo chiều ngang */
+    font-weight: bold; /* Tùy chọn: Làm chữ đậm */
+    margin: 0 20px;
+}
+
+.hamburger_menu a {
+    padding: 10px 20px; /* Tạo không gian bên trong thẻ */
+    text-decoration: none; /* Xóa gạch chân mặc định */
+    font-size: 20px; /* Kích thước chữ */
+    color: #fff; /* Màu chữ */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển đổi */
+}
+
+.hamburger_menu a:hover {
+    color: #fff; /* Màu chữ khi hover */
+    transform: scale(1.05); /* Tăng kích thước nhẹ khi hover */
+}
+
+@media screen and (max-width: 700px) {
+    .hamburger {
+        display: block;
+    }
+
+    .home
+    {
+        display: none;
+    }
+}
+
+.close_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close_button:hover {
+    color: #f00;
 }

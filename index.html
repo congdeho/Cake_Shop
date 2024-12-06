@@ -18,9 +18,11 @@
 
 <body>
     <header>
-        <script>window.onload = function () {
+        <script>
+            window.onload = function () {
                 khoiTao();
-            }</script>
+            }
+        </script>
         <nav>
             <ul>
                 <li>
@@ -28,7 +30,6 @@
                     <i class="material-icons">mood</i>
                 </li>
                 <li class="item">
-
                     <form action="/search" method="GET" class="search-form">
                         <input type="text" name="query" placeholder="Tìm kiếm..." class="search-input">
                         <button type="submit" class="search-button">
@@ -37,9 +38,51 @@
                     </form>
                 </li>
 
+                <div class="hamburger" onclick="toggleMenu()">
+                    <i class="material-icons">menu</i>
+                </div>
+                
+                <div class="hamburger_display">
+                    <button class="close_button" onclick="closeHamburgerMenu()">×</button>                
+
+                    <div class="logo">
+                        <i class="material-icons">mood</i>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="showHome();">Trang chủ</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="shortcake();">Short Cake</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="bread();">Bread And Pastry</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="dessert();">Dessert</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="gifts();">Gifts</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="cookies();">Cookies</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="showNews();">Tin tức</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="showPromotions();">Khuyến mãi</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="checkTaiKhoan();">Đăng nhập</a>
+                    </div>
+
+                    
+
+                </div>
+
                 <i class="material-icons icon red">phone</i>
                 <div class="enter">
-                    <p>0347 348 024</p>
+                    <p>0347 340 024</p>
                 </div>
                 <i class="material-icons icon red">apartment</i>
                 <div class="enter">
@@ -102,10 +145,6 @@
             <img src="https://www.chowhound.com/img/gallery/delicate-decadent-chocolate-macarons-recipe/intro-1701092563.jpg"
                 alt="Slide 3">
         </div>
-        <div class="slide active">
-            <img src="https://www.beanilla.com/wp/wp-content/uploads/2022/05/Ice-Cream-and-brownie-with-hot-fudge-sauce.jpg"
-                alt="Slide 4">
-        </div>
         <button class="prev" onclick="prevSlide()">❮</button>
         <button class="next" onclick="nextSlide()">❯</button>
     </div>
@@ -114,7 +153,7 @@
             <div id="search-results"></div>
             <div id="pagination"></div>
         </div>
-        <div id="home" class="product-tab" style="display:none;"> <!-- Nội dung cho TRANG CHỦ -->
+        <div id="home" class="product-tab" style="display:none;"> 
 
             <div class="home-container">
                 <div class="home">
@@ -230,27 +269,20 @@
     <footer>
         <div class="overlay"></div>
         <div id="content">
-            <div class="cont">
+
                 <div class="info-item">
                     <i class="material-icons icon-small">location_on</i>
                     561 Điện Biên Phủ, phường 25, quận Bình Thạnh
                 </div>
                 <div class="info-item">
                     <i class="material-icons icon-small">mail</i>
-                    phamn5265@gmail.com
+                    bakery@gmail.com
                 </div>
                 <div class="info-item">
                     <i class="material-icons icon-small">phone_iphone</i>
-                    0347348024
+                    0347340024
                 </div>
             </div>
-            <div class="cont">
-                <div class="inline-container">
-                    <img src="https://dangkywebvoibocongthuong.com/wp-content/uploads/2021/11/logo-da-thong-bao-bo-cong-thuong.png"
-                        class="logo">
-                </div>
-            </div>
-        </div>
         <div class="bottom">
             <div class="inline-container">
                 <div>&copy; 2024 Online Store. All rights reserved.</div>
