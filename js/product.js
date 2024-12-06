@@ -731,8 +731,6 @@ function displaygifts() {
     updatePagination();
 }
 
-
-
 function displaycookies() {
     const wholeCakeTab = document.getElementById('cookies');
     wholeCakeTab.innerHTML = ''; // Xóa nội dung cũ
