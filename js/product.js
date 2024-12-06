@@ -1,4 +1,17 @@
+function formatAllPrices(products) {
+    products.forEach(product => {
+        // Lưu giá trị gốc nếu chưa tồn tại
+        if (!product.originalPrice) {
+            product.originalPrice = product.price;
+        }
+
+        // Định dạng giá trị từ originalPrice
+        product.price = Number(product.originalPrice).toLocaleString('vi-VN', { minimumFractionDigits: 0 });
+    });
+}
+
 function displayWholeCakes() {
+    formatAllPrices(list_products);
     const wholeCakeTab = document.getElementById('whole-cake');
     wholeCakeTab.innerHTML = ''; // Xóa nội dung cũ
 
@@ -876,3 +889,4 @@ function displaycookies() {
     updatePagination();
 }
 
+    

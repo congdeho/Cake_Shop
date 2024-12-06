@@ -12,6 +12,7 @@
 #promotions h1 {
     font-size: 30px;
     margin-bottom: 20px;
+    
 }
 
 #product-section {
@@ -26,6 +27,7 @@
     background-color: rgb(202, 226, 226);
     width: 100%;
     padding: 20px;
+    
 }
 
 .product-tab h2 {
@@ -51,6 +53,19 @@
     width: 100%;
     height: auto;
     border-radius: 8px;
+}
+/* Khi màn hình nhỏ hơn 1024px */
+@media (max-width: 1024px) {
+    .product-item {
+        width: calc(45% - 20px); /* 45% của container */
+    }
+}
+
+/* Khi màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+    .product-item {
+        width: calc(100% - 20px); /* Sản phẩm chiếm toàn bộ chiều ngang */
+    }
 }
 
 .zoom-image {
@@ -107,17 +122,21 @@
 
 .product1
 {
-    width: 20%;
+
+   display: block;
+    width: 250px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.4);
     position: sticky;
     top: 20px;
     height: 550px;
-    margin-left: 20px;
+    margin-left: 50px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+
 .product1-box1
 {
     background-color: rgb(146, 162, 162);
@@ -125,8 +144,22 @@
     border-start-start-radius: 10px;
     border-start-end-radius: 10px;
     text-align: center;
+    
     padding: 10px;
 }
+@media (max-width: 768px) {
+    .product1-box1 {
+      display: none; /* Ẩn menu */
+    }
+    #product1 {
+        display: none !important;
+    }
+
+    .product1-box2 {
+        display: none; /* Ẩn menu */
+      }
+
+  }
 
 .product1-box2
 {
@@ -134,6 +167,7 @@
     text-align: center;
     overflow-y: auto;
 }
+
 
 .home-container {
     gap: 30px; /* Khoảng cách giữa các phần tử (tuỳ chỉnh) */
