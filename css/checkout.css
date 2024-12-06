@@ -1,10 +1,7 @@
-/* Tổng quan */
 body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  position: relative;
-  overflow: auto;
 }
 
 header {
@@ -13,8 +10,6 @@ header {
   padding: 10px 0;
   text-align: center;
   font-size: 15px;
-  z-index: 1;
-  position: relative;
 }
 
 nav {
@@ -25,54 +20,63 @@ nav {
   margin-bottom: 10px;
 }
 
-.fixed-image {
-  position: fixed;
-  z-index: -1;
-  top: 0px;
-  transform: translateX(-50%);
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  background-image: url(https://hartfordbaking.com/wp-content/uploads/2017/04/wholesalebreadsuppliers.jpg);
-  background-size: cover;
-}
-
-.overlay {
-  position: absolute;
-  top: 110px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(19, 19, 19, 0.4);
-  z-index: -1;
-}
-
-.content {
-  position: relative;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  text-align: center;
-  color: white;
-  font-family: fantasy;
-}
-.content p {
-  font-size: 35px !important;
-}
-
 .item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  margin-left: 70px;
+  margin-bottom: 6px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.search-input {
+  width: 300px; /* Adjust width */
+  height: 100%; /* Match the form height */
+  font-size: 16px;
+  padding: 0 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px 0 0 25px; /* Rounded corners */
+  outline: none;
+  box-sizing: border-box;
+}
+
+.search-button {
+  height: 100%; /* Match the form height */
+  width: 50px; /* Adjust button width */
+  background-color: #3174bb;
+  border: none; /* Remove border */
+  border-radius: 0 25px 25px 0; /* Rounded corners on the right */
+  display: flex; /* Center icon */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.search-button i {
+  font-size: 24px; /* Adjust icon size */
+  color: white;
+}
+
+.search-button:hover {
+  background-color: #255a8f; /* Darker blue on hover */
 }
 
 .item1 {
   width: 250px;
   background-color: white;
+  border: none;
   height: 30px;
+  font-size: 15px;
+  outline: none;
   color: black;
   text-align: left;
   margin-left: 70px;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 
 .item2 {
@@ -82,8 +86,8 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4=2px;
+  border-bottom-right-radius: 2px;
 }
 
 .icon {
@@ -96,6 +100,7 @@ nav {
   justify-content: center;
   align-items: center;
 }
+
 .item2.icons {
   display: flex;
   justify-content: center;
@@ -108,34 +113,41 @@ nav {
   font-size: 17px;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
+
 p {
   font-size: 15px;
   margin-top: 10px;
   margin-left: 5px;
 }
+
 .enter {
   margin-left: 10px;
+  cursor: pointer;
 }
 
 nav ul {
   list-style: none;
   padding: 0px;
   display: inline-flex;
-  cursor: pointer;
 }
 
-li {
+nav ul li {
   display: inline-flex;
   align-items: center;
   z-index: 10;
 }
 
+ul li i {
+  cursor: pointer;
+}
+
 .menu {
   list-style-type: none;
-  margin: 0;
   display: flex;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-bottom: 0px;
+  font-size: 15px;
 }
 
 .menu li {
@@ -163,10 +175,10 @@ li {
   background-color: rgb(0, 132, 142);
   transition: width 0.4s ease-in;
 }
+
 .menu a:hover::after {
   width: 100%;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -203,17 +215,69 @@ li {
   display: block;
 }
 
+.slider {
+  background: grey;
+  color: #fff;
+  padding: 10px 0;
+  height: 500px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  display: block;
+  object-position: center;
+  object-fit: cover;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 18px;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 section {
-  background-color: rgb(202, 226, 226);
-  z-index: 1;
-}
-
-.name-product {
+  padding: 20px;
   text-align: center;
-  font-size: 35px;
-  padding: 50px;
+  background-color: rgb(202, 226, 226);
 }
-
 footer {
   color: #fff;
   padding: 10px 0;
@@ -224,7 +288,6 @@ footer {
   background-image: url("https://www.metro.co.in/img/dairy/Bakery-Hero-img-1392x464.jpg");
   flex-direction: column;
   display: flex;
-  z-index: 0;
 }
 
 .overlay {
@@ -234,7 +297,7 @@ footer {
   width: 100%;
   height: 100%;
   background-color: rgba(19, 19, 19, 0.7);
-  z-index: -1;
+  z-index: 1;
 }
 
 footer div {
@@ -246,16 +309,10 @@ footer div {
 }
 
 #content {
-  display: flex;
-  flex-direction: row;
+  justify-content: flex-start;
+  padding-left: 100px;
   flex: 1;
   margin-top: 100px;
-}
-
-.cont {
-  flex: 1;
-  justify-content: flex-start;
-  margin-left: 200px;
 }
 
 .info-item {
@@ -282,14 +339,15 @@ footer div {
   text-decoration: underline;
   color: rgb(247, 240, 107);
 }
+
 .logo {
   width: 20%;
   height: auto;
 }
+
 .icon-small {
   margin-right: 7px;
 }
-
 /* Container */
 .container {
   background-color: #ffffff;
@@ -360,30 +418,180 @@ textarea {
   background-color: #333;
   color: white;
   text-align: center;
-  padding: 10px 0;
+  padding: 10px;
   margin-top: 30px;
 }
 .checkout-container {
   display: flex;
   gap: 20px; /* Khoảng cách giữa 2 phần */
   margin: 20px auto;
-  max-width: 1000px;
+  max-width: 1600px;
 }
 .cart-section {
-  flex: 0.7; /* Chiếm 1/2 chiều rộng container */
+  max-width: 1000px;
+  flex: 0.7;
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Nền giống info-section */
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  color: rgb(18, 113, 154);
+}
+
+.cart-section h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgb(0, 132, 142);
+
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Các sản phẩm trong giỏ hàng */
+#cart-items {
+  margin: 20px 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 5px;
+  max-height: 400px;
+  overflow-y: auto; /* Thêm cuộn dọc nếu quá nhiều sản phẩm */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tổng cộng */
+.cart-section .summary {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.cart-section .summary p {
+  color: white;
+  margin: 0;
+}
+
+/* Nút Cập nhật giỏ hàng */
+.cart-section .btn-update {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 12px;
+  background-color: #618f90;
+  border-radius: 7px;
+  color: white;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.cart-section .btn-update:hover {
+  background-color: #005f60;
+  transition: background-color 0.3s ease-in-out;
+}
+/* Reset và cấu trúc cơ bản */
+body {
+  margin: 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: #f5f5f5; /* Nền sáng nhẹ */
+  color: #333;
 }
 
 .info-section {
-  flex: 0.3; /* Chiếm 1/2 chiều rộng container */
+  flex: 0.3;
+  max-width: 800px;
+  font-size: 16px;
   padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Màu nền giống menu */
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  color: white;
 }
+
+/* Tiêu đề */
+.info-section h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgb(0, 132, 142); /* Màu xanh ngọc */
+
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Form và nhãn */
+.info-section label {
+  display: block;
+  font-size: 16px;
+  margin-top: 1px;
+  color: rgb(0, 0, 0);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-section input[type="text"],
+.info-section select,
+.info-section textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Button */
+.info-section button {
+  background-color: #618f90;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.info-section button:hover {
+  background-color: #145c60;
+  transition: background-color 0.3s ease;
+}
+
+/* Tổng tiền */
+.info-section .summary {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.info-section .summary p {
+  margin: 0;
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+/* Nút Thanh toán */
+.info-section .btn-submit {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  padding: 12px;
+  background-color: #618f90;
+  border-radius: 7px;
+  color: white;
+  font-weight: bold;
+}
+
+.info-section .btn-submit:hover {
+  background-color: #145c60;
+  transition: background-color 0.3s ease-in-out;
+}
+
 .cart-item {
   display: flex;
   align-items: center;
@@ -463,4 +671,34 @@ textarea {
 }
 .quantity-controls button:hover {
   background-color: #939393;
+}
+
+.payment-form {
+  padding: 10px 20px;
+}
+.payment-option {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  width: 200px; /* Kích thước của mỗi ô nhỏ */
+  height: 80px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.payment-logo {
+  width: 40px;
+  height: auto;
+}
+
+input[type="radio"] {
+  margin: 0;
+}
+
+label {
+  margin-left: 10px; /* Tăng khoảng cách để logo và chữ không quá sát */
+  font-size: 16px;
+  cursor: pointer;
 }

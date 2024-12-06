@@ -69,6 +69,7 @@ function displaySearchResults(products) {
     });
 }
 
+
 function updatePagination() {
     const paginationContainer = document.getElementById('pagination');
     const totalPages = Math.ceil(totalResults / productsPerPage);
@@ -84,7 +85,7 @@ function updatePagination() {
 
     // Nút "Trang trước"
     if (currentPage > 1) {
-        paginationHTML += `<button class="button" data-page="${currentPage - 1}">❮</button>`;
+        paginationHTML += `<button class="pagination-button" data-page="${currentPage - 1}">❮</button>`;
     }
 
     // Hiển thị tất cả các số trang
@@ -100,6 +101,43 @@ function updatePagination() {
 
     paginationContainer.innerHTML = paginationHTML;
 }
+
+    // Hiển thị chi tiết sản phẩm
+    function showProductDetails(product) {
+        productDetailsContainer.innerHTML = `
+            <div class="details">
+                <button onclick="hideProductDetails()">Quay lại</button>
+                <h1>${product.name}</h1>
+                <img src="${product.image}" alt="${product.name}">
+                <p><strong>Giá:</strong> ${product.price} VND</p>
+                <p><strong>Mô tả:</strong> ${product.description}</p>
+                <p><strong>Hương vị:</strong> ${product.taste}</p>
+                <p><strong>Kích thước:</strong> ${product.size}</p>
+                <p><strong>Khuyến mãi:</strong> ${product.promo.name}</p>
+                <button onclick="themVaoGioHang(${product.id}, '${product.name}')">Thêm vào giỏ hàng</button>
+            </div>
+        `;
+        productContainer.style.display = 'none'; // Ẩn danh sách sản phẩm
+        productDetailsContainer.style.display = 'block'; // Hiển thị chi tiết sản phẩm
+        paginationContainer.style.display = 'none'; // Ẩn phân trang khi xem chi tiết sản phẩm
+    }
+
+    function hideProductDetails() {
+        productDetailsContainer.style.display = 'none';
+        productContainer.style.display = 'block';
+    }
+
+    // Gắn vào `window` để gọi từ HTML
+    window.showProductDetailsById = function (id) {
+        const product = wholeCakes.find(p => p.id === id);
+        if (product) {
+            showProductDetails(product);
+        }
+    };
+
+    window.hideProductDetails = hideProductDetails;
+
+
 
 function handleSearch() {
     const query = document.querySelector('.search-input').value.trim();

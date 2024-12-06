@@ -1,172 +1,279 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Online Store - Checkout</title>
-    <link rel="stylesheet" href="css/checkout.css">
-    <link rel="stylesheet" href="css/taikhoan.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="js/cart.js"></script>
+    <link rel="stylesheet" href="css/checkout.css" />
+    <link rel="stylesheet" href="css/taikhoan.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/product.css" />
+    <link rel="stylesheet" href="css/chitietsp.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="js/cart.js" defer></script>
     <script src="js/checkout.js"></script>
     <script src="js/dungchung.js"></script>
     <script src="js/classes.js"></script>
     <script src="data/dataproduct.js"></script>
     <script src="data/user.js"></script>
-</head>
-<body>
+    <script src="data/dataquanly.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/classes.js"></script>
+    <link rel="shortcut icon" href="#" />
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul>
-                <li>
-                    <i class="material-icons">mood</i>
-                </li>
-                <li class="item">
-                    <div class="item1"><p>Search...</p></div>
-                    <div class="item2">
-                        <i class="material-icons icons ">search</i>
-                    </div>
-                </li>
-                    <i class="material-icons icon red">phone</i>
-                    <div class="enter"><p>0347 348 024</p></div>
-                    <i class="material-icons icon red">apartment</i>
-                    <div class="enter"><p>Location </p></div>
-                    <div class="enter">
-                        <div class="member">
-                            <a onclick="checkTaiKhoan()">
-                                <i class="material-icons icon red">person</i>
-                            </a>
-                            <div class="menuMember hide">
-                                <a href="nguoidung.html">Trang người dùng</a>
-                                <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="enter_member">
-                        <p>Tài khoản</p>
-                    </div>
-                    
-                    <div class="cart">
-                        <a href="cart.html">
-                            <i class="material-icons icon red">local_mall</i>
-                        </a>
-                        <span class="cart-number">0</span>
-                    </div>
-                    <div class="enter">
-                        <p>Giỏ hàng</p>
-                    </div>
-            </ul>
-        </nav>
-        <nav>
-            <ul class="menu">
-                <li><a href="index.html" onclick = "home();">TRANG CHỦ</a></li>
-                <li class="dropdown">
-                    <a href="#">SẢN PHẨM</a>
-                    <ul class="dropdown-content">
-                        <li><a href="index.html" onclick="product();">Whole Cake</a></li>
-                        <li><a href="index.html" onclick="shortcake();">Short Cake </a></li>
-                        <li><a href="index.html">Bread</a></li>
-                        <li><a href="index.html">Dessert</a></li>
-                        <li><a href="index.html">Sandwich and Salad</a></li>
-                        <li><a href="index.html">Coffee and Beverages</a></li>
-                    </ul>
-                </li>
-                <li><a href="index.html">TIN TỨC</a></li>
-                <li><a href="index.html">KHUYẾN MÃI</a></li>
-        </nav>
-    </header>
-    
+      <script>
+          window.onload = function () {
+              khoiTao();
+          }
+      </script>
+      <nav>
+          <ul>
+              <li>
+                  <i class="material-icons">mood</i>
+              </li>
+              <li class="item">
+                  <form action="/search" method="GET" class="search-form">
+                      <input type="text" name="query" placeholder="Tìm kiếm..." class="search-input">
+                      <button type="submit" class="search-button">
+                          <i class="material-icons">search</i>
+                      </button>
+                  </form>
+              </li>
+
+              <div class="hamburger" onclick="toggleMenu()">
+                  <i class="material-icons">menu</i>
+              </div>
+              
+              <div class="hamburger_display">
+                  <button class="close_button" onclick="closeHamburgerMenu()">×</button>                
+
+                  <div class="logo">
+                      <i class="material-icons">mood</i>
+                  </div>
+                  <div class="hamburger_menu">
+                      <a href="#" onclick="showHome();">Trang chủ</a>
+                  </div>
+                  <div class="hamburger_menu">
+                      <a href="#" onclick="shortcake();">Short Cake</a>
+                  </div>
+                  <div class="hamburger_menu">
+                      <a href="#" onclick="bread();">Bread And Pastry</a>
+                  </div>
+                  <div class="hamburger_menu">
+                      <a href="#" onclick="dessert();">Dessert</a>
+                  </div>
+                  <div class="hamburger_menu">
+                      <a href="#" onclick="gifts();">Gifts</a>
+                  </div>
+                  <div class="hamburger_menu">
+                      <a href="#" onclick="cookies();">Cookies</a>
+                  </div>
+                  <div class="hamburger_menu">
+                      <a href="#" onclick="showNews();">Tin tức</a>
+                  </div>
+                  <div class="hamburger_menu">
+                      <a href="#" onclick="showPromotions();">Khuyến mãi</a>
+                  </div>
+                  <div class="hamburger_menu">
+                      <a href="#" onclick="checkTaiKhoan();">Đăng nhập</a>
+                  </div>
+
+                  
+
+              </div>
+
+              <i class="material-icons icon red">phone</i>
+              <div class="enter">
+                  <p>0347 340 024</p>
+              </div>
+              <i class="material-icons icon red">apartment</i>
+              <div class="enter">
+                  <p>Location </p>
+              </div>
+              <div class="enter">
+                  <div class="member">
+                      <a onclick="checkTaiKhoan()">
+                          <i class="material-icons icon red">person</i>
+                      </a>
+                      <div class="menuMember hide">
+                          <a href="nguoidung.html">Trang người dùng</a>
+                          <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
+                      </div>
+                  </div>
+              </div>
+              <div class="enter_member">
+                  <p>Tài khoản</p>
+              </div>
+
+              <div class="cart">
+                  <a href="cart.html">
+                      <i class="material-icons icon red">local_mall</i>
+                  </a>
+                  <span class="cart-number">0</span>
+              </div>
+              <div class="enter">
+                  <p>Giỏ hàng</p>
+              </div>
+          </ul>
+      </nav>
+      <nav>
+          <ul class="menu">
+              <li><a href="index.html" onclick="showHome();">TRANG CHỦ</a></li>
+              <li class="dropdown">
+                  <a href="index.html" onclick="wholecake()">SẢN PHẨM</a>
+                  <ul class="dropdown-content">
+                      <li><a href="index.html" onclick="wholecake();">Whole Cake</a></li>
+                      <li><a href="index.html" onclick="shortcake();">Short Cake</a></li>
+                      <li><a href="index.html" onclick="bread();">Bread And Pastry</a></li>
+                      <li><a href="index.html" onclick="dessert();">Dessert</a></li>
+                      <li><a href="index.html" onclick="gifts();">Gifts</a></li>
+                      <li><a href="index.html" onclick="cookies();">Cookies</a></li>
+                  </ul>
+              </li>
+              <li><a href="#" onclick="showNews();">TIN TỨC</a></li>
+              <li><a href="#" onclick="showPromotions();">KHUYẾN MÃI</a></li>
+          </ul>
+      </nav>
+  </header>
 
     <section>
-        <div class="checkout-container">
-            <div class="cart-section">
-                <h2>Giỏ hàng</h2>
-                <div id="cart-items"></div>
-                <div class="summary">
-                    <p><strong>Tổng cộng:</strong> <span id="total-price">0</span> VND</p>
-                </div>
-                <button class="btn-update">Cập nhật giỏ hàng</button>
-            </div>
-            <div class="info-section">
-                <h2>Thông tin giao hàng</h2>
-                    <form action="javascript:thanhToan()" method="post">
-                    <label for="street">Số nhà, đường:</label>
-                    <input type="text" id="street" name="street" required />
-
-                    <label for="city">Thành phố:</label>
-                    <select id="city" name="city" required>
-                        <option value="">Chọn thành phố</option>
-                    </select>
-                    
-
-                    <label for="district">Quận, huyện:</label>
-                    <select id="district" name="district" required>
-                        <option value="">Chọn quận, huyện</option>
-                    
-                    </select>
-
-                    <label for="ward">Phường, xã:</label>
-                    <select id="ward" name="ward" required>
-                        <option value="">Chọn phường, xã</option>
-                       
-                    </select>
-
-                    <label for="notes">Ghi chú (tùy chọn):</label>
-                    <textarea id="notes" name="notes" rows="2"></textarea>
-                    <button type="button" onclick="saveAddress()">Lưu địa chỉ</button>
-
-                    <div class="summary">
-                        <p><strong>Tổng tiền:</strong> <span id="total-price2">0</span> VND</p>
-                    </div>
-                    <button type="submit" class="btn-submit">Thanh toán</button>
-                </form>
-            </div>
+      <div class="checkout-container">
+        <div class="cart-section">
+          <h2>Giỏ hàng</h2>
+          <div id="cart-items"></div>
+          <div class="summary">
+            <p>
+              <strong>Tổng cộng:</strong> <span id="total-price">0</span> VND
+            </p>
+          </div>
+          <button class="btn-update">Cập nhật giỏ hàng</button>
         </div>
-        <footer>
-            <div class="overlay"></div>
-            <div id="content">
-                <div class="cont">
-                    <div class="info-item">
-                        <i class="material-icons icon-small">location_on</i>
-                        561 Điện Biên Phủ, phường 25, quận Bình Thạnh
-                    </div>
-                    <div class="info-item">
-                        <i class="material-icons icon-small">mail</i>
-                        phamn5265@gmail.com
-                    </div>
-                    <div class="info-item">
-                        <i class="material-icons icon-small">phone_iphone</i>
-                        0347348024
-                    </div>
-                </div>
-                <div class="cont">
-                    <div class="inline-container">
-                        THONG TIN CONG TY
-                    </div>
-                    <div class="inline-container">
-                        <img src="https://dangkywebvoibocongthuong.com/wp-content/uploads/2021/11/logo-da-thong-bao-bo-cong-thuong.png" class="logo">
-                    </div>
-                </div>
-            </div>
-            <div class="bottom">
-                <div class="inline-container">
-                    <div>© 2024 Online Store. All rights reserved.</div>
-                </div>
-                <div class="inline-container">
-                    <p>Return and Refund Policy</p>
-                    <p>Terms & Conditions of Payment</p>
-                    <p>Payment Methods</p>
-                    <p>Privacy Policy</p>
-                    <p>Delivery Policy</p>
-                </div>
-                <div class="inline-container">
-                    <p>Contact Information</p>
-                </div>
+      
+          <div class="info-section">
+            <h2>Thông tin giao hàng</h2>
+            <form action="javascript:thanhToan()" method="post">
+              <label for="street"> </label>
+              <input
+                type="text"
+                id="street"
+                name="street"
+                placeholder="Số nhà, đường"
+                required
+              />
 
+              <label for="city"> </label>
+              <select id="city" name="city" required>
+                <option value="">Chọn thành phố</option>
+              </select>
+
+              <label for="district"> </label>
+              <select id="district" name="district" required>
+                <option value="">Chọn quận, huyện</option>
+              </select>
+
+              <label for="ward"> </label>
+              <select id="ward" name="ward" required>
+                <option value="">Chọn phường, xã</option>
+              </select>
+              <label for="notes">Ghi chú (tùy chọn):</label>
+              <textarea id="notes" name="notes" rows="2"></textarea>
+              <button type="button" onclick="saveAddress()">Lưu địa chỉ</button>
+         
+            
+              <form id="payment-form">
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="zaloPay" value="credit" required>
+                    <img src="image/zaloPay.png" alt="ZaloPay" class="payment-logo">
+                    <label for="zaloPay">ví zaloPay</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="cash-on-delivery" value="cash" required>
+                    <img src="image/payCash.png" alt="Cash on Delivery" class="payment-logo">
+                    <label for="cash-on-delivery">Thanh toán tiền mặt</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="momo" value="momo" required>
+                    <img src="image/momo.jpg" alt="MoMo" class="payment-logo">
+                    <label for="momo">ví MoMo</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" name="payment" id="bank-transfer" value="bank" required>
+                    <img src="image/visa.png" alt="Bank Transfer" class="payment-logo">
+                    <label for="bank-transfer">thẻ tín dụng</label>
+                </div>
+            
+            
+                <div class="summary">
+                  <p>
+                    <strong>Tổng tiền:</strong> <span id="total-price2">0</span> VND
+                  </p>
+                </div>  
+                
+        
+                <div class="buttons">
+                  <button type="submit" class="btn-submit">Thanh toán</button>
+                
+                </div>
+              </form>
             </div>
-        </footer>
+            
+            
+
+              <!-- <div id="modal-container"></div> -->
+
+              <!-- Vùng chèn bảng thanh toán -->
+
+              <!--<button type="submit" class="btn-submit">Thanh toán</button>-->
+            </form>
+          </div>
+          
+            
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="overlay"></div>
+        <div id="content">
+
+                <div class="info-item">
+                    <i class="material-icons icon-small">location_on</i>
+                    561 Điện Biên Phủ, phường 25, quận Bình Thạnh
+                </div>
+                <div class="info-item">
+                    <i class="material-icons icon-small">mail</i>
+                    bakery@gmail.com
+                </div>
+                <div class="info-item">
+                    <i class="material-icons icon-small">phone_iphone</i>
+                    0347340024
+                </div>
+            </div>
+        <div class="bottom">
+            <div class="inline-container">
+                <div>&copy; 2024 Online Store. All rights reserved.</div>
+            </div>
+            <div class="inline-container">
+                <p>Chính sách giao hàng</p>
+                <p>Chính sách trả hàng - hoàn tiền</p>
+                <p>Phương thức thanh toán</p>
+                <p>Điều khoản & điều kiện thanh toán</p>
+                <p>Bảo vệ thông tin cá nhân người tiêu dùng</p>
+            </div>
+            <div class="inline-container">
+                <p>Thông tin liên hệ</p>
+            </div>
+
+        </div>
+    </footer>
     </section>
-</body>
-<script>addContainTaiKhoan()</script>
+  </body>
+ 
+  <script>
+    addContainTaiKhoan();
+  </script>
 </html>
