@@ -247,10 +247,8 @@ function signUp(form) {
         return false;
     }
 
-    // Kiểm tra email phải đúng định dạng
-    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-    if (!emailPattern.test(email)) {
-        alert('Email không đúng định dạng !!');
+    if (!email.includes('@') || email.startsWith('@') || email.endsWith('@')) {
+        alert('Email không hợp lệ!');
         return false;
     }
 
