@@ -169,12 +169,24 @@ function layThongTinSanPhamTuTable(id) {
     var huongVi = tr[8].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var promoName = tr[10].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
     var promoValue = tr[11].getElementsByTagName('td')[1].getElementsByTagName('input')[0].value;
-    if (isNaN(giaTien)) {
-        alert('Giá phải là số nguyên');
+    // Kiểm tra các trường bắt buộc
+    if (!masp || !tenSanPham || !loai || !giaTien || !moTa || !kichCoBanh || !huongVi) {
+        alert('Vui lòng điền đầy đủ các trường bắt buộc.');
         return false;
     }
-    if (kichCoBanh) {
-        size = kichCoBanh;
+    if (!imageSrc || imageSrc === window.location.href) {
+        alert('Vui lòng chọn ảnh cho sản phẩm.');
+        return false;
+    }
+
+    if (isNaN(giaTien)) {
+        alert('Giá tiền phải là số nguyên hợp lệ.');
+        return false;
+    }
+
+    if (kichCoBanh && isNaN(kichCoBanh)) {
+        alert('Kích cỡ bánh phải là số hợp lệ.');
+        return false;
     }
     try {
         return {
@@ -294,6 +306,8 @@ function suaSanPham(id) {
             return false;
         }
     }
+    //Kiểm tra dữ liệu trống
+    
     // Sửa
     for(var i = 0; i < list_products.length; i++) {
         if(list_products[i].id == id) {

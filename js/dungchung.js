@@ -285,7 +285,7 @@ function checkTaiKhoan() {
     if (!getCurrentUser()) {
         showTaiKhoan(true);
     }
-    // closeHamburgerMenu();
+    closeHamburgerMenu();
 }
 
 // Tạo event, hiệu ứng cho form tài khoản
