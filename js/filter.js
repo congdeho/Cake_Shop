@@ -11,26 +11,26 @@ function displayFilteredProducts(filters) {
     const productDetailsContainer = document.createElement('div');
     productDetailsContainer.id = 'product-details';
     productDetailsContainer.style.display = 'none';
+// Lọc sản phẩm dựa trên bộ lọc
+const filteredProducts = list_products.filter(product => {
+    let matchPrice = true;
+    let matchSize = true;
 
-    // Lọc sản phẩm dựa trên bộ lọc
-    const filteredProducts = list_products.filter(product => {
-        let matchPrice = true;
-        let matchSize = true;
+    // Lọc theo giá
+    if (filters.price) {
+        const [minPrice, maxPrice] = filters.price;
+        const productPrice = parseInt(product.originalPrice, 10); // Sử dụng originalPrice để so sánh
+        matchPrice = productPrice >= minPrice && productPrice <= maxPrice;
+    }
 
-        // Lọc theo giá
-        if (filters.price) {
-            const [minPrice, maxPrice] = filters.price;
-            const productPrice = parseInt(product.price, 10);
-            matchPrice = productPrice >= minPrice && productPrice <= maxPrice;
-        }
+    // Lọc theo kích thước
+    if (filters.size) {
+        matchSize = product.size === filters.size;
+    }
 
-        // Lọc theo kích thước
-        if (filters.size) {
-            matchSize = product.size === filters.size;
-        }
+    return matchPrice && matchSize;
+});
 
-        return matchPrice && matchSize;
-    });
 
     // Phân trang
     let currentPage = 1;

@@ -31,96 +31,97 @@
               khoiTao();
           }
       </script>
-      <nav>
-          <ul>
-              <li>
-                  <i class="material-icons">mood</i>
-              </li>
-              <li class="item">
-                  <form action="/search" method="GET" class="search-form">
-                      <input type="text" name="query" placeholder="Tìm kiếm..." class="search-input">
-                      <button type="submit" class="search-button">
-                          <i class="material-icons">search</i>
-                      </button>
-                  </form>
-              </li>
+        <nav>
+            <ul>
+                <li>
+                    
+                    <i class="material-icons">mood</i>
+                </li>
+                <li class="item">
+                    <form action="/search" method="GET" class="search-form">
+                        <input type="text" name="query" placeholder="Tìm kiếm..." class="search-input">
+                        <button type="submit" class="search-button">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </form>
+                </li>
 
-              <div class="hamburger" onclick="toggleMenu()">
-                  <i class="material-icons">menu</i>
-              </div>
-              
-              <div class="hamburger_display">
-                  <button class="close_button" onclick="closeHamburgerMenu()">×</button>                
+                <div class="hamburger" onclick="toggleMenu()">
+                    <i class="material-icons">menu</i>
+                </div>
+                
+                <div class="hamburger_display">
+                    <button class="close_button" onclick="closeHamburgerMenu()">×</button>                
 
-                  <div class="logo">
-                      <i class="material-icons">mood</i>
-                  </div>
-                  <div class="hamburger_menu">
-                      <a href="#" onclick="showHome();">Trang chủ</a>
-                  </div>
-                  <div class="hamburger_menu">
-                      <a href="#" onclick="shortcake();">Short Cake</a>
-                  </div>
-                  <div class="hamburger_menu">
-                      <a href="#" onclick="bread();">Bread And Pastry</a>
-                  </div>
-                  <div class="hamburger_menu">
-                      <a href="#" onclick="dessert();">Dessert</a>
-                  </div>
-                  <div class="hamburger_menu">
-                      <a href="#" onclick="gifts();">Gifts</a>
-                  </div>
-                  <div class="hamburger_menu">
-                      <a href="#" onclick="cookies();">Cookies</a>
-                  </div>
-                  <div class="hamburger_menu">
-                      <a href="#" onclick="showNews();">Tin tức</a>
-                  </div>
-                  <div class="hamburger_menu">
-                      <a href="#" onclick="showPromotions();">Khuyến mãi</a>
-                  </div>
-                  <div class="hamburger_menu">
-                      <a href="#" onclick="checkTaiKhoan();">Đăng nhập</a>
-                  </div>
+                    <div class="logo">
+                        <i class="material-icons">mood</i>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="showHome();">Trang chủ</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="shortcake();">Short Cake</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="bread();">Bread And Pastry</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="dessert();">Dessert</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="gifts();">Gifts</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="cookies();">Cookies</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="showNews();">Tin tức</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="showPromotions();">Khuyến mãi</a>
+                    </div>
+                    <div class="hamburger_menu">
+                        <a href="#" onclick="checkTaiKhoan();">Đăng nhập</a>
+                    </div>
 
-                  
+                    
 
-              </div>
+                </div>
 
-              <i class="material-icons icon red">phone</i>
-              <div class="enter">
-                  <p>0347 340 024</p>
-              </div>
-              <i class="material-icons icon red">apartment</i>
-              <div class="enter">
-                  <p>Location </p>
-              </div>
-              <div class="enter">
-                  <div class="member">
-                      <a onclick="checkTaiKhoan()">
-                          <i class="material-icons icon red">person</i>
-                      </a>
-                      <div class="menuMember hide">
-                          <a href="nguoidung.html">Trang người dùng</a>
-                          <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
-                      </div>
-                  </div>
-              </div>
-              <div class="enter_member">
-                  <p>Tài khoản</p>
-              </div>
+                <i class="material-icons icon red">phone</i>
+                <div class="enter">
+                    <p>0347 340 024</p>
+                </div>
+                <i class="material-icons icon red">apartment</i>
+                <div class="enter">
+                    <p>Location </p>
+                </div>
+                <div class="enter">
+                    <div class="member">
+                        <a onclick="checkTaiKhoan()">
+                            <i class="material-icons icon red">person</i>
+                        </a>
+                        <div class="menuMember hide">
+                            <a href="nguoidung.html">Trang người dùng</a>
+                            <a onclick="if(window.confirm('Xác nhận đăng xuất ?')) logOut();">Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="enter_member">
+                    <p>Tài khoản</p>
+                </div>
 
-              <div class="cart">
-                  <a href="cart.html">
-                      <i class="material-icons icon red">local_mall</i>
-                  </a>
-                  <span class="cart-number">0</span>
-              </div>
-              <div class="enter">
-                  <p>Giỏ hàng</p>
-              </div>
-          </ul>
-      </nav>
+                <div class="cart">
+                    <a href="cart.html">
+                        <i class="material-icons icon red">local_mall</i>
+                    </a>
+                    <span class="cart-number">0</span>
+                </div>
+                <div class="enter">
+                    <p>Giỏ hàng</p>
+                </div>
+            </ul>
+        </nav>
       <nav>
           <ul class="menu">
               <li><a href="index.html" onclick="showHome();">TRANG CHỦ</a></li>
@@ -135,8 +136,8 @@
                       <li><a href="index.html" onclick="cookies();">Cookies</a></li>
                   </ul>
               </li>
-              <li><a href="#" onclick="showNews();">TIN TỨC</a></li>
-              <li><a href="#" onclick="showPromotions();">KHUYẾN MÃI</a></li>
+              <li><a href="index.html" onclick="showNews();">TIN TỨC</a></li>
+              <li><a href="index.html" onclick="showPromotions();">KHUYẾN MÃI</a></li>
           </ul>
       </nav>
   </header>
@@ -183,6 +184,7 @@
               <label for="notes">Ghi chú (tùy chọn):</label>
               <textarea id="notes" name="notes" rows="2"></textarea>
               <button type="button" onclick="saveAddress()">Lưu địa chỉ</button>
+              <button type="button" onclick="takeAddress()">Dùng địa chỉ cũ</button>
          
             
               <form id="payment-form">

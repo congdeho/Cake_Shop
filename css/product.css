@@ -171,7 +171,8 @@
 
 .home-container {
     gap: 30px; /* Khoảng cách giữa các phần tử (tuỳ chỉnh) */
-    
+    display: flex;
+    margin-right: 20px;
 }
 
 .home
@@ -179,6 +180,8 @@
     border: solid 1px black;
     background-color: white;
     transition: background-color 0.3s ease;
+    width: calc(33.33% - 10px);
+    
 }
 
 .home .picture
