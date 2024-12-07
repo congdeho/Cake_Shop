@@ -1029,6 +1029,7 @@ function getProductById2(productId) {
 function findBestAndWorstSellingProducts(orders) {
     const productSales = {};
 
+    // Duyệt qua các đơn hàng và tính tổng số lượng bán cho mỗi sản phẩm
     orders.forEach(order => {
         order.sp.forEach(sp => {
             if (!productSales[sp.maSanPham]) {
@@ -1039,10 +1040,11 @@ function findBestAndWorstSellingProducts(orders) {
     });
 
     let bestSellingProduct = null;
-    let worstSellingProduct = null;
     let maxSales = -Infinity;
     let minSales = Infinity;
+    let worstSellingProducts = [];
 
+    // Duyệt qua các sản phẩm để tìm sản phẩm bán chạy nhất và bán tệ nhất
     for (const productId in productSales) {
         const sales = productSales[productId];
         const numericProductId = Number(productId); // Chuyển productId sang kiểu số
@@ -1057,12 +1059,15 @@ function findBestAndWorstSellingProducts(orders) {
         }
         if (sales < minSales) {
             minSales = sales;
-            worstSellingProduct = product;
+            worstSellingProducts = [product]; // Reset danh sách sản phẩm bán tệ
+        } else if (sales === minSales) {
+            worstSellingProducts.push(product); // Thêm sản phẩm vào danh sách nếu bằng minSales
         }
     }
 
-    return { bestSellingProduct, worstSellingProduct, productSales };
+    return { bestSellingProduct, worstSellingProducts, productSales };
 }
+
 function displayStatistics() {
     const orders = getListDonHang(true);
     // Tính tổng doanh thu
