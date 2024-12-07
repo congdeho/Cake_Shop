@@ -1070,10 +1070,12 @@ function findBestAndWorstSellingProducts(orders) {
 
 function displayStatistics() {
     const orders = getListDonHang(true);
+    
     // Tính tổng doanh thu
     const totalRevenue = calculateTotalRevenue(orders);
     document.getElementById('totalRevenue').innerText = `${totalRevenue.toLocaleString()} VNĐ`;
     document.getElementById('doanhthu').innerText = ` ${totalRevenue.toLocaleString()} VNĐ`;
+
     // Tìm sản phẩm bán chạy nhất và bán ít nhất
     const { bestSellingProduct, worstSellingProduct, productSales } = findBestAndWorstSellingProducts(orders);
     document.getElementById('bestSellingProduct').innerText = bestSellingProduct ? bestSellingProduct.name : 'Chưa có';
@@ -1095,24 +1097,36 @@ function displayStatistics() {
         `;
     }
 
-    // Hiển thị chi tiết đơn hàng
-    const invoiceDetailsTable = document.getElementById('invoiceDetails').getElementsByTagName('tbody')[0];
-    invoiceDetailsTable.innerHTML = ''; // Xóa nội dung cũ
+    // Tính tổng tiền của mỗi khách hàng và liệt kê mã đơn hàng
+    const customerSpending = {};
     orders.forEach(order => {
-        const totalOrderPrice = order.sp.reduce((total, sp) => {
+        if (!customerSpending[order.maKhach]) {
+            customerSpending[order.maKhach] = {
+                name: order.khach,
+                totalSpent: 0,
+                orderIds: []
+            };
+        }
+        const orderTotal = order.sp.reduce((total, sp) => {
             const product = getProductById(sp.maSanPham);
             return total + sp.soLuong * product.price;
         }, 0);
+        customerSpending[order.maKhach].totalSpent += orderTotal;
+        customerSpending[order.maKhach].orderIds.push(order.ma); // Thêm mã đơn hàng
+    });
+
+    // Hiển thị chi tiết tổng chi của từng khách hàng
+    const invoiceDetailsTable = document.getElementById('invoiceDetails').getElementsByTagName('tbody')[0];
+    invoiceDetailsTable.innerHTML = ''; // Xóa nội dung cũ
+    for (const customerId in customerSpending) {
+        const customer = customerSpending[customerId];
         const row = invoiceDetailsTable.insertRow();
         row.innerHTML = `
-            <td>${order.ma}</td>
-            <td>${order.khach}</td>
-            <td>${order.diachi}</td>
-            <td>${new Date(order.ngaygio).toLocaleDateString('en-CA')}</td>
-            <td>${order.tinhTrang}</td>
-            <td>${totalOrderPrice.toLocaleString()} VNĐ</td>
+            <td>${customer.orderIds.join(', ')}</td> <!-- Hiển thị mã đơn hàng -->
+            <td>${customer.name}</td>
+            <td>${customer.totalSpent.toLocaleString()} VNĐ</td>
         `;
-    });
+    }
 }
 
 // Gọi hàm displayStatistics khi trang được tải
@@ -1219,10 +1233,7 @@ function getValueOfTypeInTable_InvoiceDetails(tr, loai) {
     switch (loai) {
         case 'id': return td[0].innerHTML.toLowerCase();
         case 'khach': return td[1].innerHTML.toLowerCase();
-        case 'diachi': return td[2].innerHTML.toLowerCase();
-        case 'ngay': return new Date(td[3].innerHTML);
-        case 'trangthai': return td[4].innerHTML.toLowerCase();
-        case 'sotien': return stringToNum(td[5].innerHTML);
+        case 'sotien': return stringToNum(td[2].innerHTML);
     }
     return false;
 }
